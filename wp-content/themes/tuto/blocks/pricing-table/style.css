@@ -1,0 +1,485 @@
+/*
+ * Block tuto/pricing-table — prices in two layouts that share one block:
+ *
+ * 1) Plans (Мінісадочок): .tuto-pricing-table__plans with three .card plans, the last one
+ *    .card--featured with a «Найвигідніше» badge and the peeking bear (styleguide #pricing, D-13).
+ *    Below: .tuto-pricing-table__more → adaptation (dark group, ref 04) + «Додатково».
+ *
+ * 2) Price list «як у сторіс» (Ціни): .tuto-pricing-table__sheets with one or more
+ *    .tuto-pricing-table__sheet — chocolate plate title, rows alternating white/sand,
+ *    first row with a vertical coffee bar, last row dark (ref 03, ref 04).
+ *
+ * Rows (__row) and dark groups (__group / __line) are shared by both layouts.
+ * A row: __title (name, a link to the programme page), __meta (__age first, then the
+ * description), __terms (trial / one-off as plain text), __links (ghost «Розклад» →
+ * /rozklad/?prohrama=<slug>), __price with the unit in <small> («за 8 занять»).
+ * Mobile-first, tokens only.
+ */
+
+/* =========================================================================
+ * Shared: note under the table («ціни станом на …»)
+ * ======================================================================= */
+.tuto-pricing-table__note {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2) var(--space-4);
+	margin-block-start: var(--space-6);
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+}
+
+.tuto-pricing-table__note .icon {
+	inline-size: 1.25em;
+	block-size: 1.25em;
+}
+
+.tuto-pricing-table__note > * {
+	margin: 0;
+}
+
+.tuto-pricing-table__note > p {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+/* =========================================================================
+ * 1) Plans
+ * ======================================================================= */
+.tuto-pricing-table__plans {
+	display: grid;
+	gap: var(--gap);
+	align-items: stretch;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-pricing-table__plan .price__note {
+	font-weight: var(--fw-semibold);
+}
+
+/* One line above the plans instead of the same list in every card (review №21) */
+.tuto-pricing-table__includes {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-3);
+	margin: 0 0 var(--space-6);
+	padding: var(--space-4) var(--space-5);
+	border-radius: var(--radius-s);
+	background-color: var(--c-sand);
+	color: var(--c-text);
+	line-height: var(--lh-snug);
+}
+
+.tuto-pricing-table__includes .icon {
+	flex: none;
+	inline-size: 1.4rem;
+	block-size: 1.4rem;
+	margin-block-start: 0.05em;
+	color: var(--c-brick);
+}
+
+.tuto-pricing-table__includes strong {
+	color: var(--c-chocolate);
+}
+
+/* Featured plan: room above it for the bear and the badge */
+.tuto-pricing-table__plan.card--featured {
+	margin-block-start: var(--space-8);
+}
+
+.tuto-pricing-table__peek {
+	position: absolute;
+	inset-block-end: calc(100% - 2px);
+	inset-inline-start: var(--space-5);
+	inline-size: 5.5rem;
+	color: var(--c-chocolate); /* takes taps: bears wink (components.css) */
+}
+
+.tuto-pricing-table__gift {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	padding: var(--space-3) var(--space-4);
+	border-radius: var(--radius-s);
+	background-color: var(--c-sand);
+	color: var(--c-chocolate);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-bold);
+	line-height: var(--lh-snug);
+}
+
+.tuto-pricing-table__gift .icon {
+	inline-size: 1.75rem;
+	block-size: 1.75rem;
+	color: var(--c-brick);
+}
+
+/* Adaptation + extras under the plans */
+.tuto-pricing-table__more {
+	display: grid;
+	gap: var(--gap);
+	margin-block-start: var(--gap);
+}
+
+.tuto-pricing-table__box {
+	display: grid;
+	align-content: start;
+	gap: var(--space-4);
+	padding: var(--card-pad);
+	border-radius: var(--radius-m);
+	background-color: var(--c-white);
+}
+
+.tuto-pricing-table__box > * {
+	margin: 0;
+}
+
+.tuto-pricing-table__box-title {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	font-size: var(--fs-h4);
+}
+
+.tuto-pricing-table__box-title .icon {
+	inline-size: 1.5rem;
+	block-size: 1.5rem;
+}
+
+.tuto-pricing-table__box--dark {
+	background-color: var(--c-chocolate);
+	color: var(--c-sand);
+	--c-heading: var(--c-cream);
+	--c-muted: var(--c-latte);
+	--c-line: var(--c-line-on-dark);
+}
+
+.tuto-pricing-table__box--dark .tuto-pricing-table__box-title .icon {
+	color: var(--c-latte);
+}
+
+/* Rows inside a white box: cream / sand so the first row does not vanish */
+.tuto-pricing-table__box .tuto-pricing-table__row {
+	background-color: var(--c-cream);
+}
+
+.tuto-pricing-table__box .tuto-pricing-table__row:nth-child(even) {
+	background-color: var(--c-sand);
+}
+
+.tuto-pricing-table__box-text {
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+}
+
+/* =========================================================================
+ * Rows: name + meta on the left, price on the right (ref 03)
+ * <li class="tuto-pricing-table__row"><div><p class="tuto-pricing-table__title">…</p>
+ *   <p class="tuto-pricing-table__meta">…</p></div><p class="tuto-pricing-table__price">…</p></li>
+ * ======================================================================= */
+.tuto-pricing-table__rows {
+	display: grid;
+	gap: var(--space-3);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-pricing-table__row {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-2) var(--space-4);
+	padding: var(--space-4) var(--space-5);
+	border-radius: var(--radius-s);
+	background-color: var(--c-white);
+}
+
+.tuto-pricing-table__row:nth-child(even) {
+	background-color: var(--c-sand);
+}
+
+.tuto-pricing-table__row > * {
+	margin: 0;
+}
+
+.tuto-pricing-table__name {
+	display: grid;
+	gap: var(--space-1);
+	min-inline-size: 0;
+}
+
+.tuto-pricing-table__name > * {
+	margin: 0;
+}
+
+.tuto-pricing-table__title {
+	color: var(--c-heading);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-heavy);
+	line-height: var(--lh-snug);
+}
+
+.tuto-pricing-table__meta {
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+	line-height: var(--lh-snug);
+}
+
+.tuto-pricing-table__meta + .tuto-pricing-table__meta {
+	margin-block-start: var(--space-1);
+}
+
+/* Programme name links to its page (same quiet underline as the schedule slots) */
+.tuto-pricing-table__title a {
+	color: inherit;
+	text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+	text-underline-offset: 0.18em;
+}
+
+.tuto-pricing-table__title a:hover {
+	text-decoration-color: currentColor;
+}
+
+/* Age first in the meta line: parents scan by age */
+.tuto-pricing-table__age {
+	color: var(--c-heading);
+	font-weight: var(--fw-bold);
+}
+
+/* Trial / one-off / validity: plain text, not chips (chips read as buttons) */
+.tuto-pricing-table__terms {
+	margin-block-start: var(--space-1);
+	color: var(--c-text);
+	font-size: var(--fs-body-s);
+	line-height: var(--lh-snug);
+}
+
+.tuto-pricing-table__terms strong {
+	color: var(--c-heading);
+}
+
+.tuto-pricing-table__links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 var(--space-4);
+	margin-block: calc(-1 * var(--space-2)) calc(-1 * var(--space-3)); /* the 44px tap height already gives the room */
+}
+
+/* Price list: the price sits on the line of the programme name, not in the middle of a tall card */
+.tuto-pricing-table__sheet .tuto-pricing-table__row {
+	align-items: baseline;
+}
+
+.tuto-pricing-table__links .btn {
+	font-size: var(--fs-small);
+}
+
+/* Unit under the price («за 8 занять»): no wrap of the price itself, the unit may wrap */
+.tuto-pricing-table__price small {
+	white-space: normal;
+}
+
+.tuto-pricing-table__price {
+	flex: none;
+	color: var(--c-heading);
+	font-size: var(--fs-h4);
+	font-weight: var(--fw-heavy);
+	line-height: 1.1;
+	letter-spacing: var(--ls-snug);
+	text-align: end;
+	white-space: nowrap;
+	font-variant-numeric: lining-nums tabular-nums;
+}
+
+.tuto-pricing-table__price small {
+	display: block;
+	margin-block-start: var(--space-1);
+	color: var(--c-muted);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-semibold);
+	letter-spacing: var(--ls-normal);
+}
+
+/* First row of a sheet: vertical coffee bar (ref 03 «Денний простір…») */
+.tuto-pricing-table__row--accent,
+.tuto-pricing-table__row--accent:nth-child(even) {
+	background-color: var(--c-white);
+	box-shadow: inset var(--accent-w) 0 0 var(--c-coffee);
+	padding-inline-start: calc(var(--space-5) + var(--accent-w));
+}
+
+/* Dark row (ref 03 «Індивідуальне заняття») */
+.tuto-pricing-table__row--dark,
+.tuto-pricing-table__row--dark:nth-child(even) {
+	background-color: var(--c-chocolate);
+	--c-heading: var(--c-cream);
+	--c-muted: var(--c-latte);
+}
+
+/* Phones: long names + meta push the price under the text */
+@media (max-width: 29.99em) {
+	.tuto-pricing-table__row--wrap {
+		flex-wrap: wrap;
+	}
+
+	.tuto-pricing-table__row--wrap .tuto-pricing-table__price {
+		text-align: start;
+	}
+}
+
+/* =========================================================================
+ * Dark group with divided lines (ref 04 «Адаптаційний період»)
+ * ======================================================================= */
+.tuto-pricing-table__group-label {
+	margin: var(--space-5) 0 var(--space-3);
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-heavy);
+	letter-spacing: var(--ls-wide);
+	text-transform: uppercase;
+}
+
+.tuto-pricing-table__group {
+	margin: 0;
+	padding: var(--space-2) var(--space-5);
+	border-radius: var(--radius-s);
+	background-color: var(--c-chocolate);
+	color: var(--c-sand);
+	--c-heading: var(--c-cream);
+	--c-muted: var(--c-latte);
+}
+
+.tuto-pricing-table__box--dark .tuto-pricing-table__group {
+	padding: 0;
+	background: none;
+}
+
+.tuto-pricing-table__line {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--space-4);
+	padding-block: var(--space-3);
+}
+
+.tuto-pricing-table__line + .tuto-pricing-table__line {
+	border-block-start: 1px solid var(--c-line-on-dark);
+}
+
+.tuto-pricing-table__line dt {
+	color: var(--c-sand);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-pricing-table__line dt small {
+	display: block;
+	color: var(--c-latte);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-regular);
+}
+
+.tuto-pricing-table__line dd {
+	flex: none;
+	margin: 0;
+	color: var(--c-cream);
+	font-size: var(--fs-lead);
+	font-weight: var(--fw-heavy);
+	white-space: nowrap;
+	font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* =========================================================================
+ * 2) Sheets «як у сторіс»: cream panel, chocolate plate title
+ * ======================================================================= */
+.tuto-pricing-table__sheets {
+	display: grid;
+	gap: var(--space-7) var(--gap);
+	align-items: start;
+}
+
+.tuto-pricing-table__col {
+	display: grid;
+	gap: var(--space-7);
+}
+
+.tuto-pricing-table__sheet {
+	overflow: hidden;
+	border: var(--border-w) solid var(--c-sand-2);
+	border-radius: var(--radius-l);
+	background-color: var(--c-cream);
+	box-shadow: var(--shadow-m);
+}
+
+.tuto-pricing-table__plate {
+	margin: 0;
+	padding: var(--space-4) var(--space-5);
+	background-color: var(--c-chocolate);
+	color: var(--c-cream);
+	font-size: var(--fs-h4);
+	font-weight: var(--fw-heavy);
+	letter-spacing: 0.08em;
+	line-height: var(--lh-snug);
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.tuto-pricing-table__plate small {
+	display: block;
+	margin-block-start: var(--space-1);
+	color: var(--c-latte);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-semibold);
+	letter-spacing: var(--ls-wide);
+}
+
+.tuto-pricing-table__sheet-body {
+	padding: var(--space-5) var(--space-4) var(--space-6);
+}
+
+.tuto-pricing-table__sheet-foot {
+	margin: var(--space-5) 0 0;
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-bold);
+	letter-spacing: 0.04em;
+	text-align: center;
+}
+
+@media (min-width: 48em) {
+	.tuto-pricing-table__more {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.tuto-pricing-table__sheet-body {
+		padding: var(--space-6) var(--space-6) var(--space-7);
+	}
+
+	.tuto-pricing-table__row {
+		padding-inline: var(--space-6);
+	}
+
+	.tuto-pricing-table__row--accent,
+	.tuto-pricing-table__row--accent:nth-child(even) {
+		padding-inline-start: calc(var(--space-6) + var(--accent-w));
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-pricing-table__plans {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		padding-block-start: var(--space-8);
+	}
+
+	.tuto-pricing-table__plan.card--featured {
+		margin-block-start: 0;
+	}
+
+	.tuto-pricing-table__sheets {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ТУТО — SVG-набір</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/tokens.css">
+<style>
+  :root {
+    --pv-cream: var(--c-cream, #F8F3EC);
+    --pv-sand: var(--c-sand, #EADFD2);
+    --pv-latte: var(--c-latte, #CDB8A3);
+    --pv-coffee: var(--c-coffee, #8B6B57);
+    --pv-choc: var(--c-chocolate, #3B2A22);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--pv-cream); color: var(--pv-choc); font: 15px/1.5 var(--font-body, "Nunito", system-ui, sans-serif); }
+  header, section { padding: 24px 16px; max-width: 1280px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 17px; margin: 0 0 12px; }
+  p.note { margin: 0; color: var(--pv-coffee); font-size: 13px; }
+  .duo { display: grid; gap: 12px; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .duo { grid-template-columns: 1fr 1fr; } }
+  .panel { border-radius: 20px; padding: 16px; }
+  .panel--light { background: #fff; color: var(--pv-choc); }
+  .panel--cream { background: var(--pv-cream); outline: 1px solid var(--pv-sand); }
+  .panel--cream { --bear-bg: var(--pv-cream); }
+  .panel--dark { background: var(--pv-choc); color: var(--pv-cream); --logo-accent: #D9A08A; --bear-tint: var(--pv-coffee); --bear-bg: var(--pv-choc); }
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .tile { display: flex; flex-direction: column; gap: 8px; }
+  .tile__art { display: flex; align-items: center; justify-content: center; min-height: 120px; padding: 8px; border-radius: 14px; border: 1px dashed currentColor; border-color: color-mix(in srgb, currentColor 18%, transparent); }
+  .tile__art svg { width: 100%; max-height: 170px; }
+  .tile__art img { max-width: 100%; max-height: 160px; height: auto; }
+  .tile__art--wide svg { width: 100%; height: 48px; max-height: none; }
+  .tile__art--edge { align-items: flex-end; padding-bottom: 0; border-bottom: 3px solid currentColor; border-radius: 14px 14px 0 0; }
+  .tile__cap { font-size: 12px; opacity: .8; word-break: break-all; }
+  .logo-row { display: grid; gap: 16px; }
+  .logo-row svg { display: block; width: 100%; height: auto; }
+  .logo-row .w-header { max-width: 220px; }
+  .logo-row .w-big { max-width: 560px; }
+  .logo-row .w-mark { width: 64px; }
+  .mono { --logo-accent: currentColor; }
+  .compare { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items: center; }
+  .compare img { width: 100%; height: auto; border-radius: 12px; }
+  .icons { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+  .icon-tile { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 14px; font-size: 11px; text-align: center; }
+  .icon-tile svg { width: 28px; height: 28px; }
+  .icon-tile--sm svg { width: 20px; height: 20px; }
+  .tiny { display: flex; gap: 12px; align-items: center; }
+  .tiny img { display: block; }
+  code { font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>ТУТО — SVG-набір (T-102)</h1>
+  <p class="note">Службова сторінка для перевірки. Усе вставлено inline (через fetch), тому працює currentColor. Світла панель — колір шоколад, темна — крем; на темному фоні акцент логотипа перефарбовано змінною <code>--logo-accent</code>.</p>
+</header>
+
+<section>
+  <h2>Логотип: порівняння з еталоном</h2>
+  <div class="compare">
+    <img src="/tuto-preview/design/refs/photos/logo-avatar.jpg" alt="Еталон: аватар Instagram">
+    <div class="panel panel--light"><div class="logo-row"><div class="w-big" data-svg="logo-full.svg"></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Логотип</h2>
+  <div class="duo">
+    <div class="panel panel--cream"><div class="logo-row">
+      <div class="w-header" data-svg="logo.svg"></div>
+      <div class="w-big" data-svg="logo-full.svg"></div>
+      <div class="w-header mono" data-svg="logo.svg"></div>
+      <div class="tiny"><div class="w-mark" data-svg="logo-mark.svg"></div><div style="width:32px" data-svg="logo-mark.svg"></div><img src="favicon.svg" width="32" height="32" alt=""><img src="favicon.svg" width="16" height="16" alt=""></div>
+    </div></div>
+    <div class="panel panel--dark"><div class="logo-row">
+      <div class="w-header" data-svg="logo.svg"></div>
+      <div class="w-big" data-svg="logo-full.svg"></div>
+      <div class="w-header mono" data-svg="logo.svg"></div>
+      <div class="tiny"><div class="w-mark" data-svg="logo-mark.svg"></div><div style="width:32px" data-svg="logo-mark.svg"></div><img src="favicon.svg" width="32" height="32" alt=""><img src="favicon.svg" width="16" height="16" alt=""></div>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Ведмедик</h2>
+  <div class="duo">
+    <div class="panel panel--cream"><div class="grid" data-set="bears"></div></div>
+    <div class="panel panel--dark"><div class="grid" data-set="bears"></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Декор</h2>
+  <div class="duo">
+    <div class="panel panel--cream" style="color:var(--pv-coffee)"><div class="grid" data-set="decor"></div></div>
+    <div class="panel panel--dark" style="color:var(--pv-latte)"><div class="grid" data-set="decor"></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Іконки (<code>icons.svg#i-…</code>, 24×24, stroke 1.75)</h2>
+  <div class="duo">
+    <div class="panel panel--light"><div class="icons" data-set="icons"></div></div>
+    <div class="panel panel--dark"><div class="icons" data-set="icons"></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Як &lt;img&gt; (без currentColor — стандартні кольори файлів)</h2>
+  <div class="panel panel--cream"><div class="grid" data-set="img"></div></div>
+</section>
+
+<script>
+(function () {
+  var bears = ['bear.svg', 'bear-wave.svg', 'bear-peek.svg', 'bear-404.svg', 'bear-ask.svg', 'bear-book.svg', 'bear-board.svg'];
+  var decor = ['branch-1.svg', 'branch-2.svg', 'heart.svg', 'blob-1.svg', 'blob-2.svg', 'blob-3.svg', 'wave.svg', 'dots-path.svg'];
+  var icons = ['sensory', 'theme-week', 'reggio', 'bilingual', 'camera', 'safety', 'badge', 'shelter', 'clock', 'location', 'phone', 'telegram', 'instagram', 'arrow-right', 'arrow-left', 'check', 'plus', 'minus', 'close', 'menu', 'chevron-down', 'heart', 'star', 'food', 'backpack', 'gift'];
+  var all = ['logo.svg', 'logo-full.svg', 'logo-mark.svg', 'favicon.svg'].concat(bears, decor, ['icons.svg']);
+  var cache = {};
+  function load(name) {
+    if (!cache[name]) {
+      cache[name] = fetch(name).then(function (r) {
+        if (!r.ok) throw new Error(name + ' ' + r.status);
+        var len = r.headers.get('content-length');
+        return r.text().then(function (t) { return { text: t, size: len || new Blob([t]).size }; });
+      });
+    }
+    return cache[name];
+  }
+  function inline(el, name) {
+    load(name).then(function (res) { el.innerHTML = res.text.replace(/<\?xml[^>]*>/, ''); })
+      .catch(function (e) { el.textContent = String(e); });
+  }
+  document.querySelectorAll('[data-svg]').forEach(function (el) { inline(el, el.getAttribute('data-svg')); });
+  function tile(parent, name, cls) {
+    var t = document.createElement('div'); t.className = 'tile';
+    var art = document.createElement('div'); art.className = 'tile__art' + (cls ? ' ' + cls : '');
+    var cap = document.createElement('div'); cap.className = 'tile__cap'; cap.textContent = name;
+    t.appendChild(art); t.appendChild(cap); parent.appendChild(t);
+    load(name).then(function (res) { cap.textContent = name + ' · ' + (res.size / 1024).toFixed(1) + ' КБ'; });
+    return art;
+  }
+  document.querySelectorAll('[data-set="bears"]').forEach(function (g) {
+    bears.forEach(function (n) { inline(tile(g, n, n === 'bear-peek.svg' ? 'tile__art--edge' : ''), n); });
+  });
+  document.querySelectorAll('[data-set="decor"]').forEach(function (g) {
+    decor.forEach(function (n) { inline(tile(g, n, n === 'wave.svg' ? 'tile__art--wide' : ''), n); });
+  });
+  document.querySelectorAll('[data-set="icons"]').forEach(function (g) {
+    icons.forEach(function (n) {
+      var t = document.createElement('div'); t.className = 'icon-tile';
+      t.innerHTML = '<svg aria-hidden="true"><use href="icons.svg#i-' + n + '"/></svg><span>i-' + n + '</span>';
+      g.appendChild(t);
+    });
+  });
+  document.querySelectorAll('[data-set="img"]').forEach(function (g) {
+    all.forEach(function (n) {
+      if (n === 'icons.svg') return;
+      var art = tile(g, n, n === 'wave.svg' ? 'tile__art--wide' : '');
+      var img = new Image(); img.src = n; img.alt = ''; art.appendChild(img);
+    });
+    var t = tile(g, 'icons.svg');
+    t.parentNode.querySelector('.tile__art').textContent = 'спрайт — див. вище';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,392 @@
+/*
+ * Block tuto/programs-grid - programme cards: photo + age chip + title + format + price + «Детальніше».
+ * Used on /programy (all programmes, age filter, featured «Мінісадочок», notes below)
+ * and on a programme page as «Інші програми» (3 cards, no filter).
+ *
+ * Filter: .tuto-programs-grid__filter is rendered [hidden]; script.js shows it and
+ * toggles [hidden] on items by data-ages. Without JS every card is visible.
+ * Featured card (.tuto-programs-grid__item--featured): 2 columns on tablets,
+ * 2 × 2 cells from 1024px; a normal card while a filter is active (.is-filtered).
+ * Mobile-first, tokens only.
+ */
+
+/* ---------- Age filter: segmented pill (same look as the age-picker tabs) ---------- */
+.tuto-programs-grid__filter {
+	margin-block-end: var(--space-6);
+}
+
+.tuto-programs-grid__filter-label {
+	margin-block-end: var(--space-3);
+	color: var(--c-heading);
+	font-weight: var(--fw-bold);
+}
+
+.tuto-programs-grid__chips {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: var(--space-1);
+	max-inline-size: 40rem;
+	padding: var(--space-1);
+	border-radius: var(--radius-pill);
+	background-color: var(--c-white);
+	box-shadow: var(--shadow-s);
+}
+
+.tuto-programs-grid__chip.chip {
+	--chip-bg: transparent;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0;
+	min-height: 3.25rem;
+	padding: var(--space-1) var(--space-2);
+	font-size: var(--fs-lead);
+	font-weight: var(--fw-heavy);
+	line-height: 1.05;
+	text-align: center;
+	font-variant-numeric: lining-nums;
+}
+
+.tuto-programs-grid__chip span {
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-programs-grid__status {
+	min-block-size: 1lh;
+	margin-block-start: var(--space-3);
+	color: var(--c-muted);
+	font-size: var(--fs-small);
+}
+
+.tuto-programs-grid__empty {
+	padding: var(--space-6) var(--card-pad);
+	border: var(--border-w) dashed var(--c-coffee);
+	border-radius: var(--radius-m);
+	text-align: center;
+}
+
+/* ---------- Grid ---------- */
+.tuto-programs-grid__list {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--gap);
+}
+
+.tuto-programs-grid__item {
+	display: flex;
+	min-inline-size: 0;
+}
+
+/* ---------- Card ---------- */
+.tuto-programs-grid__card {
+	flex: 1;
+	gap: 0;
+}
+
+.tuto-programs-grid__card > .card__media {
+	aspect-ratio: 16 / 9;
+}
+
+.tuto-programs-grid__card > .card__media img {
+	object-position: var(--focus, 50% 45%);
+}
+
+.tuto-programs-grid__card .card__title {
+	font-size: var(--fs-h4);
+}
+
+.tuto-programs-grid__age {
+	position: absolute;
+	inset-block-start: var(--space-3);
+	inset-inline-start: var(--space-3);
+	z-index: var(--z-base);
+	box-shadow: var(--shadow-s);
+}
+
+.tuto-programs-grid__card .tuto-programs-grid__age {
+	--chip-bg: var(--c-white);
+}
+
+.tuto-programs-grid__sub {
+	margin-block-start: calc(-1 * var(--space-2));
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-bold);
+}
+
+.tuto-programs-grid__meta {
+	display: grid;
+	gap: var(--space-1);
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+}
+
+.tuto-programs-grid__meta li {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-2);
+}
+
+.tuto-programs-grid__meta .icon {
+	inline-size: 1.15rem;
+	block-size: 1.15rem;
+	margin-block-start: 0.15em;
+}
+
+.tuto-programs-grid__todo {
+	justify-self: start;
+	align-self: flex-start;
+	padding: 0 var(--space-2);
+	border: 1px dashed var(--c-coffee);
+	border-radius: var(--radius-xs);
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+/* Price above the button: the same rhythm in every card, whatever the note length */
+.tuto-programs-grid__card .card__footer {
+	flex-direction: column;
+	align-items: flex-start;
+	padding-block-start: var(--space-3);
+	border-block-start: 1px solid var(--c-line);
+}
+
+.tuto-programs-grid__card .price__note {
+	margin-block-start: var(--space-1);
+}
+
+/* Trial price under the main price (T-114, №1): §4.4 - trials go at the one-time rate */
+.tuto-programs-grid__trial {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-1) var(--space-2);
+	margin: 0;
+	color: var(--c-heading);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-bold);
+}
+
+/* Several plans under one price (featured card) */
+.tuto-programs-grid__plans {
+	display: grid;
+	margin-block-start: var(--space-3);
+	font-size: var(--fs-body-s);
+}
+
+/* Label left, price always on the right of the same line (T-114, №29) */
+.tuto-programs-grid__plans li {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--space-3);
+	padding-block: var(--space-2);
+	border-block-start: 1px solid var(--c-line);
+}
+
+.tuto-programs-grid__plans span {
+	min-inline-size: 0;
+}
+
+.tuto-programs-grid__plans strong {
+	color: var(--c-heading);
+	white-space: nowrap;
+}
+
+/* ---------- Featured card: body = info column + prices column ---------- */
+.tuto-programs-grid__item--featured .card__title {
+	font-size: var(--fs-h3);
+}
+
+/* Title row: name + a note chip ([УТОЧНИТИ] or a short label) on the same line */
+.tuto-programs-grid__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2) var(--space-3);
+}
+
+.tuto-programs-grid__head > * {
+	margin: 0;
+}
+
+.tuto-programs-grid__head .tuto-programs-grid__todo {
+	align-self: center;
+}
+
+/* Facts with icons in white circles: brick icon (5.79:1 on white), text 8.14:1 on sand, body-colour text */
+.tuto-programs-grid__meta--facts {
+	gap: var(--space-3);
+	padding-block-start: var(--space-4);
+	border-block-start: 1px solid rgb(59 42 34 / 0.12);
+	color: var(--c-text);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-programs-grid__meta--facts li {
+	align-items: center;
+	gap: var(--space-3);
+}
+
+.tuto-programs-grid__meta--facts .icon {
+	flex: none;
+	inline-size: 2.25rem;
+	block-size: 2.25rem;
+	margin: 0;
+	padding: 0.5rem;
+	border-radius: 50%;
+	background-color: var(--c-white);
+	color: var(--c-brick);
+	box-shadow: var(--shadow-s);
+}
+
+.tuto-programs-grid__info,
+.tuto-programs-grid__prices {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+}
+
+.tuto-programs-grid__info > *,
+.tuto-programs-grid__prices > * {
+	margin: 0;
+}
+
+.tuto-programs-grid__prices {
+	padding: var(--space-4) var(--space-5);
+	border-radius: var(--radius-s);
+	background-color: var(--c-white);
+}
+
+.tuto-programs-grid__prices .tuto-programs-grid__plans {
+	margin-block-start: 0;
+}
+
+.tuto-programs-grid__prices .card__footer {
+	align-items: stretch;
+	margin-block-start: auto; /* the button sits on the bottom edge when the column is stretched */
+	padding-block-start: var(--space-2);
+	border-block-start: 0;
+}
+
+/* ---------- Link to all programmes (programme page) ---------- */
+.tuto-programs-grid__more {
+	display: flex;
+	justify-content: center;
+	margin-block-start: var(--space-6);
+}
+
+/* ---------- Notes under the grid: individual lesson + trial rules ---------- */
+.tuto-programs-grid__extra {
+	display: grid;
+	gap: var(--gap);
+	margin-block-start: var(--space-8);
+}
+
+.tuto-programs-grid__solo .card__title {
+	font-size: var(--fs-h3);
+}
+
+.tuto-programs-grid__rules {
+	display: grid;
+	align-content: start;
+	gap: var(--space-4);
+}
+
+.tuto-programs-grid__rules > * {
+	margin: 0;
+}
+
+.tuto-programs-grid__rules h3 {
+	font-size: var(--fs-h4);
+}
+
+.tuto-programs-grid__rules .btn--ghost {
+	justify-self: start;
+}
+
+/* ---------- ≥ 640px: two columns ---------- */
+@media (min-width: 40em) {
+	.tuto-programs-grid__list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.tuto-programs-grid__card > .card__media {
+		aspect-ratio: 4 / 3;
+	}
+}
+
+/* ---------- ≥ 768px ---------- */
+@media (min-width: 48em) {
+	.tuto-programs-grid__chip.chip {
+		flex-direction: row;
+		gap: var(--space-1);
+		min-height: 3rem;
+		font-size: var(--fs-body);
+		font-weight: var(--fw-bold);
+	}
+
+	.tuto-programs-grid__chip span {
+		font-size: inherit;
+		font-weight: inherit;
+	}
+
+	/* Featured: full row, photo on the left */
+	.tuto-programs-grid__list:not(.is-filtered) .tuto-programs-grid__item--featured {
+		grid-column: 1 / -1;
+	}
+
+	.tuto-programs-grid__list:not(.is-filtered) .tuto-programs-grid__item--featured .tuto-programs-grid__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		align-items: stretch;
+	}
+
+	.tuto-programs-grid__list:not(.is-filtered) .tuto-programs-grid__item--featured .card__media {
+		aspect-ratio: auto;
+		min-block-size: 18rem;
+	}
+
+	/* Absolute photo: it fills the cell and never sets the card height */
+	.tuto-programs-grid__list:not(.is-filtered) .tuto-programs-grid__item--featured .card__media img {
+		position: absolute;
+		inset: 0;
+	}
+
+	.tuto-programs-grid__extra {
+		grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+		align-items: start;
+	}
+}
+
+/* ---------- ≥ 1024px: three columns, featured takes 2 × 2 cells ---------- */
+@media (min-width: 64em) {
+	.tuto-programs-grid__list {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-auto-flow: row dense;
+	}
+
+	.tuto-programs-grid__list:not(.is-filtered) .tuto-programs-grid__item--featured {
+		grid-column: span 2;
+		grid-row: span 2;
+	}
+
+	.tuto-programs-grid__list:not(.is-filtered) .tuto-programs-grid__item--featured .tuto-programs-grid__card {
+		display: flex;
+	}
+
+	/* The photo fills what is left of the 2 rows; it never sets their height */
+	.tuto-programs-grid__list:not(.is-filtered) .tuto-programs-grid__item--featured .card__media {
+		flex: 1 1 0;
+		min-block-size: 16rem;
+	}
+
+	.tuto-programs-grid__list:not(.is-filtered) .tuto-programs-grid__item--featured .card__body {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		gap: var(--space-5) var(--space-7);
+		align-items: stretch; /* info and the white price card share one height */
+		flex: none;
+	}
+}

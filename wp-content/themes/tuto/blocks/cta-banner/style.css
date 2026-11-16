@@ -1,0 +1,104 @@
+/*
+ * Block tuto/cta-banner — final call to action: a rounded chocolate panel
+ * (.on-dark) inside a light section, with the waving bear.
+ * Kept as a panel (not a full chocolate band) so it does not merge with the footer.
+ */
+.tuto-cta-banner__panel {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	display: grid;
+	gap: var(--space-6);
+	align-items: end;
+	padding: var(--space-7) var(--card-pad) var(--card-pad);
+	border-radius: var(--radius-l);
+	box-shadow: var(--shadow-l);
+}
+
+.tuto-cta-banner__text > .lead {
+	max-inline-size: 36rem;
+	margin-block: var(--space-5) var(--space-4);
+}
+
+/* What to write in the message — right above the buttons */
+.tuto-cta-banner__hint {
+	max-inline-size: 36rem;
+	margin-block: 0 var(--space-6);
+	color: var(--c-heading);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-cta-banner__actions .btn {
+	flex: 1 1 100%;
+	padding-inline: var(--space-4);
+}
+
+.tuto-cta-banner__note {
+	margin-block-start: var(--space-5);
+}
+
+/* Mobile: the bear waves from the top corner, next to the short heading */
+.tuto-cta-banner__bear {
+	position: absolute;
+	inset-block-start: var(--space-5);
+	inset-inline-end: var(--space-4);
+	inline-size: 4.75rem;
+}
+
+.tuto-cta-banner__blob {
+	inset-block-end: -45%;
+	inset-inline-end: -12%;
+	z-index: var(--z-below);
+	inline-size: 34rem;
+	color: var(--c-chocolate-2);
+}
+
+.tuto-cta-banner__heart {
+	display: none;
+	inline-size: 0.9rem;
+	color: var(--c-brick-on-dark);
+}
+
+.tuto-cta-banner__heart--1 {
+	inset-block-start: var(--space-6);
+	inset-inline-end: 30%;
+}
+
+.tuto-cta-banner__heart--2 {
+	inset-block-start: calc(var(--space-6) + 1.5rem);
+	inset-inline-end: calc(30% + 1.5rem);
+	inline-size: 0.55rem;
+	color: var(--c-latte);
+}
+
+@media (min-width: 30em) {
+	.tuto-cta-banner__actions .btn {
+		flex: 0 0 auto;
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-cta-banner__heart {
+		display: block;
+	}
+
+	.tuto-cta-banner__panel {
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: var(--space-7);
+		padding: var(--space-8) var(--space-8) var(--space-7);
+	}
+
+	.tuto-cta-banner__bear {
+		position: static;
+		justify-self: end;
+		inline-size: 10rem;
+		margin-block-end: calc(-1 * var(--space-7) + var(--space-2));
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-cta-banner__bear {
+		inline-size: 12rem;
+		margin-inline-end: var(--space-6);
+	}
+}

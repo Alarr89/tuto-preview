@@ -1,0 +1,137 @@
+/*
+ * Block tuto/safety — «Безпека і турбота» (BRIEF §4.6) on a chocolate band.
+ * All points are visible at once (trust info should not hide behind tabs):
+ * icon list on the left, photo in an arch + «Що взяти з собою» on the right.
+ * Based on styleguide .sg-feature*.
+ * Phones (review №16): lighter — smaller icons and gaps, no photo (from 48em it returns).
+ * Photo (review №28): a calm scene with an adult and a child, not the hamster shelf.
+ */
+.tuto-safety__grid {
+	display: grid;
+	gap: var(--space-6);
+	align-items: start;
+}
+
+.tuto-safety__list {
+	display: grid;
+	gap: var(--space-5);
+}
+
+.tuto-safety__item {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	align-content: start;
+	gap: var(--space-1) var(--space-4);
+}
+
+.tuto-safety__icon {
+	grid-row: span 2;
+	display: grid;
+	place-items: center;
+	inline-size: 2.5rem;
+	block-size: 2.5rem;
+	border-radius: 50%;
+	background-color: var(--c-chocolate-2);
+}
+
+.tuto-safety__icon .icon {
+	inline-size: 1.3rem;
+	block-size: 1.3rem;
+	color: var(--c-latte);
+}
+
+.tuto-safety__item h3 {
+	font-size: var(--fs-h4);
+}
+
+.tuto-safety__item p {
+	font-size: var(--fs-body-s);
+}
+
+.tuto-safety__aside {
+	display: grid;
+	gap: var(--space-6);
+	justify-items: center;
+}
+
+.tuto-safety__media {
+	display: none;
+	inline-size: min(100%, 22rem);
+	--frame-line: var(--c-latte);
+}
+
+/* ig-153: the woman and the child sit in the lower left part of the frame */
+.tuto-safety__media img {
+	object-position: 30% 72%;
+}
+
+.tuto-safety__pack {
+	inline-size: 100%;
+	padding: var(--card-pad);
+	border-radius: var(--radius-m);
+	background-color: var(--c-chocolate-2);
+	--check-bg: var(--c-chocolate);
+}
+
+.tuto-safety__pack h3 {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	margin-block-end: var(--space-4);
+	font-size: var(--fs-h4);
+}
+
+.tuto-safety__pack h3 .icon {
+	color: var(--c-latte);
+}
+
+.tuto-safety__pack .list-check {
+	font-size: var(--fs-body-s);
+}
+
+.tuto-safety__pack .list-check + p {
+	margin-block-start: var(--space-4);
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+}
+
+@media (min-width: 48em) {
+	.tuto-safety__grid {
+		gap: var(--space-8);
+	}
+
+	.tuto-safety__icon {
+		inline-size: 3.25rem;
+		block-size: 3.25rem;
+	}
+
+	.tuto-safety__icon .icon {
+		inline-size: 1.6rem;
+		block-size: 1.6rem;
+	}
+
+	.tuto-safety__media {
+		display: block;
+	}
+
+	.tuto-safety__list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--space-7) var(--gap);
+	}
+
+	.tuto-safety__aside {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		align-items: center;
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-safety__grid {
+		grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+		gap: var(--space-9);
+	}
+
+	.tuto-safety__aside {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

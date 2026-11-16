@@ -1,0 +1,584 @@
+/*
+ * ТУТО — global layout: site header (floating pill), mobile menu, site footer,
+ * spacing for the mobile sticky CTA. Loaded on every page after components.css.
+ * Header/footer are theme templates, not blocks (D-15). Mobile-first, tokens only.
+ *
+ * Markup: design/home.html (header.site-header, footer.site-footer, .sticky-cta).
+ * JS: assets/js/modules/site-menu.js (toggle, Esc, focus trap), sticky-cta.js,
+ * booking-sheet.js (dialog#booking-sheet), scroll-lock.js (.is-scroll-locked).
+ */
+
+/* =========================================================================
+ * Scroll lock while an overlay is open (scroll-lock.js): the page stays put,
+ * the padding replaces the vanished desktop scrollbar so nothing shifts.
+ * ======================================================================= */
+.is-scroll-locked {
+	overflow: hidden;
+	padding-inline-end: var(--scrollbar-w, 0px);
+}
+
+/* =========================================================================
+ * Header — floating pill (KinderHeaven 01, styleguide .sg-nav)
+ * The wrapper is transparent and click-through; only the pill takes clicks.
+ * ======================================================================= */
+.site-header {
+	position: sticky;
+	inset-block-start: 0;
+	z-index: var(--z-header);
+	padding: var(--space-3) var(--gutter); /* equal air above and below the pill (Evgeny, 2026-11-15) */
+	pointer-events: none;
+}
+
+.site-header__bar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	max-inline-size: var(--container-wide);
+	min-block-size: calc(var(--tap) + 2 * var(--space-2));
+	margin-inline: auto;
+	padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
+	border-radius: var(--radius-pill);
+	background-color: var(--c-header-bg);
+	box-shadow: var(--shadow-m);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	pointer-events: auto;
+}
+
+.site-header__logo {
+	display: block;
+	flex: none;
+	inline-size: 5.5rem;
+	margin-inline-end: auto;
+	padding-block: var(--space-2); /* 30px artwork -> 46px touch target, the bar height stays */
+	color: var(--c-chocolate);
+	text-decoration: none;
+	border-radius: var(--radius-xs);
+}
+
+.site-header__logo svg {
+	inline-size: 100%;
+	block-size: auto;
+}
+
+.site-header__phone {
+	display: none;
+	align-items: center;
+	gap: var(--space-2);
+	color: var(--c-chocolate);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-bold);
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.site-header__phone .icon {
+	inline-size: 1.25em;
+	block-size: 1.25em;
+}
+
+.site-header__phone:hover {
+	color: var(--c-coffee-ink);
+}
+
+.site-header__cta {
+	display: none;
+}
+
+/* Round phone button next to the burger (< 1024px): the number on the first screen */
+.site-header__call {
+	--btn-bg: var(--c-sand);
+	--btn-fg: var(--c-chocolate);
+	--btn-bg-hover: var(--c-latte);
+}
+
+/* Menu toggle: <a> to the footer menu without JS, <button> with JS — same look */
+.site-header__toggle {
+	--btn-bg: var(--c-sand);
+	--btn-fg: var(--c-chocolate);
+	--btn-bg-hover: var(--c-latte);
+	flex: none;
+}
+
+.site-header__toggle .btn__icon {
+	inline-size: 1.5em;
+	block-size: 1.5em;
+}
+
+.site-header__toggle .site-header__icon-close,
+.site-header.is-open .site-header__toggle .site-header__icon-open {
+	display: none;
+}
+
+.site-header.is-open .site-header__toggle .site-header__icon-close {
+	display: block;
+}
+
+/* ---------- Navigation: dropdown panel on mobile, inline on desktop ---------- */
+.site-nav {
+	display: none;
+}
+
+.site-header.is-open .site-nav {
+	position: absolute;
+	inset-block-start: calc(100% + var(--space-2));
+	inset-inline: 0;
+	display: block;
+	max-block-size: calc(100dvh - 7rem);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	padding: var(--space-5);
+	border-radius: var(--radius-l);
+	background-color: var(--c-white);
+	box-shadow: var(--shadow-l);
+	animation: site-nav-in var(--dur) var(--ease-out);
+}
+
+@keyframes site-nav-in {
+	from {
+		opacity: 0;
+		transform: translateY(-0.5rem);
+	}
+}
+
+.site-nav__list {
+	display: grid;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.site-nav__link {
+	display: flex;
+	align-items: center;
+	min-block-size: var(--tap);
+	padding-block: var(--space-2);
+	border-block-end: 1px solid var(--c-line);
+	color: var(--c-chocolate);
+	font-size: var(--fs-lead);
+	font-weight: var(--fw-bold);
+	text-decoration: none;
+}
+
+.site-nav__link:hover,
+.site-nav__link[aria-current="page"],
+.site-nav__link[aria-current="true"] {
+	color: var(--c-coffee-ink);
+}
+
+.site-nav__extra {
+	display: grid;
+	gap: var(--space-3);
+	margin-block-start: var(--space-5);
+}
+
+.site-nav__extra-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2) var(--space-5);
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	font-weight: var(--fw-semibold);
+}
+
+.site-nav__extra-links a {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-block-size: var(--tap);
+}
+
+.site-nav__extra-links .icon {
+	inline-size: 1.25em;
+	block-size: 1.25em;
+}
+
+/* «Питання батьків» — mobile panel only; the desktop bar keeps «Грайко» instead */
+/* «Грайко» (shop) — only in the desktop bar; on mobile it is in .site-nav__extra */
+.site-nav__hraiko {
+	display: none;
+}
+
+.site-nav__hraiko .site-nav__link {
+	gap: var(--space-1);
+	color: var(--c-coffee-ink);
+}
+
+.site-nav__hraiko .icon {
+	inline-size: 1.15em;
+	block-size: 1.15em;
+	color: var(--c-brick);
+}
+
+/* Dim the page behind the open mobile menu */
+.site-header__backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	background-color: var(--c-overlay-soft);
+	pointer-events: auto;
+}
+
+@media (min-width: 48em) {
+	.site-header__cta {
+		display: inline-flex;
+	}
+}
+
+@media (min-width: 64em) {
+	.site-header__bar {
+		gap: var(--space-5);
+	}
+
+	.site-header__logo {
+		margin-inline-end: 0;
+	}
+
+	.site-header .site-nav,
+	.site-header.is-open .site-nav {
+		position: static;
+		display: block;
+		margin-inline: auto;
+		max-block-size: none;
+		overflow: visible;
+		padding: 0;
+		background: none;
+		box-shadow: none;
+		animation: none;
+	}
+
+	.site-nav__list {
+		display: flex;
+		gap: var(--space-5);
+	}
+
+	.site-nav__hraiko {
+		display: block;
+		padding-inline-start: var(--space-5);
+		border-inline-start: 1px solid var(--c-line);
+	}
+
+	.site-nav__link {
+		min-block-size: 2.5rem;
+		padding-block: 0;
+		border: 0;
+		font-size: var(--fs-small);
+		font-weight: var(--fw-semibold);
+	}
+
+	.site-nav__extra,
+	.site-nav__faq,
+	.site-header__call,
+	.site-header__toggle,
+	.site-header__backdrop {
+		display: none !important;
+	}
+}
+
+@media (min-width: 80em) {
+	.site-header__phone {
+		display: inline-flex;
+	}
+}
+
+/* =========================================================================
+ * Footer — chocolate band with a wave (styleguide .sg-site-footer)
+ * ======================================================================= */
+.site-footer {
+	padding-block: var(--section-pad-s) var(--space-6);
+}
+
+.site-footer__grid {
+	display: grid;
+	gap: var(--space-7) var(--gap);
+}
+
+.site-footer__brand {
+	display: grid;
+	gap: var(--space-4);
+	align-content: start;
+}
+
+.site-footer__logo {
+	display: block;
+	inline-size: 11rem;
+	text-decoration: none;
+	border-radius: var(--radius-xs);
+}
+
+.site-footer__logo svg {
+	inline-size: 100%;
+	block-size: auto;
+}
+
+.site-footer__slogan {
+	margin: 0;
+	color: var(--c-heading);
+	font-size: var(--fs-h3);
+}
+
+.site-footer__about {
+	max-inline-size: 22rem;
+	font-size: var(--fs-body-s);
+}
+
+.site-footer__title {
+	margin-block-end: var(--space-4);
+	color: var(--c-muted);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+	letter-spacing: var(--ls-wide);
+	text-transform: uppercase;
+}
+
+.site-footer__list {
+	display: grid;
+	gap: 0; /* the 44px links themselves give the rhythm (was 36px + 8px gap) */
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	font-size: var(--fs-body-s);
+}
+
+.site-footer__list a {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-block-size: var(--tap-min);
+	text-decoration-color: transparent;
+}
+
+.site-footer__list a:hover {
+	text-decoration-color: currentColor;
+}
+
+.site-footer__list .icon {
+	inline-size: 1.25em;
+	block-size: 1.25em;
+	color: var(--c-latte);
+}
+
+/* Footer menu: two columns on phones and tablets, the long «Грайко» link spans both;
+   one column on desktop, where the footer has its own narrow menu column (Evgeny, 2026-11-15) */
+@media (max-width: 63.99em) {
+	#footer-nav .site-footer__list {
+		grid-template-columns: repeat(2, minmax(0, max-content));
+		column-gap: var(--space-7);
+	}
+
+	#footer-nav .site-footer__list > li:has(> a[href*="hraiko"]) {
+		grid-column: 1 / -1;
+	}
+}
+
+.site-footer__place {
+	display: grid;
+	gap: var(--space-1);
+	font-size: var(--fs-body-s);
+}
+
+.site-footer__place + .site-footer__place {
+	margin-block-start: var(--space-4);
+}
+
+.site-footer__place strong {
+	color: var(--c-heading);
+}
+
+.site-footer__place a {
+	justify-self: start;
+}
+
+/* «Google Maps» — a small outline button, not a 22px text link */
+.site-footer__map {
+	margin-block-start: var(--space-2);
+}
+
+.site-footer__bottom {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: var(--space-2) var(--space-5);
+	margin-block-start: var(--space-8);
+	padding-block-start: var(--space-5);
+	align-items: center;
+	border-block-start: 1px solid var(--c-line);
+	color: var(--c-muted);
+	font-size: var(--fs-small);
+}
+
+.site-footer__bottom p {
+	margin: 0;
+}
+
+.site-footer__bottom a {
+	display: inline-flex;
+	align-items: center;
+	min-block-size: var(--tap-min);
+}
+
+@media (min-width: 48em) {
+	.site-footer__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 64em) {
+	.site-footer__grid {
+		grid-template-columns: 1.3fr 1fr 1.2fr 1fr;
+	}
+}
+
+/*
+ * Mobile: body keeps padding for the sticky CTA (.has-sticky-cta); the footer
+ * stretches over it so the page ends in chocolate, not in a cream strip.
+ */
+@media (max-width: 47.99em) {
+	.has-sticky-cta .site-footer {
+		margin-block-end: calc(-1 * (var(--tap) + var(--space-6) + env(safe-area-inset-bottom, 0px)));
+		padding-block-end: calc(var(--space-6) + var(--tap) + var(--space-6) + env(safe-area-inset-bottom, 0px));
+	}
+}
+
+/* The open mobile menu already has «Записатися» — no second button over it */
+.is-menu-open .sticky-cta {
+	visibility: hidden;
+	opacity: 0;
+	transform: translateY(calc(100% + var(--space-4)));
+}
+
+/* Sticky CTA on chocolate: cream focus ring stays visible */
+.sticky-cta :focus-visible {
+	outline-color: var(--c-coffee-ink);
+	box-shadow: 0 0 0 var(--focus-offset) var(--c-cream);
+}
+
+/* =========================================================================
+ * Booking sheet — native <dialog id="booking-sheet"> (booking-sheet.js).
+ * Phones: bottom sheet over the page. ≥ 768px: compact modal in the centre.
+ * The dialog box has no padding: clicks on it = clicks on ::backdrop (close).
+ * ======================================================================= */
+.booking-sheet {
+	inline-size: 100%;
+	max-inline-size: 100%;
+	max-block-size: calc(100dvh - var(--space-6));
+	margin: auto 0 0;
+	padding: 0;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	border: 0;
+	border-radius: var(--radius-l) var(--radius-l) 0 0;
+	background-color: var(--c-white);
+	color: var(--c-body);
+	box-shadow: var(--shadow-l);
+}
+
+/* ::backdrop does not inherit custom properties in older browsers — fallbacks repeat the tokens */
+.booking-sheet::backdrop {
+	background-color: var(--c-overlay, rgb(59 42 34 / 0.45));
+}
+
+.booking-sheet[open] {
+	animation: booking-sheet-up var(--dur-slow) var(--ease-out);
+}
+
+.booking-sheet[open]::backdrop {
+	animation: booking-sheet-fade var(--dur, 250ms) ease-out;
+}
+
+@keyframes booking-sheet-up {
+	from {
+		transform: translateY(100%);
+	}
+}
+
+@keyframes booking-sheet-in {
+	from {
+		opacity: 0;
+		transform: translateY(1rem) scale(0.98);
+	}
+}
+
+@keyframes booking-sheet-fade {
+	from {
+		opacity: 0;
+	}
+}
+
+.booking-sheet__panel {
+	display: grid;
+	gap: var(--space-4);
+	padding: var(--space-5) var(--gutter) calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+}
+
+.booking-sheet__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-4);
+}
+
+.booking-sheet__title {
+	margin: 0;
+}
+
+.booking-sheet__close {
+	--btn-bg: var(--c-sand);
+	--btn-fg: var(--c-chocolate);
+	--btn-bg-hover: var(--c-latte);
+	margin-inline-end: calc(-1 * var(--space-2));
+}
+
+.booking-sheet__choice {
+	margin: 0;
+	padding: var(--space-3) var(--space-4);
+	border-radius: var(--radius-s);
+	background-color: var(--c-cream);
+}
+
+.booking-sheet__choice strong {
+	color: var(--c-heading);
+}
+
+.booking-sheet__hint {
+	margin: 0;
+	color: var(--c-heading);
+	font-weight: var(--fw-semibold);
+}
+
+.booking-sheet__actions {
+	display: grid;
+	gap: var(--space-3);
+}
+
+.booking-sheet__note {
+	margin: 0;
+}
+
+@media (min-width: 48em) {
+	.booking-sheet {
+		inline-size: calc(100% - 2 * var(--gutter));
+		max-inline-size: 30rem;
+		max-block-size: calc(100dvh - 2 * var(--space-6));
+		margin: auto;
+		border-radius: var(--radius-l);
+	}
+
+	.booking-sheet[open] {
+		animation-name: booking-sheet-in;
+		animation-duration: var(--dur);
+	}
+
+	.booking-sheet__panel {
+		padding: var(--space-6);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.booking-sheet[open],
+	.booking-sheet[open]::backdrop {
+		animation: none;
+	}
+}

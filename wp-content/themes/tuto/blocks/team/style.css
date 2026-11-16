@@ -1,0 +1,157 @@
+/*
+ * Block tuto/team - team cards (CPT team_member): photo in an arch, name, role, short bio.
+ * No photo yet → __photo--placeholder with the sitting bear on a sand arch.
+ * __card--pets: a warm extra card (hamsters and the rabbit live in the centre).
+ * Grid: 2 columns on phones (compact cards), 4 from 1024px.
+ * Mobile-first, tokens only.
+ */
+.tuto-team__list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-3);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-team__card {
+	block-size: 100%;
+	gap: var(--space-2);
+	padding: var(--space-2) var(--space-2) var(--space-4);
+	text-align: center;
+}
+
+.tuto-team__photo {
+	position: relative;
+	overflow: hidden;
+	margin: 0 0 var(--space-3);
+	aspect-ratio: 4 / 5;
+	border-radius: 999px 999px var(--radius-s) var(--radius-s);
+	background-color: var(--c-cream);
+}
+
+.tuto-team__photo img {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+	object-position: var(--focus, 50% 35%);
+}
+
+/* Placeholder: bear on a soft blob, centred low in the arch */
+.tuto-team__photo--placeholder {
+	display: grid;
+	place-items: end center;
+	padding-block-end: var(--space-5);
+	color: var(--c-chocolate);
+}
+
+.tuto-team__photo--placeholder::before {
+	content: "";
+	position: absolute;
+	inset-inline: 18%;
+	inset-block-end: 8%;
+	block-size: 36%;
+	border-radius: 50%;
+	background-color: var(--c-sand);
+}
+
+.tuto-team__bear {
+	position: relative;
+	inline-size: 46%;
+	block-size: auto;
+}
+
+.tuto-team__name {
+	margin: 0;
+	color: var(--c-heading);
+	font-size: var(--fs-body);
+	line-height: var(--lh-snug);
+}
+
+.tuto-team__role {
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-bold);
+	letter-spacing: 0.02em;
+}
+
+.tuto-team__bio {
+	color: var(--c-body);
+	font-size: var(--fs-body-s);
+	line-height: var(--lh-snug);
+}
+
+/* Pets: dark card so it reads as a playful extra, not as a person */
+.tuto-team__card--pets .tuto-team__role {
+	color: var(--c-latte);
+}
+
+.tuto-team__card--pets .tuto-team__photo {
+	background-color: var(--c-chocolate-2);
+}
+
+/* «More in the Instagram highlight» line under the grid */
+.tuto-team__more {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	align-items: center;
+	gap: var(--space-1) var(--space-3);
+	margin-block-start: var(--space-6);
+	color: var(--c-body);
+}
+
+.tuto-team__more .btn {
+	grid-column: 2;
+	justify-self: start;
+}
+
+.tuto-team__more p {
+	margin: 0;
+}
+
+.tuto-team__more .icon {
+	color: var(--c-coffee-ink);
+}
+
+/* Visible editor note ([УТОЧНИТИ: …]) - same look as other blocks' __todo */
+.tuto-team__note {
+	align-self: center;
+	padding: 0 var(--space-2);
+	border: 1px dashed var(--c-coffee);
+	border-radius: var(--radius-xs);
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+/* On the dark pets card: latte (7.13 on chocolate) */
+.card--dark .tuto-team__note {
+	border-color: var(--c-latte);
+	color: var(--c-latte);
+}
+
+@media (min-width: 48em) {
+	.tuto-team__list {
+		gap: var(--gap);
+	}
+
+	.tuto-team__card {
+		padding: var(--space-3) var(--space-3) var(--card-pad);
+	}
+
+	.tuto-team__name {
+		font-size: var(--fs-h4);
+	}
+
+	.tuto-team__more {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2) var(--space-4);
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-team__list {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}

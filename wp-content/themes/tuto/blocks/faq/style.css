@@ -1,0 +1,190 @@
+/*
+ * Block tuto/faq — accordion on native <details name="faq"> (exclusive: opening
+ * one closes the others, no JS needed). Works without JS and without animation.
+ * Optional groups: .tuto-faq__group > h3.tuto-faq__group-title + .tuto-faq__list.
+ * Markup contract: design/_brief-pages.md. Mobile-first, tokens only.
+ */
+.tuto-faq__groups {
+	display: grid;
+	gap: var(--space-7);
+}
+
+.tuto-faq__group-title {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	margin: 0 0 var(--space-4);
+	font-size: var(--fs-h4);
+}
+
+.tuto-faq__group-title .icon {
+	inline-size: 1.75rem;
+	block-size: 1.75rem;
+	padding: 0.3rem;
+	border-radius: 50%;
+	background-color: var(--c-white);
+	color: var(--c-coffee-ink);
+}
+
+.tuto-faq__list {
+	display: grid;
+	gap: var(--space-3);
+}
+
+.tuto-faq__item {
+	interpolate-size: allow-keywords;
+	border: var(--border-w) solid transparent;
+	border-radius: var(--radius-m);
+	background-color: var(--c-white);
+	box-shadow: var(--shadow-s);
+	transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+
+.tuto-faq__item:hover {
+	border-color: var(--c-latte);
+}
+
+.tuto-faq__item[open] {
+	border-color: var(--c-latte);
+	box-shadow: var(--shadow-m);
+}
+
+/* ---------- Question ---------- */
+.tuto-faq__q {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-4);
+	min-block-size: var(--tap);
+	padding: var(--space-4) var(--space-4) var(--space-4) var(--card-pad);
+	border-radius: inherit;
+	color: var(--c-heading);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-bold);
+	line-height: var(--lh-snug);
+	list-style: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.tuto-faq__q::-webkit-details-marker {
+	display: none;
+}
+
+.tuto-faq__q:focus-visible {
+	outline: var(--focus-w) solid var(--c-focus);
+	outline-offset: var(--focus-offset);
+}
+
+/* + / − marker: two bars on a round pill; the vertical bar folds away when open */
+.tuto-faq__q::after {
+	content: "";
+	flex: none;
+	inline-size: 2.25rem;
+	block-size: 2.25rem;
+	border-radius: 50%;
+	background:
+		linear-gradient(currentColor 0 0) center / 0.875rem 2px no-repeat,
+		linear-gradient(currentColor 0 0) center / 2px 0.875rem no-repeat,
+		var(--c-sand);
+	color: var(--c-chocolate);
+	transition:
+		background-size var(--dur) var(--ease-out),
+		background-color var(--dur) var(--ease-out),
+		color var(--dur) var(--ease-out),
+		rotate var(--dur) var(--ease-out);
+}
+
+.tuto-faq__q:hover::after {
+	background-color: var(--c-latte);
+}
+
+.tuto-faq__item[open] > .tuto-faq__q::after {
+	background:
+		linear-gradient(currentColor 0 0) center / 0.875rem 2px no-repeat,
+		linear-gradient(currentColor 0 0) center / 2px 0 no-repeat,
+		var(--c-chocolate);
+	color: var(--c-cream);
+	rotate: 180deg;
+}
+
+/* ---------- Answer ---------- */
+.tuto-faq__a {
+	padding: 0 var(--card-pad) var(--card-pad);
+	max-inline-size: var(--measure);
+	color: var(--c-body);
+}
+
+.tuto-faq__a > :first-child {
+	margin-block-start: 0;
+}
+
+.tuto-faq__a > :last-child {
+	margin-block-end: 0;
+}
+
+.tuto-faq__a :is(ul, ol) {
+	padding-inline-start: 1.25em;
+}
+
+.tuto-faq__a .list-check {
+	padding-inline-start: 0;
+	--check-bg: var(--c-sand);
+}
+
+.tuto-faq__a a:not([class]) {
+	font-weight: var(--fw-semibold);
+}
+
+/* Link under the list («Усі питання батьків») */
+.tuto-faq__more {
+	margin: var(--space-6) 0 0;
+}
+
+/* On a sand section the cards stay white; the marker pill turns cream for contrast */
+.section--sand .tuto-faq__q::after {
+	background-color: var(--c-cream);
+}
+
+.section--sand .tuto-faq__item[open] > .tuto-faq__q::after {
+	background-color: var(--c-chocolate);
+}
+
+/* ---------- Motion (opening only; reduced motion = instant) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+	/* Smooth height where ::details-content + interpolate-size are supported (Chromium 131+) */
+	.tuto-faq__item::details-content {
+		block-size: 0;
+		overflow-y: clip;
+		transition:
+			block-size var(--dur-slow) var(--ease-out),
+			content-visibility var(--dur-slow) allow-discrete;
+	}
+
+	.tuto-faq__item[open]::details-content {
+		block-size: auto;
+	}
+
+	/* Everywhere: the answer fades and slides in */
+	.tuto-faq__item[open] .tuto-faq__a {
+		animation: tuto-faq-in var(--dur-slow) var(--ease-out);
+	}
+}
+
+@keyframes tuto-faq-in {
+	from {
+		opacity: 0;
+		transform: translateY(-0.375rem);
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-faq__q {
+		font-size: var(--fs-h4);
+		padding-block: var(--space-5);
+	}
+
+	.tuto-faq__groups {
+		gap: var(--space-8);
+	}
+}

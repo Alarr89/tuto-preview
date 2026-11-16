@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+	<!-- Dummy photo for prototypes: real photos are agreed with Alla later -->
+	<rect width="800" height="1000" fill="#EADFD2"/>
+	<g transform="translate(400 470) scale(2.2)" fill="none" stroke="#CDB8A3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+		<path d="M-54,0 A54,50 0 1 1 54,0 A54,50 0 1 1 -54,0 ZM-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/>
+		<g fill="#CDB8A3" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g>
+	</g>
+	<text x="400" y="680" fill="#8B6B57" font-family="Nunito, Arial, sans-serif" font-size="40" font-weight="700" text-anchor="middle">Тут буде фото</text>
+</svg>

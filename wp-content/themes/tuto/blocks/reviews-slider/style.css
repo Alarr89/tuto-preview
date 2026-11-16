@@ -1,0 +1,141 @@
+/*
+ * Block tuto/reviews-slider — «Відгуки батьків»: scroll-snap carousel.
+ * Without JS: horizontal scroll with snap points (buttons stay hidden).
+ * With JS (script.js): prev/next buttons, keyboard, aria for off-screen slides.
+ * Card look — from styleguide .sg-review*.
+ */
+.tuto-reviews-slider__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: var(--space-5);
+	margin-block-end: var(--space-6);
+}
+
+.tuto-reviews-slider__head .section-head {
+	margin: 0;
+}
+
+.tuto-reviews-slider__controls {
+	display: flex;
+	gap: var(--space-2);
+}
+
+.tuto-reviews-slider__controls .btn:disabled {
+	opacity: 0.35;
+}
+
+/* ---------- Track ---------- */
+.tuto-reviews-slider__track {
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scroll-snap-type: x mandatory;
+	scroll-padding-inline: var(--space-1);
+	scrollbar-width: thin;
+	scrollbar-color: var(--c-latte) transparent;
+	/* room for the card shadow and the focus ring */
+	margin-inline: calc(-1 * var(--space-1));
+	padding: var(--space-2) var(--space-1) var(--space-5);
+	border-radius: var(--radius-m);
+}
+
+.tuto-reviews-slider__track:focus-visible {
+	outline-offset: 0;
+}
+
+.tuto-reviews-slider__list {
+	display: flex;
+	gap: var(--space-4);
+}
+
+.tuto-reviews-slider__slide {
+	flex: 0 0 86%;
+	scroll-snap-align: start;
+}
+
+/* ---------- Review card ---------- */
+.tuto-reviews-slider__review {
+	block-size: 100%;
+	margin: 0;
+	gap: var(--space-5);
+	box-shadow: var(--shadow-s);
+}
+
+.tuto-reviews-slider__review::before {
+	content: "“" / "";
+	display: block;
+	block-size: 1.6rem;
+	color: var(--c-latte);
+	font-family: var(--font-hand);
+	font-size: 4.5rem;
+	font-weight: var(--fw-hand);
+	line-height: 1;
+}
+
+.tuto-reviews-slider__review.card--sand::before {
+	color: var(--c-coffee);
+}
+
+.tuto-reviews-slider__review blockquote {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	color: var(--c-heading);
+	font-size: var(--fs-lead);
+	line-height: var(--lh-snug);
+}
+
+.tuto-reviews-slider__review figcaption {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	margin-block-start: auto;
+	color: var(--c-heading);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-bold);
+}
+
+.tuto-reviews-slider__review figcaption small {
+	display: block;
+	color: var(--c-muted);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-regular);
+}
+
+.tuto-reviews-slider__avatar {
+	display: grid;
+	flex: none;
+	place-items: center;
+	inline-size: 2.75rem;
+	block-size: 2.75rem;
+	border-radius: 50%;
+	background-color: var(--c-sand);
+	color: var(--c-chocolate);
+}
+
+.card--sand .tuto-reviews-slider__avatar {
+	background-color: var(--c-white);
+}
+
+.card--dark .tuto-reviews-slider__avatar {
+	background-color: var(--c-chocolate-2);
+	color: var(--c-cream);
+}
+
+
+@media (min-width: 48em) {
+	.tuto-reviews-slider__slide {
+		flex-basis: calc((100% - var(--space-4)) / 2);
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-reviews-slider__list {
+		gap: var(--gap);
+	}
+
+	.tuto-reviews-slider__slide {
+		flex-basis: calc((100% - 2 * var(--gap)) / 3);
+	}
+}

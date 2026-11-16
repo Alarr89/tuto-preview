@@ -1,0 +1,485 @@
+/*
+ * ТУТО — base: reset, default typography, layout primitives, forms, a11y helpers.
+ * Mobile-first. Colours, sizes and spacing come from tokens.css only.
+ */
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	-moz-tab-size: 4;
+	tab-size: 4;
+	scroll-behavior: smooth;
+	scroll-padding-top: var(--space-9);
+	hanging-punctuation: first last;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 1ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 1ms !important;
+	}
+}
+
+body {
+	min-height: 100vh;
+	min-height: 100dvh;
+	background-color: var(--c-bg);
+	color: var(--c-body);
+	font-family: var(--font-sans);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-regular);
+	line-height: var(--lh-body);
+	font-optical-sizing: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	overflow-x: clip;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+img,
+video {
+	height: auto;
+}
+
+img {
+	font-style: italic; /* alt text styling when the image fails */
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	color: inherit;
+	letter-spacing: inherit;
+}
+
+button {
+	cursor: pointer;
+	background: none;
+	border: 0;
+	padding: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+figcaption,
+blockquote {
+	overflow-wrap: break-word;
+}
+
+ul[role="list"],
+ol[role="list"] {
+	list-style: none;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+/* ---------- Typography ---------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display,
+.h1,
+.h2,
+.h3,
+.h4 {
+	color: var(--c-heading);
+	font-weight: var(--fw-heading);
+	line-height: var(--lh-heading);
+	letter-spacing: var(--ls-snug);
+	text-wrap: balance;
+}
+
+.display {
+	font-size: var(--fs-display);
+	line-height: var(--lh-tight);
+	letter-spacing: var(--ls-tight);
+}
+
+h1,
+.h1 {
+	font-size: var(--fs-h1);
+	line-height: var(--lh-tight);
+	letter-spacing: var(--ls-tight);
+}
+
+h2,
+.h2 {
+	font-size: var(--fs-h2);
+}
+
+h3,
+.h3 {
+	font-size: var(--fs-h3);
+	line-height: var(--lh-snug);
+}
+
+h4,
+.h4,
+h5,
+h6 {
+	font-size: var(--fs-h4);
+	line-height: var(--lh-snug);
+	letter-spacing: var(--ls-normal);
+}
+
+p,
+li,
+dd {
+	text-wrap: pretty;
+}
+
+.lead {
+	font-size: var(--fs-lead);
+	line-height: var(--lh-snug);
+	color: var(--c-body);
+}
+
+small,
+.small {
+	font-size: var(--fs-small);
+}
+
+.caption,
+figcaption {
+	font-size: var(--fs-small);
+	color: var(--c-muted);
+	line-height: var(--lh-snug);
+}
+
+/* .caption is a secondary note people actually read (trial rules, payment, «діє на обох локаціях»):
+   ≥ 16px on phones (T-116). Photo figcaptions stay at --fs-small. */
+.caption {
+	font-size: var(--fs-body-s);
+}
+
+strong,
+b {
+	font-weight: var(--fw-bold);
+}
+
+blockquote {
+	padding-inline-start: var(--space-5);
+	border-inline-start: var(--accent-w) solid var(--c-latte);
+	font-size: var(--fs-lead);
+	line-height: var(--lh-snug);
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid var(--c-line);
+	margin-block: var(--space-6);
+}
+
+ul,
+ol {
+	padding-inline-start: 1.25em;
+}
+
+li::marker {
+	color: var(--c-coffee);
+}
+
+/* Vertical rhythm for running content (rich text, entry content) */
+.flow > * + * {
+	margin-block-start: var(--flow-space, 1em);
+}
+
+.flow > :is(h2, h3, h4) {
+	--flow-space: 1.6em;
+}
+
+.flow > :is(h2, h3, h4) + * {
+	--flow-space: 0.6em;
+}
+
+/* ---------- Links ---------- */
+a {
+	color: var(--c-link);
+	text-decoration-line: underline;
+	text-decoration-thickness: 1px;
+	text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+	text-underline-offset: 0.2em;
+	transition: color var(--dur-fast) var(--ease-out), text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+a:hover {
+	color: var(--c-link-hover);
+	text-decoration-color: currentColor;
+}
+
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+}
+
+a[href^="tel:"] {
+	white-space: nowrap;
+}
+
+/* ---------- Focus & selection ---------- */
+:focus {
+	outline: none;
+}
+
+:focus-visible {
+	outline: var(--focus-w) solid var(--c-focus);
+	outline-offset: var(--focus-offset);
+}
+
+a:not([class]):focus-visible {
+	border-radius: calc(var(--radius-xs) / 4);
+}
+
+::selection {
+	background-color: var(--c-selection);
+	color: var(--c-chocolate);
+}
+
+/* ---------- Layout primitives ---------- */
+.container {
+	width: min(100% - 2 * var(--gutter), var(--container));
+	margin-inline: auto;
+}
+
+.container--wide {
+	width: min(100% - 2 * var(--gutter), var(--container-wide));
+}
+
+.container--narrow {
+	width: min(100% - 2 * var(--gutter), var(--container-narrow));
+}
+
+/*
+ * .section — vertical band. Background modifiers set --section-bg so that
+ * decorations (wave dividers in components.css) can reuse the same colour.
+ */
+.section {
+	--section-bg: var(--c-cream);
+	position: relative;
+	overflow-x: clip; /* decorations (frames, twigs, peeking bear) never cause horizontal scroll */
+	padding-block: var(--section-pad);
+	background-color: var(--section-bg);
+}
+
+.section--tight {
+	padding-block: var(--section-pad-s);
+}
+
+.section--flush-top {
+	padding-block-start: 0;
+}
+
+.section--flush-bottom {
+	padding-block-end: 0;
+}
+
+.section--cream {
+	--section-bg: var(--c-cream);
+}
+
+.section--sand {
+	--section-bg: var(--c-sand);
+	--c-line: var(--c-latte);
+}
+
+.section--white {
+	--section-bg: var(--c-white);
+}
+
+/* Dark band (like the «ПРАЙС» plate): flips text, links and focus colours. */
+.section--chocolate,
+.on-dark {
+	--section-bg: var(--c-chocolate);
+	--c-heading: var(--c-cream);
+	--c-body: var(--c-sand);
+	--c-muted: var(--c-latte);
+	--c-link: var(--c-cream);
+	--c-link-hover: var(--c-white);
+	--c-focus: var(--c-latte);
+	--c-line: var(--c-line-on-dark);
+	--c-selection: var(--c-coffee-ink);
+	color: var(--c-body);
+}
+
+.on-dark {
+	background-color: var(--section-bg);
+}
+
+/* ---------- Accessibility helpers ---------- */
+.visually-hidden,
+.screen-reader-text {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+
+.skip-link {
+	position: fixed;
+	inset-inline-start: var(--gutter);
+	top: var(--space-3);
+	z-index: var(--z-skip);
+	padding: var(--space-3) var(--space-5);
+	border-radius: var(--radius-pill);
+	background-color: var(--c-chocolate);
+	color: var(--c-white);
+	font-weight: var(--fw-bold);
+	text-decoration: none;
+	box-shadow: var(--shadow-m);
+	transform: translateY(-200%);
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+	transform: translateY(0);
+	color: var(--c-white);
+	outline-color: var(--c-latte);
+}
+
+/* ---------- Forms ---------- */
+label,
+.label {
+	display: inline-block;
+	margin-block-end: var(--space-2);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-semibold);
+	color: var(--c-heading);
+}
+
+input:is([type="text"], [type="email"], [type="tel"], [type="search"], [type="url"], [type="number"], [type="date"], [type="password"]),
+textarea,
+select {
+	display: block;
+	width: 100%;
+	min-height: var(--tap);
+	padding: var(--space-3) var(--space-4);
+	border: var(--border-w) solid var(--c-border-strong);
+	border-radius: var(--radius-s);
+	background-color: var(--c-white);
+	color: var(--c-text);
+	font-size: max(1rem, var(--fs-body)); /* ≥16px: no iOS zoom on focus */
+	line-height: var(--lh-snug);
+	transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+textarea {
+	min-height: 8rem;
+	resize: vertical;
+}
+
+select {
+	appearance: none;
+	padding-inline-end: var(--space-7);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236f5141' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right var(--space-4) center;
+	background-size: 1.25em;
+}
+
+:is(input, textarea, select):hover {
+	border-color: var(--c-coffee-ink);
+}
+
+:is(input, textarea, select):focus-visible {
+	outline: none;
+	border-color: var(--c-coffee-ink);
+	box-shadow: 0 0 0 var(--focus-w) var(--c-latte);
+}
+
+::placeholder {
+	color: var(--c-muted);
+	opacity: 1;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	inline-size: 1.25em;
+	block-size: 1.25em;
+	accent-color: var(--c-coffee-ink);
+}
+
+label:has(> input[type="checkbox"], > input[type="radio"]) {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-height: var(--tap);
+	margin: 0;
+	font-size: var(--fs-body);
+	font-weight: var(--fw-regular);
+	color: var(--c-body);
+	cursor: pointer;
+}
+
+:is(input, textarea, select):disabled {
+	background-color: var(--c-cream);
+	border-color: var(--c-latte);
+	cursor: not-allowed;
+}
+
+:is(input, textarea, select)[aria-invalid="true"] {
+	border-color: var(--c-brick);
+}
+
+fieldset {
+	border: 0;
+	padding: 0;
+	min-width: 0;
+}
+
+legend {
+	padding: 0;
+	font-weight: var(--fw-bold);
+	color: var(--c-heading);
+}

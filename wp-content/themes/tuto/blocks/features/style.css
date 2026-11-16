@@ -1,0 +1,218 @@
+/*
+ * Block tuto/features — «Чим ми особливі»: bento grid of white cards with line icons
+ * and one large photo card in the middle (KinderHeaven 03). The «98%» tile of the
+ * reference becomes a live fact: daily photo reports (dark tile).
+ *
+ * Phones (T-129/T-130, replaces Q6): the four white cards (__slides) are a horizontal slider -
+ * a card ~80% wide with the next one peeking, scroll-snap; no photo; the dark and the sand
+ * tile follow below, one under the other. From 48em __slides is display: contents and the
+ * tiles take their grid areas - the full bento layout, unchanged.
+ */
+.tuto-features__grid {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.tuto-features__item {
+	block-size: 100%;
+	gap: var(--space-2);
+	padding: var(--space-4);
+	border-radius: var(--radius-s);
+}
+
+.tuto-features__icon {
+	display: grid;
+	place-items: center;
+	inline-size: 2.5rem;
+	block-size: 2.5rem;
+	border-radius: 50%;
+	background-color: var(--c-sand);
+}
+
+.tuto-features__icon .icon {
+	inline-size: 1.35rem;
+	block-size: 1.35rem;
+	color: var(--c-coffee-ink);
+}
+
+.tuto-features__item .card__title {
+	font-size: var(--fs-body);
+	line-height: var(--lh-snug);
+}
+
+.tuto-features__item .card__text {
+	font-size: var(--fs-body-s);
+}
+
+/* Dark tile — the live fact instead of a statistic */
+.tuto-features__item--dark .tuto-features__icon {
+	background-color: var(--c-chocolate-2);
+}
+
+.tuto-features__item--dark .tuto-features__icon .icon {
+	color: var(--c-latte);
+}
+
+.tuto-features__big {
+	margin: 0;
+	color: var(--c-heading);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-heading);
+	line-height: var(--lh-snug);
+}
+
+/* Sand tile with a heart */
+.tuto-features__item--soft .tuto-features__icon {
+	background-color: var(--c-white);
+}
+
+.tuto-features__item--soft .tuto-features__icon .icon {
+	color: var(--c-brick);
+}
+
+/* ---------- Photo tile ---------- */
+.tuto-features__photo {
+	position: relative;
+	min-block-size: 10rem;
+	margin: 0;
+	border-radius: var(--radius-s);
+}
+
+.tuto-features__photo img {
+	position: absolute;
+	inset: 0;
+	block-size: 100%;
+	object-position: 50% 62%;
+}
+
+.tuto-features__photo figcaption {
+	display: none;
+	position: absolute;
+	inset-inline: var(--space-4);
+	inset-block-end: var(--space-4);
+	z-index: var(--z-base);
+	justify-self: start;
+	max-inline-size: calc(100% - 2 * var(--space-4));
+	white-space: normal;
+}
+
+.tuto-features__heart {
+	inset-block-start: var(--space-9);
+	inset-inline-end: 6%;
+	inline-size: 0.9rem;
+	color: var(--c-brick);
+}
+
+@media (max-width: 47.99em) {
+	.tuto-features__slides {
+		display: flex;
+		gap: var(--space-3);
+		/* full-bleed scroller: the row runs under the gutters, cards snap to the gutter */
+		margin-inline: calc(-1 * var(--gutter));
+		padding: var(--space-1) var(--gutter) var(--space-2);
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scroll-padding-inline: var(--gutter);
+		scrollbar-width: none;
+	}
+
+	.tuto-features__slides::-webkit-scrollbar {
+		display: none;
+	}
+
+	.tuto-features__slides > * {
+		flex: 0 0 min(80%, 18rem);
+		scroll-snap-align: start;
+	}
+
+	.tuto-features__item {
+		block-size: auto;
+		padding: var(--space-5);
+		border-radius: var(--radius-m);
+	}
+
+	.tuto-features__photo {
+		display: none;
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-features__slides {
+		display: contents;
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-features__item--a { grid-area: a; }
+	.tuto-features__item--b { grid-area: b; }
+	.tuto-features__item--c { grid-area: c; }
+	.tuto-features__item--d { grid-area: d; }
+	.tuto-features__item--e { grid-area: e; }
+	.tuto-features__item--f { grid-area: f; }
+	.tuto-features__photo { grid-area: p; }
+}
+
+@media (min-width: 48em) {
+	.tuto-features__item {
+		gap: var(--space-3);
+		padding: var(--card-pad);
+		border-radius: var(--radius-m);
+	}
+
+	.tuto-features__icon {
+		inline-size: 3.25rem;
+		block-size: 3.25rem;
+	}
+
+	.tuto-features__icon .icon {
+		inline-size: 1.75rem;
+		block-size: 1.75rem;
+	}
+
+	.tuto-features__item .card__title {
+		font-size: var(--fs-h4);
+	}
+
+	.tuto-features__big {
+		font-size: var(--fs-h3);
+	}
+
+	.tuto-features__photo {
+		border-radius: var(--radius-l);
+	}
+
+	.tuto-features__photo figcaption {
+		display: inline-flex;
+	}
+
+	.tuto-features__grid {
+		gap: var(--space-4);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-areas:
+			"a b"
+			"p p"
+			"c d"
+			"e f";
+	}
+
+	.tuto-features__photo {
+		min-block-size: 26rem;
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-features__grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-areas:
+			"a p c"
+			"b p d"
+			"e e f";
+		gap: var(--gap);
+	}
+
+	.tuto-features__photo {
+		min-block-size: 0;
+	}
+}

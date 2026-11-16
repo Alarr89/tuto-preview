@@ -1,0 +1,234 @@
+/*
+ * Block tuto/contacts - «Зв’язок»: phone (dark card), messengers & links,
+ * opening hours and the «Грайко» shop link (__shop) last.
+ * The map lives in the locations block (T-114, №12): one map for both addresses.
+ *
+ *   < 768px     phone → channels → hours → shop
+ *   768–1023    phone | hours, channels full width below, shop
+ *   ≥ 1024      phone | channels + shop under them | hours
+ */
+.tuto-contacts__grid {
+	display: grid;
+	gap: var(--gap);
+	grid-template-areas:
+		"phone"
+		"channels"
+		"hours"
+		"shop";
+}
+
+.tuto-contacts__phone-card {
+	grid-area: phone;
+	overflow: hidden;
+}
+
+.tuto-contacts__channels {
+	grid-area: channels;
+}
+
+.tuto-contacts__hours {
+	grid-area: hours;
+}
+
+.tuto-contacts__shop {
+	grid-area: shop;
+}
+
+/* ---------- Phone card ---------- */
+.tuto-contacts__label {
+	color: var(--c-latte);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+	letter-spacing: var(--ls-wide);
+	text-transform: uppercase;
+}
+
+.tuto-contacts__phone {
+	display: inline-block;
+	color: var(--c-cream);
+	font-size: var(--fs-h2);
+	font-weight: var(--fw-heavy);
+	line-height: 1.1;
+	letter-spacing: var(--ls-snug);
+	font-variant-numeric: lining-nums tabular-nums;
+	text-decoration: none;
+}
+
+.tuto-contacts__phone:hover {
+	color: var(--c-white);
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+}
+
+.tuto-contacts__who {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	color: var(--c-sand);
+}
+
+.tuto-contacts__who .hand {
+	font-size: calc(var(--fs-hand-scale) * var(--fs-lead));
+}
+
+.tuto-contacts__phone-card .btn {
+	align-self: flex-start;
+	margin-block-start: auto;
+}
+
+.tuto-contacts__hours .btn--ghost {
+	align-self: flex-start;
+}
+
+/* ---------- Channels ---------- */
+.tuto-contacts__channels {
+	display: grid;
+	gap: var(--space-3);
+	align-content: start;
+}
+
+.tuto-contacts__channel {
+	display: flex;
+	align-items: center;
+	gap: var(--space-4);
+	min-block-size: 4.5rem;
+	padding: var(--space-3) var(--space-4);
+	border: var(--border-w) solid transparent;
+	border-radius: var(--radius-m);
+	background-color: var(--c-white);
+	color: var(--c-text);
+	text-decoration: none;
+	transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+}
+
+.tuto-contacts__channel:hover {
+	border-color: var(--c-coffee);
+	box-shadow: var(--shadow-s);
+	color: var(--c-text);
+}
+
+.tuto-contacts__channel::after {
+	content: "";
+	flex: none;
+	inline-size: 1.25em;
+	block-size: 1.25em;
+	margin-inline-start: auto;
+	background-color: var(--c-coffee);
+	-webkit-mask: var(--mask-arrow) center / contain no-repeat;
+	mask: var(--mask-arrow) center / contain no-repeat;
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.tuto-contacts__channel:hover::after {
+	transform: translateX(0.25em);
+}
+
+.tuto-contacts__icon {
+	display: grid;
+	flex: none;
+	place-items: center;
+	inline-size: 3rem;
+	block-size: 3rem;
+	border-radius: 50%;
+	background-color: var(--c-sand);
+}
+
+.tuto-contacts__icon .icon {
+	color: var(--c-coffee-ink);
+}
+
+.tuto-contacts__channel-text {
+	display: grid;
+	min-inline-size: 0;
+	line-height: var(--lh-snug);
+}
+
+.tuto-contacts__channel-text strong {
+	color: var(--c-heading);
+}
+
+.tuto-contacts__channel-text span {
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+	overflow-wrap: anywhere;
+}
+
+.tuto-contacts__todo {
+	color: var(--c-coffee-ink); /* AA on white, cream and sand (brick was 4.41 on sand) */
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+/* ---------- Hours ---------- */
+.tuto-contacts__hours-title {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-size: var(--fs-h3);
+}
+
+.tuto-contacts__hours-list {
+	display: grid;
+	gap: 0;
+	margin: 0;
+}
+
+.tuto-contacts__hours-list > div {
+	display: grid;
+	gap: var(--space-1);
+	padding-block: var(--space-3);
+	border-block-start: 1px solid var(--c-line);
+}
+
+.tuto-contacts__hours-list > div:first-child {
+	border-block-start: 0;
+	padding-block-start: 0;
+}
+
+.tuto-contacts__hours-list dt {
+	color: var(--c-muted);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-contacts__hours-list dd {
+	margin: 0;
+	color: var(--c-heading);
+	font-size: var(--fs-lead);
+	font-weight: var(--fw-bold);
+	font-variant-numeric: lining-nums tabular-nums;
+	line-height: var(--lh-snug);
+}
+
+.tuto-contacts__hours-list dd .tuto-contacts__todo {
+	display: block;
+}
+
+/* ---------- 768+ ---------- */
+@media (min-width: 48em) {
+	.tuto-contacts__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-areas:
+			"phone hours"
+			"channels channels"
+			"shop shop";
+	}
+}
+
+/* ---------- 1024+ ---------- */
+@media (min-width: 64em) {
+	.tuto-contacts__grid {
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 0.95fr);
+		grid-template-areas:
+			"phone channels hours"
+			"phone shop hours";
+		grid-template-rows: auto 1fr;
+		align-items: start;
+	}
+
+	/* The cards keep the full height of both rows; the shop link sits right under the channels */
+	.tuto-contacts__phone-card,
+	.tuto-contacts__hours {
+		align-self: stretch;
+	}
+}

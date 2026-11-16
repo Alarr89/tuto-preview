@@ -1,0 +1,218 @@
+/*
+ * Block tuto/locations — «Дві локації»: facade photo + address + details + a link
+ * to Google Maps. No map iframe on the home page (D-14).
+ *
+ * «Контакти» (T-114): the cards also get «Показати на карті» (__actions) and one shared
+ * map under the list (__map, [data-map]). The map is a static placeholder until a click;
+ * script.js swaps it for the Google embed. Without JS the map stays hidden.
+ */
+.tuto-locations__list {
+	display: grid;
+	gap: var(--gap);
+}
+
+.tuto-locations__card {
+	block-size: 100%;
+}
+
+.tuto-locations__card .card__media {
+	aspect-ratio: 4 / 3;
+}
+
+.tuto-locations__card .card__media img {
+	object-position: 50% 45%;
+}
+
+.tuto-locations__badge {
+	position: absolute;
+	inset-block-start: var(--space-3);
+	inset-inline-start: var(--space-3);
+	z-index: var(--z-base);
+}
+
+.tuto-locations__card .card__title {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-2);
+}
+
+.tuto-locations__card .card__title .icon {
+	margin-block-start: 0.2em;
+	color: var(--c-coffee-ink);
+}
+
+.tuto-locations__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+}
+
+.tuto-locations__tags .chip {
+	white-space: normal;
+}
+
+.tuto-locations__info {
+	display: grid;
+	gap: var(--space-2);
+	margin: 0;
+	font-size: var(--fs-body-s);
+}
+
+.tuto-locations__info > div {
+	display: grid;
+	gap: 0 var(--space-3);
+	padding-block-start: var(--space-2);
+	border-block-start: 1px solid var(--c-line);
+}
+
+.tuto-locations__info dt {
+	color: var(--c-muted);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.tuto-locations__info dd {
+	margin: 0;
+	color: var(--c-body);
+}
+
+.tuto-locations__dots {
+	display: none;
+	inset-block-start: var(--space-8);
+	inset-inline-end: 4%;
+	inline-size: 12rem;
+	color: var(--c-coffee);
+	opacity: 0.45;
+}
+
+/* ---------- Card actions: «Маршрут» + «Показати на карті» (Контакти) ---------- */
+.tuto-locations__actions {
+	justify-content: flex-start;
+	gap: var(--space-2) var(--space-3);
+}
+
+/* The location currently on the map */
+.tuto-locations__actions .btn[aria-pressed="true"] {
+	--btn-bg: var(--c-chocolate);
+	--btn-fg: var(--c-cream);
+	--btn-bg-hover: var(--c-chocolate-2);
+	--btn-fg-hover: var(--c-white);
+}
+
+/* ---------- Shared map, loaded on click (D-14) ---------- */
+.tuto-locations__map {
+	margin-block-start: var(--gap);
+	border-radius: var(--radius-l);
+	scroll-margin-block: var(--space-6);
+}
+
+.tuto-locations__map:focus-visible {
+	outline: var(--focus-w) solid var(--c-focus);
+	outline-offset: var(--focus-offset);
+}
+
+.tuto-locations__map-frame {
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 4 / 3;
+	border-radius: var(--radius-l);
+	background-color: var(--c-sand);
+	box-shadow: var(--shadow-s);
+}
+
+.tuto-locations__map-frame iframe {
+	display: block;
+	inline-size: 100%;
+	block-size: 100%;
+	border: 0;
+}
+
+.tuto-locations__map-art {
+	position: absolute;
+	inset: 0;
+	inline-size: 100%;
+	block-size: 100%;
+	color: var(--c-latte);
+}
+
+.tuto-locations__map-art .is-street {
+	stroke: var(--c-cream);
+}
+
+.tuto-locations__map-art .is-park {
+	fill: var(--c-sand-2);
+}
+
+.tuto-locations__map-art .is-pin {
+	color: var(--c-chocolate);
+}
+
+.tuto-locations__map-art .is-pin-dot {
+	fill: var(--c-cream);
+}
+
+.tuto-locations__map-art .is-path {
+	stroke: var(--c-coffee);
+}
+
+/* Button + short note in the middle of the placeholder */
+.tuto-locations__map-cta {
+	position: absolute;
+	inset: 0;
+	z-index: var(--z-base);
+	display: grid;
+	place-content: center;
+	justify-items: center;
+	gap: var(--space-3);
+	padding: var(--space-4);
+	text-align: center;
+}
+
+.tuto-locations__map-cta > * {
+	margin: 0;
+}
+
+.tuto-locations__map-cta .btn {
+	box-shadow: var(--shadow-m);
+}
+
+.tuto-locations__map-cta .caption {
+	padding: var(--space-1) var(--space-3);
+	border-radius: var(--radius-pill);
+	background-color: var(--c-white);
+	color: var(--c-text);
+	font-weight: var(--fw-semibold);
+}
+
+@media (min-width: 30em) {
+	.tuto-locations__info > div {
+		grid-template-columns: 8.5rem minmax(0, 1fr);
+		align-items: baseline;
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-locations__map-frame {
+		aspect-ratio: 16 / 9;
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-locations__map-frame {
+		aspect-ratio: 21 / 9;
+	}
+
+	.tuto-locations__list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.tuto-locations__card .card__media {
+		aspect-ratio: 16 / 10;
+	}
+
+	.tuto-locations__dots {
+		display: block;
+	}
+}

@@ -1,0 +1,138 @@
+/*
+ * Block tuto/text-media - text + photo in two columns.
+ * Phones/tablets: text first, photo under it (centred, limited width).
+ * ≥ 1024px: text left, photo right; .tuto-text-media--reverse (on the section, or on
+ * __inner as in the contract comment) puts the photo left.
+ * Photo frame comes from components.css: .frame-arch (default) or .frame-blob.
+ * Optional inside __text: .lead, .list-check, __callout (highlighted statement, not a quote),
+ * __sign (handwritten signature), __note ([УТОЧНИТИ] for editors). Optional inside __media: __badge.
+ * Markup contract: design/_brief-pages.md. Mobile-first, tokens only.
+ */
+.tuto-text-media__inner {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--space-7);
+	align-items: center;
+}
+
+.tuto-text-media__text {
+	max-inline-size: 38rem;
+	--flow-space: var(--space-4);
+}
+
+.tuto-text-media__text > .eyebrow {
+	margin-block-end: 0;
+}
+
+.tuto-text-media__text > .eyebrow + :is(h2, h3) {
+	--flow-space: var(--space-3);
+}
+
+.tuto-text-media__text > :is(h2, h3) + * {
+	--flow-space: var(--space-5);
+}
+
+.tuto-text-media__text > .list-check {
+	--flow-space: var(--space-5);
+}
+
+/* Callout: coffee bar on the left (like .rules items), no italics */
+.tuto-text-media__callout {
+	padding: var(--space-4) var(--space-5);
+	border-radius: var(--radius-s);
+	background-color: var(--c-white);
+	box-shadow: inset var(--accent-w) 0 0 var(--c-coffee);
+	color: var(--c-heading);
+	font-size: var(--fs-lead);
+	line-height: var(--lh-snug);
+}
+
+.section--white .tuto-text-media__callout {
+	background-color: var(--c-cream);
+}
+
+/* Handwritten signature under a first-person text */
+.tuto-text-media__sign {
+	color: var(--c-coffee);
+	font-family: var(--font-hand);
+	font-size: var(--fs-h3);
+	font-weight: var(--fw-hand);
+	line-height: 1.1;
+}
+
+.tuto-text-media__sign small {
+	display: block;
+	color: var(--c-muted);
+	font-family: var(--font-sans);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-semibold);
+}
+
+/* Visible editor note ([УТОЧНИТИ: …]) - same look as other blocks' __todo */
+.tuto-text-media__note {
+	inline-size: fit-content;
+	padding: 0 var(--space-2);
+	border: 1px dashed var(--c-coffee);
+	border-radius: var(--radius-xs);
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+/* ---------- Photo ---------- */
+.tuto-text-media__media {
+	position: relative;
+	inline-size: min(100% - var(--frame-offset), 24rem);
+	justify-self: center;
+}
+
+.tuto-text-media__media.frame-blob {
+	inline-size: min(100% - 3 * var(--frame-offset), 24rem);
+}
+
+.tuto-text-media__media.frame-arch img {
+	--frame-ratio: 4 / 5;
+}
+
+.tuto-text-media__media img {
+	object-position: var(--focus, 50% 40%);
+}
+
+/* Small label on the photo (e.g. who is on it) */
+.tuto-text-media__badge {
+	position: absolute;
+	inset-block-end: var(--space-5);
+	inset-inline-start: calc(-1 * var(--space-3));
+	z-index: var(--z-base);
+	max-inline-size: calc(100% - var(--space-5));
+	white-space: normal;
+}
+
+@media (min-width: 48em) {
+	.tuto-text-media__media,
+	.tuto-text-media__media.frame-blob {
+		inline-size: min(100% - 3 * var(--frame-offset), 28rem);
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-text-media__inner {
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		gap: var(--space-9);
+	}
+
+	.tuto-text-media__media,
+	.tuto-text-media__media.frame-blob {
+		inline-size: min(100% - 3 * var(--frame-offset), 30rem);
+	}
+
+	/* Photo left. The modifier may sit on the section or on __inner (contract comment) */
+	.tuto-text-media--reverse .tuto-text-media__inner,
+	.tuto-text-media__inner.tuto-text-media--reverse {
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	}
+
+	.tuto-text-media--reverse .tuto-text-media__media {
+		order: -1;
+	}
+}

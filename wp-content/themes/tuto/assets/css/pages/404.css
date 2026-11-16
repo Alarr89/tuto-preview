@@ -1,0 +1,183 @@
+/*
+ * Template 404.php - the lost bear with a map, short message, links to the main
+ * sections and «На головну». Markup: design/404.html. Mobile-first, tokens only.
+ */
+.tuto-404 {
+	padding-block: var(--space-6) var(--section-pad);
+}
+
+.tuto-404__inner {
+	display: grid;
+	gap: var(--space-6);
+	align-items: center;
+}
+
+/* ---------- Bear + big «404» on a soft blob ---------- */
+.tuto-404__art {
+	--code-size: clamp(4.5rem, 3.4rem + 4.7vw, 7.5rem);
+	position: relative;
+	isolation: isolate;
+	display: grid;
+	place-items: center;
+	inline-size: min(100%, 17rem);
+	margin-inline: auto;
+	/* The «404» sits above the head; the ears just touch its baseline */
+	padding-block: calc(var(--code-size) * 0.72) var(--space-3);
+}
+
+.tuto-404__blob {
+	position: absolute;
+	inset: 6% -4% 0;
+	z-index: var(--z-below);
+	inline-size: 108%;
+	block-size: 94%;
+	color: var(--c-sand);
+}
+
+.tuto-404__code {
+	position: absolute;
+	inset-block-start: 0;
+	inset-inline: 0;
+	z-index: var(--z-below);
+	color: var(--c-latte);
+	font-size: var(--code-size);
+	text-align: center;
+	font-weight: var(--fw-heavy);
+	line-height: 1;
+	letter-spacing: var(--ls-tight);
+	font-variant-numeric: lining-nums;
+}
+
+.tuto-404__bear {
+	inline-size: 62%;
+	block-size: auto;
+	color: var(--c-chocolate);
+}
+
+/* ---------- Text ---------- */
+.tuto-404__text {
+	display: grid;
+	gap: var(--space-4);
+	justify-items: start;
+	max-inline-size: 38rem;
+}
+
+.tuto-404__text > * {
+	margin: 0;
+}
+
+.tuto-404__text .eyebrow {
+	margin: 0;
+}
+
+.tuto-404__title {
+	font-size: var(--fs-h1);
+}
+
+.tuto-404__links-title {
+	margin-block-start: var(--space-3);
+	color: var(--c-muted);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+	letter-spacing: var(--ls-wide);
+	text-transform: uppercase;
+}
+
+.tuto-404__links {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--space-2);
+	inline-size: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-404__link {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	min-block-size: var(--tap);
+	padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+	border: var(--border-w) solid transparent;
+	border-radius: var(--radius-pill);
+	background-color: var(--c-white);
+	box-shadow: var(--shadow-s);
+	color: var(--c-heading);
+	font-weight: var(--fw-bold);
+	text-decoration: none;
+	transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+
+.tuto-404__link:hover {
+	border-color: var(--c-latte);
+	box-shadow: var(--shadow-m);
+}
+
+.tuto-404__link:focus-visible {
+	outline: var(--focus-w) solid var(--c-focus);
+	outline-offset: var(--focus-offset);
+}
+
+.tuto-404__link > .icon {
+	inline-size: 2.25rem;
+	block-size: 2.25rem;
+	padding: 0.45rem;
+	border-radius: 50%;
+	background-color: var(--c-sand);
+	color: var(--c-coffee-ink);
+}
+
+/* Arrow at the end of each link */
+.tuto-404__link::after {
+	content: "";
+	flex: none;
+	inline-size: 1.1em;
+	block-size: 1.1em;
+	margin-inline-start: auto;
+	background-color: var(--c-coffee);
+	-webkit-mask: var(--mask-arrow) center / contain no-repeat;
+	mask: var(--mask-arrow) center / contain no-repeat;
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.tuto-404__link:hover::after {
+	transform: translateX(0.25em);
+}
+
+.tuto-404__actions {
+	margin-block-start: var(--space-3);
+}
+
+@media (max-width: 29.99em) {
+	.tuto-404__actions .btn {
+		flex: 1 1 100%;
+	}
+}
+
+@media (min-width: 30em) {
+	.tuto-404__links {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-404 {
+		padding-block-start: var(--space-8);
+	}
+
+	.tuto-404__inner {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: var(--space-8);
+	}
+
+	.tuto-404__art {
+		inline-size: min(100%, 22rem);
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-404__links {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}

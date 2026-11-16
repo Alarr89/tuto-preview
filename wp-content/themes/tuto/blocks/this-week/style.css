@@ -1,0 +1,122 @@
+/*
+ * Block tuto/this-week — «Тема цього тижня»: the latest «Тема тижня» post as a big
+ * card (photo in a blob + title + text) and chips with earlier themes.
+ * The bear peeks over the top edge of the card (bear-peek.svg: bottom of viewBox = edge).
+ */
+.tuto-this-week__card {
+	position: relative;
+	display: grid;
+	gap: var(--space-6);
+	align-items: center;
+	margin-block-start: var(--space-8);
+	padding: var(--card-pad);
+	border-radius: var(--radius-l);
+	background-color: var(--c-white);
+	box-shadow: var(--shadow-m);
+}
+
+.tuto-this-week__peek {
+	inset-block-end: calc(100% - 2px);
+	inset-inline-end: 12%;
+	inline-size: 6rem;
+	color: var(--c-chocolate);
+}
+
+/* Phones: a lower, wider photo so the card is shorter (review №16); 4:5 from 48em */
+.tuto-this-week__media {
+	inline-size: min(100%, 20rem);
+	justify-self: center;
+}
+
+.tuto-this-week__media img {
+	--frame-ratio: 4 / 3;
+	object-position: 50% 45%;
+}
+
+.tuto-this-week__body {
+	display: grid;
+	gap: var(--space-4);
+	justify-items: start;
+}
+
+.tuto-this-week__body > * {
+	margin: 0;
+}
+
+.tuto-this-week__meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2) var(--space-3);
+}
+
+.tuto-this-week__meta .eyebrow {
+	margin: 0;
+}
+
+.tuto-this-week__date {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	color: var(--c-muted);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-this-week__date .icon {
+	inline-size: 1.15rem;
+	block-size: 1.15rem;
+}
+
+.tuto-this-week__more {
+	inline-size: 100%;
+	padding-block-start: var(--space-4);
+	border-block-start: 1px solid var(--c-line);
+}
+
+.tuto-this-week__more-title {
+	margin-block-end: var(--space-3);
+	color: var(--c-muted);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+	letter-spacing: var(--ls-wide);
+	text-transform: uppercase;
+}
+
+.tuto-this-week__themes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+}
+
+.tuto-this-week__themes .chip {
+	white-space: normal;
+}
+
+/* Phones (T-129, shorter home page): no list of other themes - «Усі теми тижня» is enough */
+@media (max-width: 47.99em) {
+	.tuto-this-week__more {
+		display: none;
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-this-week__card {
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+		gap: var(--space-8);
+		padding: var(--space-7);
+	}
+
+	.tuto-this-week__peek {
+		inline-size: 7rem;
+	}
+
+	.tuto-this-week__media {
+		inline-size: min(100%, 22rem);
+	}
+
+	.tuto-this-week__media img {
+		--frame-ratio: 4 / 5;
+		object-position: 50% 30%;
+	}
+}

@@ -1,0 +1,159 @@
+/*
+ * Block tuto/rules-list — numbered rule cards with a vertical line on the left (ref 05).
+ * Cards come from components.css (.rules / .rules__item / .rules__item--dark: numbering,
+ * white/sand alternation, coffee bar). This block adds the layout (head left, list right
+ * from 1024px), highlighted discounts (__item--discount + __tag) and an optional aside note.
+ *
+ * <ol class="rules tuto-rules-list__list" role="list">
+ *   <li class="rules__item tuto-rules-list__item--discount">
+ *     <h3 class="rules__title">…</h3><p>…</p><p class="tuto-rules-list__tag">−10%</p></li>
+ * </ol>
+ * Modifier on the section: .tuto-rules-list--cols — two columns of cards (short lists).
+ * Mobile-first, tokens only.
+ */
+.tuto-rules-list__grid {
+	display: grid;
+	gap: var(--space-7);
+	align-items: start;
+}
+
+.tuto-rules-list__head .section-head {
+	margin-block-end: 0;
+}
+
+/* One line under the heading (e.g. payment methods) */
+.tuto-rules-list__pay {
+	margin: var(--space-4) 0 0;
+}
+
+/*
+ * Aside «Залишилися питання?» — a chocolate plate (like the dark price rows above),
+ * phone as the main cream button. Colours flip via .on-dark (base.css).
+ * <div class="tuto-rules-list__aside on-dark">…</div>
+ */
+.tuto-rules-list__aside {
+	display: grid;
+	gap: var(--space-4);
+	margin-block-start: var(--space-6);
+	padding: var(--space-6);
+	border-radius: var(--radius-l);
+	box-shadow: var(--shadow-m);
+}
+
+.tuto-rules-list__aside > * {
+	margin: 0;
+}
+
+/* Below 1024px the aside goes after the rules (T-114, №20): the head is unwrapped
+   (display: contents), so the aside becomes a grid item and can be reordered.
+   From 1024px it stays under the heading in the sticky left column. */
+@media (max-width: 63.99em) {
+	.tuto-rules-list__head:has(> .tuto-rules-list__aside) {
+		display: contents;
+	}
+
+	.tuto-rules-list__head > .tuto-rules-list__aside {
+		order: 1;
+		margin-block-start: 0;
+	}
+}
+
+.tuto-rules-list__aside-title {
+	color: var(--c-heading);
+	font-size: var(--fs-h3);
+	font-weight: var(--fw-heading);
+	line-height: var(--lh-snug);
+}
+
+.tuto-rules-list__aside-title .hand {
+	color: var(--c-latte);
+}
+
+.tuto-rules-list__aside .btn-group {
+	margin-block-start: var(--space-1);
+}
+
+.tuto-rules-list__list {
+	margin: 0;
+}
+
+.tuto-rules-list__list .rules__item p {
+	max-inline-size: var(--measure);
+}
+
+/* Short lists inside an item (what to bring, documents) */
+.tuto-rules-list__list .list-check {
+	gap: var(--space-2);
+	font-size: var(--fs-body-s);
+}
+
+/* ---------- Discounts: big «−10%» tag on the card ---------- */
+.tuto-rules-list__item--discount {
+	grid-template-columns: minmax(0, 1fr) auto;
+	column-gap: var(--space-4);
+	align-items: center;
+}
+
+.tuto-rules-list__item--discount > :not(.tuto-rules-list__tag) {
+	grid-column: 1;
+}
+
+.tuto-rules-list__tag {
+	grid-column: 2;
+	grid-row: 1 / span 2;
+	display: grid;
+	place-items: center;
+	inline-size: 4.5rem;
+	block-size: 4.5rem;
+	border-radius: 50%;
+	background-color: var(--c-chocolate);
+	color: var(--c-cream);
+	font-size: var(--fs-h4);
+	font-weight: var(--fw-heavy);
+	letter-spacing: var(--ls-tight);
+	line-height: 1;
+	font-variant-numeric: lining-nums;
+	rotate: -6deg;
+}
+
+.rules__item--dark .tuto-rules-list__tag {
+	background-color: var(--c-cream);
+	color: var(--c-chocolate);
+}
+
+.tuto-rules-list__item--discount strong {
+	color: var(--c-heading);
+}
+
+@media (min-width: 48em) {
+	.tuto-rules-list--cols .tuto-rules-list__list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.tuto-rules-list__tag {
+		inline-size: 5.5rem;
+		block-size: 5.5rem;
+		font-size: var(--fs-h3);
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-rules-list__grid {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: var(--space-9);
+	}
+
+	.tuto-rules-list__head {
+		position: sticky;
+		inset-block-start: var(--space-10);
+	}
+
+	.tuto-rules-list--cols .tuto-rules-list__grid {
+		grid-template-columns: minmax(0, 1fr);
+		gap: var(--space-7);
+	}
+
+	.tuto-rules-list--cols .tuto-rules-list__head {
+		position: static;
+	}
+}

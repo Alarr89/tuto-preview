@@ -1,0 +1,509 @@
+/*
+ * Block tuto/hero — slogan, CTA, age shortcuts, photo in an arch with the peeking bear.
+ * Based on the approved styleguide hero (.sg-hero__*). Mobile-first, tokens only.
+ */
+.tuto-hero {
+	padding-block: var(--space-5) var(--section-pad);
+}
+
+/*
+ * One grid for everything; order comes from the areas, not from the markup.
+ * Phones/tablets: h1 → lead → buttons → photo (its top is already visible
+ * at 375×700) → chips → ages → facts. ≥ 1024px: two columns (styleguide .sg-hero).
+ * No big logo in the hero (Evgeny, 2026-11-14): the header logo is enough.
+ */
+.tuto-hero__grid {
+	position: relative;
+	z-index: var(--z-raised);
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	grid-template-areas:
+		"title"
+		"lead"
+		"actions"
+		"media"
+		"chips"
+		"ages"
+		"facts";
+}
+
+.tuto-hero__title {
+	grid-area: title;
+	margin-block-end: var(--space-4);
+	font-size: var(--fs-h1);
+}
+
+.tuto-hero__lead {
+	grid-area: lead;
+	max-inline-size: 34rem;
+	margin-block-end: var(--space-5);
+	font-size: var(--fs-body);
+}
+
+.tuto-hero__actions {
+	grid-area: actions;
+	gap: var(--space-2);
+}
+
+.tuto-hero__actions .btn {
+	flex: 1 1 100%;
+}
+
+.tuto-hero__chips {
+	grid-area: chips;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin-block-start: var(--space-7);
+}
+
+.tuto-hero__chips .chip {
+	white-space: normal;
+}
+
+/* Age shortcuts → tabs of the age-picker block (Meadow 07) */
+.tuto-hero__ages {
+	grid-area: ages;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2) var(--space-3);
+	margin-block-start: var(--space-6);
+}
+
+.tuto-hero__ages-label {
+	margin: 0;
+	color: var(--c-chocolate);
+	font-size: var(--fs-caption); /* = the pre-T-116 --fs-small (14→15): hero V1 is fitted to the first screen */
+	font-weight: var(--fw-bold);
+}
+
+.tuto-hero__ages-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+}
+
+.tuto-hero__ages-list .chip {
+	--chip-bg: var(--c-white);
+	min-height: 2.75rem;
+	padding-inline: var(--space-4);
+	font-size: var(--fs-caption);
+	box-shadow: var(--shadow-s);
+}
+
+.tuto-hero__facts {
+	grid-area: facts;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3) var(--space-6);
+	margin-block-start: var(--space-6);
+	color: var(--c-chocolate);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-hero__facts li {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.tuto-hero__facts a {
+	color: inherit;
+}
+
+/* ---------- Photo ---------- */
+.tuto-hero__media {
+	grid-area: media;
+	position: relative;
+	inline-size: 100%;
+	max-inline-size: 27rem;
+	margin: calc(4.75rem * 100 / 124) auto 0; /* room for the peeking bear */
+	justify-self: center;
+}
+
+/* ig-106: Alla and her daughter — both faces sit in the upper third of the frame */
+.tuto-hero__media .frame-arch img {
+	object-position: 40% 22%;
+}
+
+.tuto-hero__peek {
+	position: absolute;
+	inset-block-end: calc(100% - 0.4rem);
+	inset-inline-start: 50%;
+	z-index: var(--z-raised);
+	inline-size: 4.75rem;
+	color: var(--c-chocolate);
+	translate: -55% 0;
+}
+
+.tuto-hero__tag {
+	position: absolute;
+	inset-block-end: 12%;
+	inset-inline-start: calc(-1 * var(--space-3));
+	z-index: var(--z-raised);
+	max-inline-size: calc(100% + var(--space-3));
+	white-space: normal;
+}
+
+/* ---------- Decor (thin, never blocks clicks) ---------- */
+.tuto-hero__blob {
+	inset-block-start: 8%;
+	inset-inline-end: -18%;
+	z-index: var(--z-below);
+	inline-size: 95%;
+	color: var(--c-sand);
+}
+
+.tuto-hero__branch-a {
+	display: none;
+	inset-block-end: 18%;
+	inset-inline-start: -1.5rem;
+	inline-size: 7rem;
+	color: var(--c-coffee);
+	opacity: 0.6;
+	rotate: 8deg;
+}
+
+.tuto-hero__branch-b {
+	inset-block-end: -2rem;
+	inset-inline-end: -1.5rem;
+	inline-size: 4rem;
+	color: var(--c-coffee);
+	opacity: 0.7;
+}
+
+.tuto-hero__dots {
+	display: none;
+	inset-block-end: 4%;
+	inset-inline-start: 45%;
+	inline-size: 12rem;
+	color: var(--c-latte);
+}
+
+.tuto-hero__heart {
+	inline-size: 1rem;
+	color: var(--c-brick);
+}
+
+.tuto-hero__heart--1 {
+	inset-block-start: 6%;
+	inset-inline-end: 6%;
+}
+
+.tuto-hero__heart--2 {
+	inset-block-start: 12%;
+	inset-inline-end: 13%;
+	inline-size: 0.6rem;
+	color: var(--c-latte);
+}
+
+.tuto-hero__heart--3 {
+	display: none; /* on phones it would sit on the chips */
+	inset-block-end: 22%;
+	inset-inline-start: 3%;
+	inline-size: 0.75rem;
+	color: var(--c-latte);
+}
+
+@media (min-width: 30em) {
+	.tuto-hero__actions .btn {
+		flex: 0 0 auto;
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-hero {
+		padding-block-start: var(--space-7);
+	}
+
+	.tuto-hero__title {
+		margin-block-end: var(--space-5);
+		font-size: var(--fs-display);
+	}
+
+	.tuto-hero__lead {
+		margin-block-end: var(--space-6);
+		font-size: var(--fs-lead);
+	}
+
+	.tuto-hero__actions {
+		gap: var(--space-3);
+	}
+
+	.tuto-hero__actions .btn {
+		min-height: 3.5rem;
+		padding-inline: var(--space-6);
+		font-size: var(--fs-lead);
+	}
+
+	.tuto-hero__media {
+		margin-block-start: calc(7rem * 100 / 124 + var(--space-4));
+	}
+
+	.tuto-hero__peek {
+		inline-size: 7rem;
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-hero {
+		padding-block-start: var(--space-8);
+	}
+
+	/* empty 1fr rows above and below keep the text column vertically centred on the photo */
+	.tuto-hero__grid {
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		grid-template-rows: 1fr repeat(6, auto) 1fr;
+		grid-template-areas:
+			".       media"
+			"chips   media"
+			"title   media"
+			"lead    media"
+			"actions media"
+			"ages    media"
+			"facts   media"
+			".       media";
+		column-gap: var(--space-9);
+	}
+
+	.tuto-hero__chips {
+		margin-block: 0 var(--space-6);
+	}
+
+	.tuto-hero__media {
+		align-self: center;
+	}
+
+	.tuto-hero__dots,
+	.tuto-hero__branch-a,
+	.tuto-hero__heart--3 {
+		display: block;
+	}
+}
+
+/* =========================================================================
+ * V1 «Фото-перший» — phones only (< 768px). Added on top of the rules above;
+ * from 768px the hero is exactly as before.
+ * The photo runs edge to edge under the floating header, a cream sheet with a
+ * rounded top slides over its bottom, the bear peeks over the sheet edge.
+ * ======================================================================= */
+.tuto-hero__peek svg {
+	display: block;
+	inline-size: 100%;
+	block-size: auto;
+}
+
+/* cream face/paws so the line bear stays readable over a photo; off unless --bear-face is set */
+.tuto-hero__bear-fill {
+	fill: var(--bear-face, none);
+	stroke: none;
+}
+
+.tuto-hero__where {
+	display: none;
+}
+
+@media (max-width: 47.99em) {
+	.tuto-hero {
+		/* height the floating header takes in the flow: 12px top + 64px pill + 12px bottom */
+		--hero-header-h: calc(var(--tap) + 2 * var(--space-2) + 2 * var(--space-3)); /* header: space-3 above and below the pill */
+		margin-block-start: calc(-1 * var(--hero-header-h)); /* the hero must be the first block of the page */
+		padding-block: 0 var(--space-7);
+	}
+
+	.tuto-hero__grid {
+		grid-template-areas:
+			"media"
+			"title"
+			"lead"
+			"actions"
+			"ages"
+			"chips"
+			"facts";
+	}
+
+	/* the sheet: everything below the photo, drawn as one rounded panel over its bottom edge */
+	.tuto-hero__grid::before {
+		content: "";
+		grid-area: 2 / 1 / -1 / -1;
+		z-index: 1;
+		margin: 0 calc(-1 * var(--gutter)) calc(-1 * var(--space-7));
+		border-radius: var(--radius-l) var(--radius-l) 0 0;
+		background-color: var(--c-cream);
+		pointer-events: none;
+	}
+
+	.tuto-hero__grid > :not(.tuto-hero__media) {
+		position: relative;
+		z-index: 2;
+	}
+
+	.tuto-hero__media {
+		inline-size: auto;
+		max-inline-size: none;
+		margin: 0 calc(-1 * var(--gutter)) calc(-1 * var(--space-6));
+		justify-self: stretch;
+	}
+
+	.tuto-hero__media .frame-arch {
+		margin: 0;
+		overflow: hidden;
+	}
+
+	.tuto-hero__media .frame-arch::before {
+		content: none;
+	}
+
+	/* ig-106: both faces stay clear of the header pill and of the sheet */
+	/* Height: about half of the screen on phones; on wide small screens (480–767px) it grows
+	   with the width so the crop never climbs under the header. */
+	.tuto-hero__media .frame-arch img {
+		block-size: max(clamp(18rem, 52vh, 27rem), min(85vw, 70vh));
+		block-size: max(clamp(18rem, 52svh, 27rem), min(85vw, 70svh));
+		aspect-ratio: auto;
+		border-radius: 0;
+		object-position: 50% 40%;
+	}
+
+	@media (orientation: landscape) {
+		.tuto-hero__media .frame-arch img {
+			object-position: 50% 28%;
+		}
+	}
+
+	.tuto-hero__where {
+		position: absolute;
+		inset-block-start: var(--hero-header-h); /* = pill bottom + space-3, as before */
+		inset-inline-start: var(--gutter);
+		display: inline-flex;
+		gap: var(--space-2);
+		padding: var(--space-2) var(--space-3);
+		font-size: var(--fs-caption);
+	}
+
+	.tuto-hero__where .icon {
+		inline-size: 1.15em;
+		block-size: 1.15em;
+		color: var(--c-brick);
+	}
+
+	.tuto-hero__peek {
+		--bear-face: var(--c-cream);
+		inset-block-end: calc(var(--space-6) - 0.4rem); /* sits on the sheet edge */
+		inset-inline: auto var(--space-6);
+		overflow: hidden;
+		padding-block-start: 0.5rem; /* headroom for the overshoot */
+		translate: none;
+	}
+
+	.tuto-hero__title {
+		margin-block-end: var(--space-3);
+		padding-block-start: var(--space-5);
+	}
+
+	.tuto-hero__lead {
+		margin-block-end: var(--space-4);
+		margin-inline: auto;
+		color: var(--c-text); /* darker than the muted lead: the line under the slogan carries the offer */
+		line-height: 1.5;
+	}
+
+	/* Phones: the sheet under the photo reads as a poster - everything centred (T-125) */
+	.tuto-hero__title,
+	.tuto-hero__lead,
+	.tuto-hero__ages-label {
+		text-align: center;
+	}
+
+	.tuto-hero__ages,
+	.tuto-hero__ages-list,
+	.tuto-hero__facts {
+		justify-content: center;
+	}
+
+	.tuto-hero__ages-label {
+		flex: 1 1 100%;
+	}
+
+	.tuto-hero__actions {
+		flex-wrap: nowrap;
+	}
+
+	.tuto-hero__actions .btn--primary {
+		flex: 1;
+		padding-inline: var(--space-4);
+	}
+
+	.tuto-hero__ages {
+		margin-block-start: var(--space-5);
+	}
+
+	.tuto-hero__ages-list .chip {
+		font-size: var(--fs-body);
+	}
+
+	.tuto-hero__chips {
+		margin-block-start: var(--space-5);
+	}
+
+	.tuto-hero__facts {
+		margin-block-start: var(--space-5);
+	}
+
+	/* the call button lives in the header (Q7, 2026-11-15); the full CTA label fits from 360px */
+	@media (max-width: 22.49em) {
+		.tuto-hero__cta-more {
+			display: none;
+		}
+	}
+
+	/* not on phones: the age chips (the «Вибір за віком» block follows right after) and the phone
+	   (always in the header) - T-130, a shorter first screen; «Програми», photo tag and loose decor */
+	.tuto-hero__ages,
+	.tuto-hero__facts .tuto-hero__fact-phone,
+	.tuto-hero__actions .tuto-hero__programs,
+	.tuto-hero__tag,
+	.tuto-hero__blob,
+	.tuto-hero__branch-b,
+	.tuto-hero__heart {
+		display: none;
+	}
+}
+
+@keyframes tuto-hero-peek {
+	0% { transform: translateY(100%); }
+	65% { transform: translateY(-5%); }
+	100% { transform: translateY(0); }
+}
+
+@keyframes tuto-hero-settle {
+	from { transform: scale(1.06); }
+	to { transform: scale(1); }
+}
+
+/* After peeking out the bear winks once (right eye squashes shut and opens). Phones: after the
+   peek (0.45s + 0.8s); larger screens have no peek, so it winks a little after the page shows. */
+@media (prefers-reduced-motion: no-preference) {
+	.tuto-hero__wink {
+		transform-box: fill-box;
+		transform-origin: center;
+		animation: tuto-bear-wink-once 0.6s ease-in-out 1s both; /* keyframes: components.css */
+	}
+}
+
+/* transform only, never opacity: the photo is the LCP element */
+@media (max-width: 47.99em) and (prefers-reduced-motion: no-preference) {
+	.tuto-hero__peek svg {
+		animation: tuto-hero-peek 0.8s var(--ease-out) 0.45s both;
+	}
+
+	.tuto-hero__wink {
+		animation-delay: 1.6s;
+	}
+
+	.tuto-hero__media .frame-arch img {
+		animation: tuto-hero-settle 1.4s var(--ease-out) both;
+	}
+}

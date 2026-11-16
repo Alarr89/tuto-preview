@@ -1,0 +1,96 @@
+/*
+ * Block tuto/anchor-nav — sticky row of anchor chips under the page hero (review №7).
+ * First used on design/minisadochok.html: «День · Адаптація · … · Питання».
+ *
+ * <nav class="tuto-block tuto-anchor-nav" aria-label="Розділи сторінки" data-anchor-nav>
+ *   <div class="container"><ul class="tuto-anchor-nav__list" role="list">
+ *     <li><a class="chip tuto-anchor-nav__link" href="#den">День</a></li> …
+ *   </ul></div>
+ * </nav>
+ *
+ * It must be a direct child of <main> (not inside a .section), otherwise sticky stops
+ * at the end of that section. Sticks right under the floating header pill (88px: 12 + 64 + 12).
+ * Without JS: plain anchor links. With JS (script.js): the chip of the section being
+ * read gets aria-current="location", the row scrolls it into view, .is-stuck adds a shadow.
+ * Mobile-first, tokens only.
+ */
+.tuto-anchor-nav {
+	/* right under the header pill, no gap (T-130): --space-3 above + pill (--tap + 2 × --space-2) = 76px.
+	   The header's own bottom padding is transparent and click-through, so the row shows through it. */
+	--anchor-nav-top: calc(var(--space-3) + var(--tap) + 2 * var(--space-2));
+	position: sticky;
+	inset-block-start: var(--anchor-nav-top);
+	z-index: var(--z-sticky);
+	/* the hero above ends with a wave that hangs down by --wave-h: leave it room */
+	margin-block-start: var(--wave-h);
+	padding-block: var(--space-2);
+	background-color: var(--c-bg);
+	transition: box-shadow var(--dur) var(--ease-out);
+}
+
+.tuto-anchor-nav.is-stuck {
+	box-shadow: 0 8px 16px -12px rgb(59 42 34 / 0.35);
+}
+
+.tuto-anchor-nav__list {
+	display: flex;
+	gap: var(--space-2);
+	/* full-bleed horizontal scroll on phones: the row runs under the gutters */
+	margin-inline: calc(-1 * var(--gutter));
+	padding: var(--space-1) var(--gutter);
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scroll-snap-type: x proximity;
+	scroll-padding-inline: var(--gutter);
+	scrollbar-width: none;
+	list-style: none;
+}
+
+.tuto-anchor-nav__list::-webkit-scrollbar {
+	display: none;
+}
+
+.tuto-anchor-nav__list > li {
+	flex: none;
+	scroll-snap-align: start;
+}
+
+.tuto-anchor-nav__link.chip {
+	--chip-bg: var(--c-white);
+	border-color: var(--c-line);
+	padding-inline: var(--space-4);
+}
+
+.tuto-anchor-nav__link.chip[aria-current] {
+	border-color: var(--c-chocolate);
+}
+
+.tuto-anchor-nav__link.chip:focus-visible {
+	outline-offset: 2px;
+}
+
+/* the page lands below header + this row, not under them */
+html:has(.tuto-anchor-nav) {
+	scroll-padding-top: calc(var(--space-3) + var(--tap) + 2 * var(--space-2) + var(--tap) + var(--space-6));
+}
+
+@media (min-width: 64em) {
+	.tuto-anchor-nav__list {
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-inline: 0;
+		padding-inline: 0;
+		overflow: visible;
+	}
+}
+
+/* --mobile: phones only (Ціни, T-130: on a desktop the price list is visible at a glance) */
+@media (min-width: 48em) {
+	.tuto-anchor-nav--mobile {
+		display: none;
+	}
+
+	html:has(.tuto-anchor-nav--mobile) {
+		scroll-padding-top: calc(2 * var(--space-3) + var(--tap) + 2 * var(--space-2) + var(--space-4));
+	}
+}

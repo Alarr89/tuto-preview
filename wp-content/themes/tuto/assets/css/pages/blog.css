@@ -1,0 +1,389 @@
+/*
+ * Templates «Тема тижня»: archive (home.php / archive.php) and single post (single.php).
+ * Not blocks: header comes from page-hero, gallery and CTA are blocks, everything
+ * else is the template markup below (design/blog.html, design/blog-post-*.html).
+ * Mobile-first, tokens only.
+ *
+ *   .tuto-blog            archive section: grid of .tuto-post-card + .tuto-pagination
+ *   .tuto-post-card       card for one post (on top of .card.card--media)
+ *   .tuto-post            single post body: facts box + content
+ *   .tuto-post-nav        previous / next theme
+ */
+
+/* =========================================================================
+ * Archive
+ * ======================================================================= */
+/* The CTA banner below brings its own top padding: keep the gap moderate */
+.tuto-blog {
+	padding-block-end: var(--section-pad-s);
+}
+
+.tuto-blog__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-post-card {
+	block-size: 100%;
+	box-shadow: var(--shadow-s);
+}
+
+.tuto-post-card .card__media img {
+	object-position: var(--focus, 50% 45%);
+}
+
+.tuto-post-card .card__title {
+	font-size: var(--fs-h4);
+}
+
+.tuto-post-card .card__text {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	font-size: var(--fs-body-s);
+	line-height: var(--lh-body);
+}
+
+.tuto-blog__todo,
+.tuto-post__todo {
+	inline-size: fit-content;
+	padding: 0 var(--space-2);
+	border: 1px dashed var(--c-coffee);
+	border-radius: var(--radius-xs);
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-blog__todo {
+	margin: 0 0 var(--space-5);
+}
+
+.tuto-post-card__date {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	color: var(--c-muted);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-post-card__date .icon {
+	inline-size: 1.15rem;
+	block-size: 1.15rem;
+}
+
+.tuto-post-card__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: auto 0 0;
+	padding: var(--space-2) 0 0;
+	list-style: none;
+}
+
+.tuto-post-card__tags .chip {
+	min-block-size: 1.625rem;
+	font-size: var(--fs-caption);
+}
+
+/* Latest post: wide card with the photo on the left (≥ 768px) */
+.tuto-post-card--featured .card__title {
+	font-size: var(--fs-h3);
+}
+
+.tuto-post-card__badge {
+	position: absolute;
+	inset-block-start: var(--space-3);
+	inset-inline-start: var(--space-3);
+}
+
+/* ---------- Pagination (paginate_links: ul.page-numbers) ---------- */
+.tuto-pagination {
+	margin-block-start: var(--space-7);
+}
+
+.tuto-pagination ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-pagination .chip {
+	min-inline-size: var(--tap);
+	min-block-size: var(--tap);
+	justify-content: center;
+	padding-inline: var(--space-4);
+	--chip-bg: var(--c-white);
+}
+
+.tuto-pagination .chip .icon {
+	inline-size: 1.25em;
+	block-size: 1.25em;
+	color: currentColor;
+}
+
+.tuto-pagination__gap {
+	color: var(--c-muted);
+}
+
+/* =========================================================================
+ * Single post
+ * ======================================================================= */
+.tuto-post__layout {
+	display: grid;
+	gap: var(--space-7);
+}
+
+/* «Про тиждень» facts box */
+.tuto-post__facts {
+	align-self: start;
+	display: grid;
+	gap: var(--space-4);
+	margin: 0;
+	padding: var(--card-pad);
+	border-radius: var(--radius-m);
+	background-color: var(--c-sand);
+}
+
+.tuto-post__facts-title {
+	margin: 0;
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+	letter-spacing: var(--ls-wide);
+	text-transform: uppercase;
+}
+
+.tuto-post__facts dl {
+	display: grid;
+	gap: var(--space-4);
+	margin: 0;
+}
+
+.tuto-post__facts dl > div {
+	display: grid;
+	gap: var(--space-1);
+}
+
+.tuto-post__facts dt {
+	color: var(--c-muted);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-bold);
+}
+
+.tuto-post__facts dd {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-2);
+	margin: 0;
+	color: var(--c-heading);
+	font-weight: var(--fw-semibold);
+	line-height: var(--lh-snug);
+}
+
+.tuto-post__facts .icon {
+	inline-size: 1.15em;
+	block-size: 1.15em;
+	margin-block-start: 0.1em;
+	color: var(--c-coffee-ink);
+}
+
+/* Post content (the_content): readable measure, airy rhythm */
+.tuto-post__content {
+	max-inline-size: var(--measure);
+}
+
+.tuto-post__content > .lead {
+	color: var(--c-heading);
+}
+
+.tuto-post__content > h2 {
+	font-size: var(--fs-h3);
+}
+
+.tuto-post__back {
+	margin-block-start: var(--space-6);
+}
+
+/* ---------- Previous / next theme ---------- */
+.tuto-post-nav__list {
+	display: grid;
+	gap: var(--space-4);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-post-nav__link {
+	position: relative;
+	display: grid;
+	grid-template-columns: 4.5rem minmax(0, 1fr);
+	gap: var(--space-4);
+	align-items: center;
+	block-size: 100%;
+	padding: var(--space-3);
+	padding-inline-end: var(--space-5);
+	border-radius: var(--radius-m);
+	background-color: var(--c-white);
+	box-shadow: var(--shadow-s);
+	color: var(--c-heading);
+	text-decoration: none;
+	transition: box-shadow var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+}
+
+.tuto-post-nav__link:hover {
+	box-shadow: var(--shadow-m);
+	transform: translateY(-2px);
+}
+
+.tuto-post-nav__link:focus-visible {
+	outline: var(--focus-w) solid var(--c-focus);
+	outline-offset: var(--focus-offset);
+}
+
+.tuto-post-nav__thumb {
+	inline-size: 4.5rem;
+	block-size: 4.5rem;
+	border-radius: var(--radius-s);
+	object-fit: cover;
+	background-color: var(--c-sand);
+}
+
+.tuto-post-nav__text {
+	display: grid;
+	gap: var(--space-1);
+}
+
+.tuto-post-nav__dir {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+	letter-spacing: var(--ls-wide);
+	text-transform: uppercase;
+}
+
+.tuto-post-nav__dir .icon {
+	inline-size: 1.1em;
+	block-size: 1.1em;
+	color: currentColor;
+}
+
+.tuto-post-nav__title {
+	font-size: var(--fs-body);
+	font-weight: var(--fw-bold);
+	line-height: var(--lh-snug);
+}
+
+.tuto-post-nav__all {
+	margin-block-start: var(--space-5);
+	text-align: center;
+}
+
+/* =========================================================================
+ * Breakpoints
+ * ======================================================================= */
+@media (min-width: 40em) {
+	.tuto-blog__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.tuto-blog__grid > .tuto-blog__item--featured {
+		grid-column: 1 / -1;
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-post-card--featured {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+		gap: var(--space-3);
+	}
+
+	.tuto-post-card--featured .card__media {
+		aspect-ratio: 4 / 3;
+	}
+
+	.tuto-post-card--featured > .card__body {
+		justify-content: center;
+		padding: var(--space-5) var(--space-5) var(--space-5) var(--space-4);
+	}
+
+	.tuto-post-card--featured .card__text {
+		-webkit-line-clamp: 4;
+		line-clamp: 4;
+		font-size: var(--fs-body);
+	}
+
+	.tuto-post-card--featured .tuto-post-card__tags {
+		margin-block-start: 0;
+	}
+
+	.tuto-post-nav__list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	/* «Next» sits on the right and reads right-to-left */
+	.tuto-post-nav__item--next {
+		grid-column: 2;
+	}
+
+	.tuto-post-nav__item--next .tuto-post-nav__link {
+		grid-template-columns: minmax(0, 1fr) 4.5rem;
+		padding-inline: var(--space-5) var(--space-3);
+		text-align: end;
+	}
+
+	.tuto-post-nav__item--next .tuto-post-nav__thumb {
+		order: 2;
+	}
+
+	.tuto-post-nav__item--next .tuto-post-nav__dir {
+		justify-content: end;
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-blog__grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.tuto-post-card--featured {
+		grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+	}
+
+	.tuto-post-card--featured .card__media {
+		aspect-ratio: 16 / 10;
+	}
+
+	.tuto-post-card--featured > .card__body {
+		padding: var(--space-7) var(--space-7) var(--space-7) var(--space-5);
+	}
+
+	.tuto-post__layout {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 18rem);
+		gap: var(--space-9);
+	}
+
+	/* Facts box goes to the right, sticky under the floating header */
+	.tuto-post__facts {
+		grid-column: 2;
+		grid-row: 1;
+		position: sticky;
+		inset-block-start: 7rem;
+	}
+}

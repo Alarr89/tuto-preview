@@ -1,0 +1,215 @@
+/*
+ * Block tuto/program-details - prices and schedule of one programme (single-program template).
+ *   tariffs   .tuto-program-details__tariffs  - cards: name, price, note, what is included
+ *             (ACF repeater «ціни»: назва тарифу, ціна, примітка; the first one may be featured)
+ *   perks     .tuto-program-details__perks    - discounts / payment notes (options page)
+ *   schedule  .tuto-program-details__schedule - per location: a 7-day strip (decorative,
+ *             aria-hidden) + the same days and time as text, link to the map
+ *             (schedule_slot → location).
+ * Layout: stacked on phones; tariffs side by side from 640px; tariffs | schedule from 1024px.
+ * Mobile-first, tokens only.
+ */
+.tuto-program-details__grid {
+	display: grid;
+	gap: var(--space-7);
+}
+
+.tuto-program-details__subtitle {
+	margin-block-end: var(--space-5);
+	font-size: var(--fs-h3);
+}
+
+/* ---------- Tariffs ---------- */
+.tuto-program-details__tariffs {
+	display: grid;
+	gap: var(--space-5);
+}
+
+.tuto-program-details__tariffs > li {
+	display: flex;
+}
+
+.tuto-program-details__tariff {
+	flex: 1;
+	gap: var(--space-4);
+}
+
+.tuto-program-details__tariff.card--featured {
+	padding-block-start: calc(var(--card-pad) + var(--space-2));
+}
+
+.tuto-program-details__tariff-name {
+	color: var(--c-heading);
+	font-size: var(--fs-h4);
+}
+
+.tuto-program-details__tariff .list-check {
+	gap: var(--space-2);
+	padding-block-start: var(--space-4);
+	border-block-start: 1px solid var(--c-line);
+	font-size: var(--fs-body-s);
+}
+
+/* ---------- Perks: discounts, payment ---------- */
+.tuto-program-details__perks {
+	display: grid;
+	gap: var(--space-3);
+	margin-block-start: var(--space-5);
+	font-size: var(--fs-body-s);
+}
+
+.tuto-program-details__perks li {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-3);
+}
+
+.tuto-program-details__perks .icon {
+	inline-size: 1.25rem;
+	block-size: 1.25rem;
+	margin-block-start: 0.1em;
+}
+
+.tuto-program-details__perks strong {
+	color: var(--c-heading);
+}
+
+.tuto-program-details__more {
+	margin-block-start: var(--space-4);
+}
+
+/* ---------- Schedule ---------- */
+.tuto-program-details__schedule {
+	gap: var(--space-5);
+}
+
+.tuto-program-details__schedule .tuto-program-details__subtitle {
+	margin-block-end: 0;
+}
+
+.tuto-program-details__intro {
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+}
+
+.tuto-program-details__places {
+	display: grid;
+	gap: var(--space-4);
+}
+
+.tuto-program-details__place {
+	display: grid;
+	gap: var(--space-3);
+	padding: var(--space-4) var(--space-5) var(--space-3);
+	border-radius: var(--radius-s);
+	background-color: var(--c-cream);
+}
+
+.tuto-program-details__place > * {
+	margin: 0;
+}
+
+.tuto-program-details__address {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-heavy);
+}
+
+.tuto-program-details__address .icon {
+	inline-size: 1.25rem;
+	block-size: 1.25rem;
+}
+
+/* Week strip: 7 equal cells, class days are filled chocolate */
+.tuto-program-details__week {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: var(--space-1);
+	max-inline-size: 22rem;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-program-details__week li {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 1;
+	max-inline-size: 2.75rem;
+	border-radius: 50%;
+	background-color: var(--c-white);
+	color: var(--c-muted);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+}
+
+.tuto-program-details__week .is-on {
+	background-color: var(--c-chocolate);
+	color: var(--c-cream);
+}
+
+.tuto-program-details__when {
+	color: var(--c-heading);
+}
+
+.tuto-program-details__when time {
+	font-weight: var(--fw-heavy);
+	font-variant-numeric: tabular-nums;
+}
+
+.tuto-program-details__place .btn--ghost {
+	justify-self: start;
+	font-size: var(--fs-small);
+}
+
+.tuto-program-details__schedule > .caption {
+	margin: 0;
+}
+
+/* ---------- ≥ 640px ---------- */
+@media (min-width: 40em) {
+	.tuto-program-details__tariffs {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	/* a programme with a single tariff (only a subscription or only a one-off class) - full width */
+	.tuto-program-details__tariffs > li:only-child {
+		grid-column: 1 / -1;
+	}
+
+	.tuto-program-details__perks {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		column-gap: var(--space-6);
+	}
+}
+
+/* ---------- ≥ 768px: two locations side by side under the tariffs ---------- */
+@media (min-width: 48em) {
+	.tuto-program-details__places {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+/* ---------- ≥ 1024px: tariffs | schedule ---------- */
+@media (min-width: 64em) {
+	.tuto-program-details__grid {
+		grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+		gap: var(--space-8);
+		align-items: start;
+	}
+
+	.tuto-program-details__places {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.tuto-program-details__perks {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (min-width: 80em) {
+	.tuto-program-details__perks {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}

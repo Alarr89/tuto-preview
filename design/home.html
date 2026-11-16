@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ТУТО - місце щасливого дитинства · навчальний простір розвитку в Тернополі</title>
+<meta name="description" content="Мінісадочок і заняття для дітей у Тернополі: скандинавський підхід, білінгвальне і сенсорне середовище, тематичні тижні. Дві локації - Тарнавського, 7В і Коновальця, 11.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/tuto-preview/wp-content/themes/tuto/assets/svg/favicon.svg" type="image/svg+xml">
+<!-- LCP: the hero photo starts loading with the HTML, before CSS and fonts -->
+<link rel="preload" as="image" href="/tuto-preview/design/refs/photos/instagram/ig-106-kids-teacher-with-child.jpg" imagesrcset="/tuto-preview/design/hero-variants/img/hero-106-640.webp 640w, /tuto-preview/design/hero-variants/img/hero-106-941.webp 941w" imagesizes="(min-width: 48em) 27rem, 100vw" fetchpriority="high">
+<link rel="preload" href="/tuto-preview/wp-content/themes/tuto/assets/fonts/nunito-cyrillic-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/tuto-preview/wp-content/themes/tuto/assets/fonts/nunito-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/tuto-preview/wp-content/themes/tuto/assets/fonts/caveat-cyrillic-wght.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Global theme CSS (inc/enqueue.php: tokens → base → components → layout) -->
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/assets/css/tokens.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/assets/css/base.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/assets/css/components.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/assets/css/layout.css">
+<!-- Block CSS (in WP: block.json "style", loaded only where the block is used) -->
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/blocks/hero/style.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/blocks/age-picker/style.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/blocks/features/style.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/blocks/day-timeline/style.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/blocks/this-week/style.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/blocks/safety/style.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/blocks/reviews-slider/style.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/blocks/locations/style.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/blocks/cta-banner/style.css">
+<!-- ES modules: theme entry + block view scripts (block.json "viewScriptModule") -->
+<script type="module" src="/tuto-preview/wp-content/themes/tuto/assets/js/main.js"></script>
+<script type="module" src="/tuto-preview/wp-content/themes/tuto/blocks/day-timeline/script.js"></script>
+<script type="module" src="/tuto-preview/wp-content/themes/tuto/blocks/age-picker/script.js"></script>
+<script type="module" src="/tuto-preview/wp-content/themes/tuto/blocks/reviews-slider/script.js"></script>
+</head>
+<body class="has-sticky-cta" id="top">
+<a class="skip-link" href="#main">Перейти до&nbsp;змісту</a>
+
+<!-- ================================================================ Header (theme template, D-15) -->
+<header class="site-header" data-site-menu>
+	<div class="site-header__bar">
+		<a class="site-header__logo" href="/tuto-preview/design/home.html" aria-label="ТУТО - на головну"><svg class="tuto-logo" aria-hidden="true" focusable="false" viewBox="0 0 1354 455"><path fill="currentColor" d="M0,100 H255 V160 H157 V404 H98 V160 H0 Z M318.5,100 L383.5,100 L457,261.9 L530.5,100 L595.5,100 L457.5,404 L392.5,404 L424.5,333.5 Z M658.5,100 H914 V160 H815.8 V404 H756.8 V160 H658.5 Z"/><circle cx="1166.5" cy="268" r="121" fill="none" stroke="currentColor" stroke-width="27"/><g class="tuto-logo__accent" style="color:var(--logo-accent,var(--c-brick,#6E2B1E))"><circle cx="1166.5" cy="268" r="174.4" fill="none" stroke="currentColor" stroke-width="25"/><path fill="currentColor" d="M1225,0 H1268 L1232,61 H1189 Z"/></g></svg></a>
+
+		<nav class="site-nav" id="site-nav" aria-label="Головне меню">
+			<ul class="site-nav__list" role="list">
+				<li><a class="site-nav__link" href="/tuto-preview/design/programy.html">Програми</a></li>
+				<li><a class="site-nav__link" href="/tuto-preview/design/minisadochok.html">Мінісадочок</a></li>
+				<li><a class="site-nav__link" href="/tuto-preview/design/rozklad.html">Розклад</a></li>
+				<li><a class="site-nav__link" href="/tuto-preview/design/tsiny.html">Ціни</a></li>
+				<li class="site-nav__faq"><a class="site-nav__link" href="/tuto-preview/design/faq.html">Питання батьків</a></li>
+				<li><a class="site-nav__link" href="/tuto-preview/design/pro-nas.html">Про&nbsp;нас</a></li>
+				<li><a class="site-nav__link" href="/tuto-preview/design/kontakty.html">Контакти</a></li>
+				<li class="site-nav__hraiko"><a class="site-nav__link" href="https://www.instagram.com/tuto.hraiko/" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-gift"/></svg>Грайко<span class="visually-hidden">&nbsp;- магазин іграшок</span></a></li>
+			</ul>
+			<div class="site-nav__extra">
+				<a class="btn btn--primary btn--block" href="#zapys">Записатися на&nbsp;пробне</a>
+				<ul class="site-nav__extra-links" role="list">
+					<li><a href="tel:+380969404901"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg>096&nbsp;940&nbsp;49&nbsp;01</a></li>
+					<li><a href="https://www.instagram.com/tuto.center/" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-instagram"/></svg>Instagram</a></li>
+					<li><a href="https://www.instagram.com/tuto.hraiko/" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-gift"/></svg>Магазин іграшок «Грайко»</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<a class="site-header__phone" href="tel:+380969404901"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg>096&nbsp;940&nbsp;49&nbsp;01</a>
+		<a class="btn btn--primary btn--sm site-header__cta" href="#zapys">Записатися</a>
+		<a class="btn btn--icon site-header__call" href="tel:+380969404901" aria-label="Подзвонити: 096 940 49 01"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg></a>
+		<!-- No JS: a link to the footer menu. With JS it is swapped for the button below (site-menu.js). -->
+		<a class="btn btn--icon site-header__toggle" href="#footer-nav" aria-label="Меню (внизу сторінки)" data-site-menu-fallback><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-menu"/></svg></a>
+		<button class="btn btn--icon site-header__toggle" type="button" aria-label="Меню" aria-controls="site-nav" aria-expanded="false" data-site-menu-toggle hidden>
+			<svg class="btn__icon site-header__icon-open" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-menu"/></svg>
+			<svg class="btn__icon site-header__icon-close" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-close"/></svg>
+		</button>
+	</div>
+	<div class="site-header__backdrop" data-site-menu-backdrop hidden></div>
+</header>
+
+<main id="main">
+
+<!-- ================================================================ 1. hero -->
+<section class="tuto-block tuto-hero section" aria-labelledby="hero-title">
+	<svg class="decor tuto-hero__branch-a" aria-hidden="true" focusable="false" viewBox="0 0 141 172"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-5 0)" d="M8,170 C30,130 60,70 118,22M25.5,138.2 L24.1,134.4 C30.3,125.6 22.3,106 7.4,95.8 C8.8,106.1 14,127.8 24.1,134.4M24.1,134.4 Q21.1,122.6 17.2,110.8M36.7,119 L40.6,118.3 C47.8,125.4 67.5,121 80.3,112.7 C69.7,108.7 48.5,110.1 40.6,118.3M40.6,118.3 Q52.1,117.4 63.8,115.6M50.6,97.4 L49.7,93.5 C57.3,86.1 52.5,66.5 39.5,54.8 C39.3,64.7 40.9,86 49.7,93.5M49.7,93.5 Q48.7,82.1 46.8,70.4M65.3,77 L69.3,76.4 C75.2,84 93.3,80.6 105.2,73.1 C95.6,68.5 76.2,68.7 69.3,76.4M69.3,76.4 Q79.4,76.2 90.1,75.1M83.6,55.1 L83.7,51.1 C91.5,47.4 91.5,30.9 83.1,19 C80.8,26.9 77.9,44.1 83.7,51.1M83.7,51.1 Q85.2,42.5 85.9,32.8M118,22 L121.1,19.4 C127.9,22.9 138.9,13.1 143.7,2.8 C135,3.4 121.8,11.6 121.1,19.4M121.1,19.4 Q127.3,15.7 134.2,10.5"/></svg>
+	<svg class="decor tuto-hero__heart tuto-hero__heart--1" aria-hidden="true" focusable="false" viewBox="0 0 24 22"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg>
+	<svg class="decor tuto-hero__heart tuto-hero__heart--2" aria-hidden="true" focusable="false" viewBox="0 0 24 22"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg>
+	<svg class="decor tuto-hero__heart tuto-hero__heart--3" aria-hidden="true" focusable="false" viewBox="0 0 24 22"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg>
+	<svg class="decor tuto-hero__dots" aria-hidden="true" focusable="false" viewBox="0 0 260 120"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 8" d="M4,112 C40,108 72,90 100,72 C128,54 160,58 160,78 C160,96 132,96 132,76 C132,50 172,28 206,22 C226,18 242,16 256,8"/></svg>
+
+	<!-- One grid, no duplicated markup: the order is set by grid-template-areas (blocks/hero/style.css).
+	     < 1024px: h1 → lead → buttons → photo → ages → facts (no chips: they repeated the lead, T-125); ≥ 1024px: text left, photo right. -->
+	<div class="container tuto-hero__grid">
+		<h1 class="display tuto-hero__title" id="hero-title">Місце <span class="hand">щасливого</span> дитинства</h1>
+		<p class="lead tuto-hero__lead">Мінісадочок і&nbsp;розвивальні заняття у&nbsp;Тернополі:<br>скандинавський підхід, сенсорика, English Time.</p>
+		<div class="btn-group tuto-hero__actions" data-sticky-cta-hide>
+			<a class="btn btn--primary" href="#zapys"><span>Записатися на&nbsp;пробне<span class="tuto-hero__cta-more"> заняття</span></span></a>
+			<a class="btn btn--secondary tuto-hero__programs" href="#vik">Програми</a>
+		</div>
+
+		<div class="tuto-hero__media">
+			<svg class="decor tuto-hero__blob" aria-hidden="true" focusable="false" viewBox="0 0 200 200"><path fill="currentColor" d="M187.9,127.2C180.5,147.5 150.6,164.2 128.4,172.6C106.3,181.1 73.5,187.9 54.9,177.9C36.4,167.9 21,136.2 16.9,112.5C12.8,88.7 15.6,50 30.4,35.3C45.2,20.6 82,21.7 105.7,24.2C129.5,26.7 159.1,33.3 172.7,50.5C186.4,67.6 195.3,106.8 187.9,127.2Z"/></svg>
+			<span class="decor tuto-hero__peek"><svg class="tuto-bear" aria-hidden="true" focusable="false" viewBox="0 0 124 100"><g transform="translate(66 64)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-8)"><path class="tuto-hero__bear-fill" d="M-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9 Z M23.8,-44.9 A18,18 0 1 1 48.9,-21.3 Z M-47.7,23.5 A54,50 0 1 1 39,34.6 L39,42 L-47.7,42 Z"/><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-47.7,23.5 A54,50 0 1 1 39,34.6M-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle class="tuto-hero__wink" cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g><path class="tuto-hero__bear-fill" d="M-45.5,36 A12.5,12.5 0 0 1 -20.5,36 Z M20.5,36 A12.5,12.5 0 0 1 45.5,36 Z"/><path d="M-45.5,36 A12.5,12.5 0 0 1 -20.5,36M-37.5,36 V31 M-28.5,36 V31M20.5,36 A12.5,12.5 0 0 1 45.5,36M28.5,36 V31 M37.5,36 V31"/></g></svg></span>
+			<figure class="frame-arch">
+				<img src="/tuto-preview/design/refs/photos/instagram/ig-106-kids-teacher-with-child.jpg" srcset="/tuto-preview/design/hero-variants/img/hero-106-640.webp 640w, /tuto-preview/design/hero-variants/img/hero-106-941.webp 941w" sizes="(min-width: 48em) 27rem, 100vw" width="941" height="1672" alt="Алла, засновниця ТУТО, з донькою на занятті" fetchpriority="high" decoding="async">
+			</figure>
+			<span class="badge badge--light tuto-hero__where"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Тернопіль · діти 0–&#8288;6&nbsp;років</span>
+			<span class="badge badge--light badge--heart tuto-hero__tag">Щовечора&nbsp;- фото й&nbsp;відео з&nbsp;занять</span>
+			<svg class="decor tuto-hero__branch-b" aria-hidden="true" focusable="false" viewBox="0 0 97 283"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-5 31)" d="M30,250 C38,180 50,100 82,10M33.6,220 L36.6,217.3 C50.3,218.6 70.1,199.3 79.4,181.1 C64.7,184.7 41.4,201.8 36.6,217.3M37.7,191.1 L36,187.5 C41.4,173.7 28,147.5 7.9,134.4 C11.4,148.3 21.6,177.5 36,187.5M43,158.9 L46.1,156.4 C59.3,159.1 79.9,142.1 90.2,125.1 C75.6,127.1 51.7,141.8 46.1,156.4M49,127.9 L47.6,124.1 C54.2,112.3 44.3,87.6 26.8,74.2 C28.7,87.1 35.4,114.3 47.6,124.1M56.3,95.8 L59.7,93.7 C70.7,98.1 89.8,85.2 99.8,71.1 C86.8,71.1 64.9,81.4 59.7,93.7M64.3,65.4 L63.4,61.5 C70,54 64.4,34.5 51.7,23.2 C52,33.1 54.7,54.2 63.4,61.5M82,10 L83.3,6.2 C92.3,3.9 98.2,-14.5 97.7,-29 C89.5,-22.1 80.5,-3.9 83.3,6.2"/></svg>
+		</div>
+
+		<nav class="tuto-hero__ages" aria-labelledby="hero-ages-label">
+			<p class="tuto-hero__ages-label" id="hero-ages-label">Скільки років дитині?</p>
+			<ul class="tuto-hero__ages-list" role="list">
+				<li><a class="chip" href="#vik-0-1">0–&#8288;1</a></li>
+				<li><a class="chip" href="#vik-1-2">1–&#8288;2</a></li>
+				<li><a class="chip" href="#vik-2-4">2–&#8288;4</a></li>
+				<li><a class="chip" href="#vik-4-6">4–&#8288;6&nbsp;років</a></li>
+			</ul>
+		</nav>
+		<ul class="tuto-hero__facts" role="list">
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Тарнавського,&nbsp;7В · Коновальця,&nbsp;11</li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>Мінісадочок пн–&#8288;пт&nbsp;09:00–&#8288;13:00</li>
+			<li class="tuto-hero__fact-phone"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg><a href="tel:+380969404901">096&nbsp;940&nbsp;49&nbsp;01</a></li>
+		</ul>
+	</div>
+</section>
+
+<!-- ================================================================ 2. age-picker -->
+<section class="tuto-block tuto-age-picker section section--sand section--wave-top" id="vik" aria-labelledby="vik-title">
+	<svg class="decor tuto-age-picker__branch" aria-hidden="true" focusable="false" viewBox="0 0 141 172"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-5 0)" d="M8,170 C30,130 60,70 118,22M25.5,138.2 L24.1,134.4 C30.3,125.6 22.3,106 7.4,95.8 C8.8,106.1 14,127.8 24.1,134.4M24.1,134.4 Q21.1,122.6 17.2,110.8M36.7,119 L40.6,118.3 C47.8,125.4 67.5,121 80.3,112.7 C69.7,108.7 48.5,110.1 40.6,118.3M40.6,118.3 Q52.1,117.4 63.8,115.6M50.6,97.4 L49.7,93.5 C57.3,86.1 52.5,66.5 39.5,54.8 C39.3,64.7 40.9,86 49.7,93.5M49.7,93.5 Q48.7,82.1 46.8,70.4M65.3,77 L69.3,76.4 C75.2,84 93.3,80.6 105.2,73.1 C95.6,68.5 76.2,68.7 69.3,76.4M69.3,76.4 Q79.4,76.2 90.1,75.1M83.6,55.1 L83.7,51.1 C91.5,47.4 91.5,30.9 83.1,19 C80.8,26.9 77.9,44.1 83.7,51.1M83.7,51.1 Q85.2,42.5 85.9,32.8M118,22 L121.1,19.4 C127.9,22.9 138.9,13.1 143.7,2.8 C135,3.4 121.8,11.6 121.1,19.4M121.1,19.4 Q127.3,15.7 134.2,10.5"/></svg>
+	<div class="container">
+		<div class="section-head section-head--center">
+			<p class="eyebrow">Вибір за&nbsp;віком</p>
+			<h2 id="vik-title">Що&nbsp;підійде <span class="hand">вашій</span> дитині</h2>
+			<p class="section-head__lead">Оберіть вік&nbsp;- і&nbsp;побачите заняття, формат і&nbsp;ціни.</p>
+		</div>
+
+		<!-- Age groups 0–1 / 1–2 / 2–4 / 4–6 are an assumption [УТОЧНИТИ: вікові групи] (TASKS, вопрос к Алле №8) -->
+		<div class="tuto-age-picker__tabs" data-tablist data-tablist-label="Вік дитини">
+			<a class="chip tuto-age-picker__tab" href="#vik-0-1" data-tab>0–&#8288;1 <span>рік</span></a>
+			<a class="chip tuto-age-picker__tab" href="#vik-1-2" data-tab>1–&#8288;2 <span>роки</span></a>
+			<a class="chip tuto-age-picker__tab" href="#vik-2-4" data-tab>2–&#8288;4 <span>роки</span></a>
+			<a class="chip tuto-age-picker__tab" href="#vik-4-6" data-tab>4–&#8288;6 <span>років</span></a>
+		</div>
+
+		<div class="tuto-age-picker__panels">
+			<!-- 0–1 -->
+			<div class="tuto-age-picker__panel" id="vik-0-1" data-tabpanel>
+				<figure class="frame-blob tuto-age-picker__media">
+					<img src="/tuto-preview/design/refs/photos/instagram/ig-007-kids-baby-looking-up.jpg" width="720" height="1280" alt="Малюк у світлому светрику з цікавістю дивиться вгору на стрічки" loading="lazy" decoding="async">
+				</figure>
+				<div class="tuto-age-picker__body">
+					<div class="tuto-age-picker__head">
+						<h3 class="tuto-age-picker__age">0–&#8288;1&nbsp;рік</h3>
+						<p class="tuto-age-picker__intro">Для&nbsp;найменших&nbsp;- разом із&nbsp;мамою.</p>
+					</div>
+					<ul class="tuto-age-picker__cards" role="list">
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">малюТО</h4><span class="chip">0–&#8288;13&nbsp;міс.</span></div>
+							<p class="card__text">Сенсорні заняття для&nbsp;малюків разом із&nbsp;мамою.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>4&nbsp;заняття&nbsp;×&nbsp;45&nbsp;хв</li>
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-heart"/></svg>разом із&nbsp;мамою</li>
+							</ul>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">1400</span> <span class="price__unit">грн</span><span class="price__note">абонемент на&nbsp;4&nbsp;заняття</span><span class="tuto-age-picker__trial">Пробне&nbsp;- <span class="tuto-age-picker__todo">[УТОЧНИТИ: ціна]</span></span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/program-maliuto.html">Детальніше<span class="visually-hidden"> про&nbsp;малюТО</span></a>
+							</div>
+						</article></li>
+						<li><article class="card card--outline tuto-age-picker__card tuto-age-picker__card--next">
+							<h4 class="card__title">Малюку вже рік?</h4>
+							<p class="card__text">Далі&nbsp;- Розвивайко «Мама&nbsp;і&nbsp;я»: заняття разом з&nbsp;мамою, від&nbsp;1&nbsp;року.</p>
+							<a class="btn btn--ghost" href="#vik-1-2">Заняття для&nbsp;1–&#8288;2&nbsp;років</a>
+						</article></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- 1–2 -->
+			<div class="tuto-age-picker__panel" id="vik-1-2" data-tabpanel>
+				<figure class="frame-blob frame-blob--alt tuto-age-picker__media">
+					<img src="/tuto-preview/design/refs/photos/instagram/ig-029-kids-pouring-sensory.jpg" width="720" height="1280" alt="Малюк пересипає крупу через лійку на сенсорному занятті" loading="lazy" decoding="async">
+				</figure>
+				<div class="tuto-age-picker__body">
+					<div class="tuto-age-picker__head">
+						<h3 class="tuto-age-picker__age">1–&#8288;2&nbsp;роки</h3>
+						<p class="tuto-age-picker__intro">Перші заняття в&nbsp;групі&nbsp;- поруч із&nbsp;мамою.</p>
+					</div>
+					<ul class="tuto-age-picker__cards" role="list">
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">Розвивайко «Мама&nbsp;і&nbsp;я»</h4><span class="chip">від&nbsp;1&nbsp;року</span></div>
+							<p class="card__text">Заняття разом з&nbsp;мамою.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>8&nbsp;занять&nbsp;×&nbsp;45&nbsp;хв</li>
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Тарнавського,&nbsp;7В: вт&nbsp;10:00&nbsp;і&nbsp;14:00, ср&nbsp;10:00</li>
+							</ul>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">2000</span> <span class="price__unit">грн</span><span class="price__note">абонемент на&nbsp;8&nbsp;занять</span><span class="tuto-age-picker__trial">Пробне&nbsp;- <span class="tuto-age-picker__todo">[УТОЧНИТИ: ціна]</span></span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/program-rozvyvaiko.html">Детальніше<span class="visually-hidden"> про&nbsp;Розвивайко «Мама&nbsp;і&nbsp;я»</span></a>
+							</div>
+						</article></li>
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">Мінісадочок</h4><span class="chip">адаптація з&nbsp;мамою</span></div>
+							<p class="card__text">Денний простір активного розвитку: навчання, розвиток, соціалізація.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>пн–&#8288;пт, 09:00–&#8288;13:00</li>
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>на&nbsp;обох локаціях</li>
+							</ul>
+							<p class="tuto-age-picker__todo">[УТОЧНИТИ: з&nbsp;якого віку]</p>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">500</span> <span class="price__unit">грн</span><span class="price__note">за&nbsp;день · є абонементи на&nbsp;8&nbsp;і&nbsp;20&nbsp;днів</span><span class="tuto-age-picker__trial">Пробний день&nbsp;- 500&nbsp;грн</span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/minisadochok.html">Детальніше<span class="visually-hidden"> про&nbsp;мінісадочок</span></a>
+							</div>
+						</article></li>
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">СЕНСОленд</h4></div>
+							<p class="card__text">Сенсорні заняття для&nbsp;всебічного розвитку.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>4&nbsp;заняття&nbsp;×&nbsp;50&nbsp;хв · вт&nbsp;17:30</li>
+							</ul>
+							<p class="tuto-age-picker__todo">[УТОЧНИТИ: вік]</p>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">1600</span> <span class="price__unit">грн</span><span class="price__note">абонемент на&nbsp;4&nbsp;заняття</span><span class="tuto-age-picker__trial">Пробне&nbsp;- <span class="tuto-age-picker__todo">[УТОЧНИТИ: ціна]</span></span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/program-sensolend.html">Детальніше<span class="visually-hidden"> про&nbsp;СЕНСОленд</span></a>
+							</div>
+						</article></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- 2–4 -->
+			<div class="tuto-age-picker__panel" id="vik-2-4" data-tabpanel>
+				<figure class="frame-blob tuto-age-picker__media">
+					<img src="/tuto-preview/design/refs/photos/instagram/ig-157-kids-sensory-trucks.jpg" width="1215" height="2160" alt="Дівчинка грається з іграшковим екскаватором на сенсорній станції" loading="lazy" decoding="async">
+				</figure>
+				<div class="tuto-age-picker__body">
+					<div class="tuto-age-picker__head">
+						<h3 class="tuto-age-picker__age">2–&#8288;4&nbsp;роки</h3>
+						<p class="tuto-age-picker__intro">Англійська, казки й&nbsp;мінісадочок.</p>
+					</div>
+					<ul class="tuto-age-picker__cards" role="list">
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">англіТО</h4><span class="chip">2–&#8288;4&nbsp;роки</span></div>
+							<p class="card__text">Англійська через рух, гру й&nbsp;пісні.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>8&nbsp;занять&nbsp;×&nbsp;50&nbsp;хв</li>
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Тарнавського&nbsp;- вт і&nbsp;чт&nbsp;16:30; Коновальця&nbsp;- пн і&nbsp;ср&nbsp;16:30</li>
+							</ul>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">2400</span> <span class="price__unit">грн</span><span class="price__note">абонемент на&nbsp;8&nbsp;занять (300&nbsp;грн/заняття) · діє на&nbsp;обох локаціях, без&nbsp;терміну дії</span><span class="tuto-age-picker__trial">Пробне&nbsp;- 350&nbsp;грн</span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/program-anglito.html">Детальніше<span class="visually-hidden"> про&nbsp;англіТО</span></a>
+							</div>
+						</article></li>
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">Мінісадочок</h4><span class="chip">пн–&#8288;пт</span></div>
+							<p class="card__text">Денний простір активного розвитку: навчання, розвиток, соціалізація.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>пн–&#8288;пт, 09:00–&#8288;13:00</li>
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-food"/></svg>сухий перекус і&nbsp;вода входять у&nbsp;вартість</li>
+							</ul>
+							<p class="tuto-age-picker__todo">[УТОЧНИТИ: вік]</p>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">500</span> <span class="price__unit">грн</span><span class="price__note">за&nbsp;день · є абонементи на&nbsp;8&nbsp;і&nbsp;20&nbsp;днів</span><span class="tuto-age-picker__trial">Пробний день&nbsp;- 500&nbsp;грн</span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/minisadochok.html">Детальніше<span class="visually-hidden"> про&nbsp;мінісадочок</span></a>
+							</div>
+						</article></li>
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">казкоТО</h4></div>
+							<p class="card__text">Пригоди у&nbsp;великому світі казок: лялькова вистава з&nbsp;попкорном, творчий майстер-клас, розвага й&nbsp;подаруночок.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>1&nbsp;заняття&nbsp;×&nbsp;50&nbsp;хв · зазвичай субота&nbsp;17:00</li>
+							</ul>
+							<p class="tuto-age-picker__todo">[УТОЧНИТИ: вік]</p>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">390</span> <span class="price__unit">грн</span><span class="price__note">за&nbsp;заняття</span><span class="tuto-age-picker__trial">Пробне&nbsp;- 390&nbsp;грн</span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/program-kazkoto.html">Детальніше<span class="visually-hidden"> про&nbsp;казкоТО</span></a>
+							</div>
+						</article></li>
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">СЕНСОленд</h4></div>
+							<p class="card__text">Сенсорні заняття для&nbsp;всебічного розвитку.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>4&nbsp;заняття&nbsp;×&nbsp;50&nbsp;хв · вт&nbsp;17:30</li>
+							</ul>
+							<p class="tuto-age-picker__todo">[УТОЧНИТИ: вік]</p>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">1600</span> <span class="price__unit">грн</span><span class="price__note">абонемент на&nbsp;4&nbsp;заняття</span><span class="tuto-age-picker__trial">Пробне&nbsp;- <span class="tuto-age-picker__todo">[УТОЧНИТИ: ціна]</span></span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/program-sensolend.html">Детальніше<span class="visually-hidden"> про&nbsp;СЕНСОленд</span></a>
+							</div>
+						</article></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- 4–6 -->
+			<div class="tuto-age-picker__panel" id="vik-4-6" data-tabpanel>
+				<figure class="frame-blob frame-blob--alt tuto-age-picker__media">
+					<img src="/tuto-preview/design/refs/photos/instagram/ig-122-kids-blocks-hay.jpg" width="720" height="1280" alt="Діти будують із дерев’яних брусків серед сіна й природних матеріалів" loading="lazy" decoding="async">
+				</figure>
+				<div class="tuto-age-picker__body">
+					<div class="tuto-age-picker__head">
+						<h3 class="tuto-age-picker__age">4–&#8288;6&nbsp;років</h3>
+						<p class="tuto-age-picker__intro">Готуємося до&nbsp;школи й&nbsp;творимо.</p>
+					</div>
+					<ul class="tuto-age-picker__cards" role="list">
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">школяТО</h4></div>
+							<p class="card__text">Підготовка до&nbsp;школи.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>8&nbsp;занять&nbsp;×&nbsp;50&nbsp;хв</li>
+							</ul>
+							<p class="tuto-age-picker__todo">[УТОЧНИТИ: вік]</p>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">2000</span> <span class="price__unit">грн</span><span class="price__note">абонемент на&nbsp;8&nbsp;занять</span><span class="tuto-age-picker__trial">Пробне&nbsp;- <span class="tuto-age-picker__todo">[УТОЧНИТИ: ціна]</span></span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/program-shkoliato.html">Детальніше<span class="visually-hidden"> про&nbsp;школяТО</span></a>
+							</div>
+						</article></li>
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">Творчі заняття</h4></div>
+							<p class="card__text">Ліплення з&nbsp;легкого пластиліну й&nbsp;малювання в&nbsp;різних техніках.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Тарнавського,&nbsp;7В: вт і&nbsp;чт&nbsp;- 16:00&nbsp;ліплення, 17:00&nbsp;малювання</li>
+							</ul>
+							<p class="tuto-age-picker__todo">[УТОЧНИТИ: вік]</p>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">200</span> <span class="price__unit">грн</span><span class="price__note">за&nbsp;заняття</span><span class="tuto-age-picker__trial">Пробне&nbsp;- 200&nbsp;грн</span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/program-tvorchi-zaniattia.html">Детальніше<span class="visually-hidden"> про&nbsp;творчі заняття</span></a>
+							</div>
+						</article></li>
+						<li><article class="card tuto-age-picker__card">
+							<div class="card__head"><h4 class="card__title">казкоТО</h4></div>
+							<p class="card__text">Казка, лялькова вистава з&nbsp;попкорном, творчий майстер-клас і&nbsp;подаруночок.</p>
+							<ul class="tuto-age-picker__meta" role="list">
+								<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>1&nbsp;заняття&nbsp;×&nbsp;50&nbsp;хв · зазвичай субота&nbsp;17:00</li>
+							</ul>
+							<p class="tuto-age-picker__todo">[УТОЧНИТИ: вік]</p>
+							<div class="card__footer">
+								<p class="price price--sm"><span class="price__value">390</span> <span class="price__unit">грн</span><span class="price__note">за&nbsp;заняття</span><span class="tuto-age-picker__trial">Пробне&nbsp;- 390&nbsp;грн</span></p>
+								<a class="btn btn--soft btn--sm" href="/tuto-preview/design/program-kazkoto.html">Детальніше<span class="visually-hidden"> про&nbsp;казкоТО</span></a>
+							</div>
+						</article></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<p class="tuto-age-picker__also">Також: <strong>індивідуальне заняття</strong>&nbsp;- 450&nbsp;грн · <a href="/tuto-preview/design/program-subotnii-klub.html"><strong>Суботній ТУТО клуб</strong></a> (субота&nbsp;09:00–&#8288;16:00, з&nbsp;денним сном і&nbsp;обідом)&nbsp;- 800&nbsp;грн, пробне&nbsp;- 800&nbsp;грн [УТОЧНИТИ: вік]</p>
+
+		<!-- Real review (BRIEF §4.8), verbatim; moved here from the slider below. [УТОЧНИТИ: згода мам на публікацію] -->
+		<figure class="tuto-age-picker__quote">
+			<blockquote><p>Так цікаво, що&nbsp;не&nbsp;хочеться пропускати жодного дня!</p></blockquote>
+			<figcaption>Наталія <span>· з&nbsp;батьківського чату</span></figcaption>
+		</figure>
+
+		<div class="tuto-age-picker__footer">
+			<p class="caption">Кожна дитина може відвідати до&nbsp;двох пробних занять за&nbsp;разовим тарифом. Ціни&nbsp;- станом на&nbsp;листопад&nbsp;2026.</p>
+			<a class="btn btn--primary" href="#zapys">Записатися на&nbsp;пробне</a>
+		</div>
+	</div>
+</section>
+
+<!-- ================================================================ 3. features -->
+<section class="tuto-block tuto-features section section--wave-top section--wave-alt" aria-labelledby="features-title">
+	<svg class="decor tuto-features__heart" aria-hidden="true" focusable="false" viewBox="0 0 24 22"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg>
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">Наш підхід</p>
+			<h2 id="features-title">Чим ми <span class="hand">особливі</span></h2>
+			<p class="section-head__lead">Розвиток через гру й&nbsp;дослідження.<br>А&nbsp;ще&nbsp;- хореотерапія, адаптивна фізкультура, кулінарні майстер-класи й&nbsp;лялькові вистави.</p>
+		</div>
+
+		<div class="tuto-features__grid">
+			<!-- phones: the four white cards are a slider; the photo is hidden; the dark and the sand card follow below.
+			     From 48em __slides is display: contents and every tile takes its grid-area (bento, as before). -->
+			<div class="tuto-features__slides">
+				<article class="card tuto-features__item tuto-features__item--a">
+					<span class="tuto-features__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-theme-week"/></svg></span>
+					<h3 class="card__title">Тематичні тижні</h3>
+					<p class="card__text">У&nbsp;кожного дня своя тема, колір і&nbsp;герой: «Погодні&nbsp;пригоди», «Скарби&nbsp;землі», «На&nbsp;фермі»…</p>
+				</article>
+				<article class="card tuto-features__item tuto-features__item--b">
+					<span class="tuto-features__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-sensory"/></svg></span>
+					<h3 class="card__title">Сенсорика</h3>
+					<p class="card__text">Сенсорні станції та&nbsp;природні матеріали&nbsp;- як-от ґрунт, трава, деревина, мох. Світ, який можна торкнутися.</p>
+				</article>
+				<article class="card tuto-features__item tuto-features__item--c">
+					<span class="tuto-features__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-reggio"/></svg></span>
+					<h3 class="card__title">Reggio Emilia по&nbsp;п’ятницях</h3>
+					<p class="card__text">П’ятниця&nbsp;- день вільного дослідження в&nbsp;стилі Reggio Emilia.</p>
+				</article>
+				<article class="card tuto-features__item tuto-features__item--d">
+					<span class="tuto-features__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-bilingual"/></svg></span>
+					<h3 class="card__title">Білінгвальність</h3>
+					<p class="card__text">English Time на&nbsp;заняттях, а&nbsp;для&nbsp;2–&#8288;4&nbsp;років&nbsp;- курс англіТО: англійська через рух, гру й&nbsp;пісні.</p>
+				</article>
+			</div>
+			<figure class="frame-round tuto-features__photo">
+				<img src="/tuto-preview/design/refs/photos/instagram/ig-174-material-shell-sandbox.jpg" width="1215" height="2160" alt="Пісочниця у формі мушлі з піском серед зелені" loading="lazy" decoding="async">
+				<figcaption class="badge badge--light badge--heart">Природні матеріали й&nbsp;сенсорні станції</figcaption>
+			</figure>
+			<article class="card card--dark tuto-features__item tuto-features__item--dark tuto-features__item--e">
+				<span class="tuto-features__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-camera"/></svg></span>
+				<h3 class="card__title">Щоденні фотозвіти</h3>
+				<p class="tuto-features__big">Зранку&nbsp;- анонс дня в&nbsp;чаті, ввечері&nbsp;- фото й&nbsp;відео з&nbsp;занять.</p>
+			</article>
+			<article class="card card--sand tuto-features__item tuto-features__item--soft tuto-features__item--f">
+				<span class="tuto-features__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-heart"/></svg></span>
+				<h3 class="card__title">Хом’ячки та&nbsp;кролик</h3>
+				<p class="card__text">Живуть у&nbsp;центрі&nbsp;- пухнасті друзі, з&nbsp;якими можна познайомитися.</p>
+			</article>
+		</div>
+	</div>
+</section>
+
+<!-- ================================================================ 4. day-timeline (Мінісадочок коротко) -->
+<section class="tuto-block tuto-day-timeline section section--sand section--wave-top section--wave-flip" id="minisadochok" aria-labelledby="day-title">
+	<div class="container tuto-day-timeline__grid">
+		<div class="tuto-day-timeline__intro">
+			<p class="eyebrow">Мінісадочок</p>
+			<h2 id="day-title">Денний простір <span class="hand">активного</span> розвитку</h2>
+			<p class="lead">Навчання, розвиток і&nbsp;соціалізація&nbsp;- з&nbsp;понеділка по&nbsp;п’ятницю.<br>Перший день&nbsp;- «День знайомства та&nbsp;відкриттів»: без&nbsp;поспіху, щоб малюк захотів повернутися.</p>
+			<ul class="tuto-day-timeline__facts" role="list">
+				<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>пн–&#8288;пт, 09:00–&#8288;13:00</li>
+				<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>На&nbsp;обох локаціях</li>
+				<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-heart"/></svg>Адаптація разом з&nbsp;мамою</li>
+				<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-food"/></svg>Сухий перекус і&nbsp;вода&nbsp;- у&nbsp;вартості</li>
+			</ul>
+
+			<div class="card tuto-day-timeline__prices">
+				<p class="price"><span class="price__value">500</span> <span class="price__unit">грн</span><span class="price__note">разове відвідування, один день</span></p>
+				<ul class="tuto-day-timeline__plans" role="list">
+					<li><span>Абонемент на&nbsp;8&nbsp;днів</span><strong>3600&nbsp;грн</strong></li>
+					<li><span>Місячний абонемент, 20&nbsp;днів</span><strong>8600&nbsp;грн</strong></li>
+				</ul>
+				<p class="tuto-day-timeline__gift"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-gift"/></svg>До&nbsp;місячного абонемента&nbsp;- рюкзачок ТУТО в&nbsp;подарунок</p>
+				<p class="caption">Адаптаційний період разом з&nbsp;мамою: до&nbsp;2&nbsp;год&nbsp;- 350&nbsp;грн, до&nbsp;3&nbsp;год&nbsp;- 400&nbsp;грн, понад 3&nbsp;год&nbsp;- 500&nbsp;грн.</p>
+			</div>
+			<a class="btn btn--ghost" href="/tuto-preview/design/minisadochok.html">Усе про&nbsp;мінісадочок</a>
+		</div>
+
+		<details class="card tuto-day-timeline__day tuto-day-timeline__day--toggle" open data-fold-below="48em">
+			<summary class="tuto-day-timeline__summary"><h3>Як&nbsp;проходить день</h3><span class="tuto-day-timeline__chevron" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-chevron-down"/></svg></span></summary>
+			<div class="tuto-day-timeline__body">
+				<p class="tuto-day-timeline__note">У&nbsp;кожного дня тематичного тижня своя тема. <span class="tuto-day-timeline__todo">[УТОЧНИТИ: розпорядок по&nbsp;часу]</span></p>
+				<ol class="tuto-day-timeline__list" role="list">
+					<li class="tuto-day-timeline__step">
+						<p class="tuto-day-timeline__time"><time datetime="09:00">09:00</time></p>
+						<div>
+							<h4><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-badge"/></svg>Зустріч</h4>
+							<p>Вдягаємо тривожний бейдж із&nbsp;важливою інформацією та&nbsp;контактами батьків. Анонс дня вже в&nbsp;чаті.</p>
+						</div>
+					</li>
+					<li class="tuto-day-timeline__step">
+						<span class="tuto-day-timeline__dot" aria-hidden="true"></span>
+						<div>
+							<h4><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-theme-week"/></svg>Тема дня</h4>
+							<p>У&nbsp;кожного дня тематичного тижня своя тема, колір і&nbsp;герой.</p>
+						</div>
+					</li>
+					<li class="tuto-day-timeline__step">
+						<span class="tuto-day-timeline__dot" aria-hidden="true"></span>
+						<div>
+							<h4><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-sensory"/></svg>Сенсорні станції</h4>
+							<p>Досліджуємо природні матеріали руками.</p>
+						</div>
+					</li>
+					<li class="tuto-day-timeline__step">
+						<span class="tuto-day-timeline__dot" aria-hidden="true"></span>
+						<div>
+							<h4><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-food"/></svg>Перекус</h4>
+							<p>Сухий перекус і&nbsp;вода&nbsp;- у&nbsp;вартості.</p>
+						</div>
+					</li>
+					<li class="tuto-day-timeline__step">
+						<p class="tuto-day-timeline__time"><time datetime="13:00">13:00</time></p>
+						<div>
+							<h4><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-heart"/></svg>До&nbsp;зустрічі!</h4>
+							<p>Дитину забирають батьки. Хто ще може забрати&nbsp;- <a href="#bezpeka">у&nbsp;розділі «Безпека&nbsp;і&nbsp;турбота»</a>.</p>
+						</div>
+					</li>
+					<li class="tuto-day-timeline__step">
+						<p class="tuto-day-timeline__time tuto-day-timeline__time--soft">Ввечері</p>
+						<div>
+							<h4><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-camera"/></svg>Фото й&nbsp;відео</h4>
+							<p>Надсилаємо в&nbsp;батьківський чат фото й&nbsp;відео з&nbsp;занять.</p>
+						</div>
+					</li>
+				</ol>
+				<p class="tuto-day-timeline__friday"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-reggio"/></svg>По&nbsp;п’ятницях&nbsp;- вільне дослідження в&nbsp;стилі Reggio Emilia.</p>
+			</div>
+		</details>
+	</div>
+</section>
+
+<!-- ================================================================ 5. this-week (остання запис «Тема тижня») -->
+<section class="tuto-block tuto-this-week section section--wave-top" aria-labelledby="week-title">
+	<div class="container">
+		<article class="tuto-this-week__card">
+			<svg class="decor tuto-this-week__peek tuto-bear" aria-hidden="true" focusable="false" viewBox="0 0 124 100"><g transform="translate(66 64)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-8)"><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-47.7,23.5 A54,50 0 1 1 39,34.6M-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g><path d="M-45.5,36 A12.5,12.5 0 0 1 -20.5,36M-37.5,36 V31 M-28.5,36 V31M20.5,36 A12.5,12.5 0 0 1 45.5,36M28.5,36 V31 M37.5,36 V31"/></g></svg>
+			<figure class="frame-blob tuto-this-week__media">
+				<img src="/tuto-preview/design/refs/photos/instagram/ig-121-material-ducklings-sensory.jpg" width="941" height="1672" alt="Живі каченята на сенсорній станції з квітами й зеленню" loading="lazy" decoding="async">
+			</figure>
+			<div class="tuto-this-week__body">
+				<div class="tuto-this-week__meta">
+					<p class="eyebrow">Тема цього тижня</p>
+					<p class="tuto-this-week__date"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-theme-week"/></svg>[УТОЧНИТИ: дати тижня]</p>
+				</div>
+				<h2 id="week-title">Світ біля <span class="hand">водойми</span></h2>
+				<p class="lead">До&nbsp;нас у&nbsp;гості завітали живі каченята, рибка й&nbsp;жабка -<br>і&nbsp;ми знайомилися з&nbsp;мешканцями водойми зблизька.</p>
+				<a class="btn btn--primary" href="/tuto-preview/design/blog-post-svit-bilia-vodoimy.html">Як&nbsp;минув тиждень</a>
+				<div class="tuto-this-week__more">
+					<h3 class="tuto-this-week__more-title">Інші наші теми</h3>
+					<ul class="tuto-this-week__themes" role="list">
+						<li><a class="chip" href="/tuto-preview/design/blog-post-pohodni-pryhody.html">Погодні пригоди</a></li>
+						<li><a class="chip" href="/tuto-preview/design/blog-post-skarby-zemli.html">Скарби землі</a></li>
+						<li><a class="chip" href="/tuto-preview/design/blog-post-ovochevi-pryhody.html">Овочеві пригоди</a></li>
+						<li><a class="chip" href="/tuto-preview/design/blog-post-bdzhilka-tusia.html">Бджілка Туся кольоровим світом</a></li>
+						<li><a class="chip" href="/tuto-preview/design/blog-post-osin-zavitala.html">Осінь завітала</a></li>
+					</ul>
+				</div>
+				<a class="btn btn--ghost" href="/tuto-preview/design/blog.html">Усі теми тижня</a>
+			</div>
+		</article>
+	</div>
+</section>
+
+<!-- ================================================================ 6. safety -->
+<section class="tuto-block tuto-safety section section--chocolate section--wave-top section--wave-alt" id="bezpeka" aria-labelledby="safety-title">
+	<div class="container tuto-safety__grid">
+		<div>
+			<div class="section-head">
+				<p class="eyebrow">Безпека і&nbsp;турбота</p>
+				<h2 id="safety-title">Спокійно <span class="hand">дітям</span> і&nbsp;батькам</h2>
+				<p class="section-head__lead">Наша мета&nbsp;- щоб дитині було комфортно й&nbsp;безпечно і&nbsp;їй захотілося повернутися.</p>
+			</div>
+			<ul class="tuto-safety__list" role="list">
+				<li class="tuto-safety__item">
+					<span class="tuto-safety__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-badge"/></svg></span>
+					<h3>Тривожний бейдж</h3>
+					<p>Щоранку дитина отримує бейдж із&nbsp;важливою інформацією та&nbsp;контактами батьків.</p>
+				</li>
+				<li class="tuto-safety__item">
+					<span class="tuto-safety__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-shelter"/></svg></span>
+					<h3>Повітряна тривога</h3>
+					<p>Приміщення напівпідвальні: під&nbsp;час тривоги залишаємося на&nbsp;місці й&nbsp;одразу попереджаємо батьків у&nbsp;чаті.</p>
+				</li>
+				<li class="tuto-safety__item">
+					<span class="tuto-safety__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-safety"/></svg></span>
+					<h3>Хто забирає дитину</h3>
+					<p>Забирають дитину батьки. Якщо прийде інший дорослий (бабуся, няня)&nbsp;- заздалегідь попередьте нас і&nbsp;надішліть фото його паспорта чи&nbsp;ID [УТОЧНИТИ: куди надсилати]. Брат чи&nbsp;сестра до&nbsp;18&nbsp;років&nbsp;- лише за&nbsp;письмовою заявою батьків.</p>
+				</li>
+				<li class="tuto-safety__item">
+					<span class="tuto-safety__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-camera"/></svg></span>
+					<h3>Щоденні звіти</h3>
+					<p>Зранку&nbsp;- анонс дня в&nbsp;чаті, ввечері&nbsp;- фото й&nbsp;відео з&nbsp;занять.</p>
+				</li>
+			</ul>
+		</div>
+
+		<div class="tuto-safety__aside">
+			<figure class="frame-arch frame-arch--left tuto-safety__media">
+				<img src="/tuto-preview/design/refs/photos/instagram/ig-153-kids-reading-sofa.jpg" width="720" height="1280" alt="Жінка й малюк спокійно сидять на дивані в центрі, поруч плюшевий ведмедик і картки з малюнками" loading="lazy" decoding="async">
+			</figure>
+			<div class="tuto-safety__pack">
+				<h3><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-backpack"/></svg>Що&nbsp;взяти з&nbsp;собою</h3>
+				<ul class="list-check" role="list">
+					<li>Змінний одяг</li>
+					<li>Підгузки&nbsp;- за&nbsp;потреби</li>
+					<li>Свій перекус&nbsp;- за&nbsp;бажанням</li>
+					<li>Змінне взуття дає центр</li>
+				</ul>
+				<p>Документи: свідоцтво про&nbsp;народження й&nbsp;копія паспорта одного з&nbsp;батьків.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ================================================================ 7. reviews-slider -->
+<!-- Real reviews from the parents' chat (BRIEF §4.8), verbatim. Publish only with consent [УТОЧНИТИ: згода мам на публікацію]. -->
+<section class="tuto-block tuto-reviews-slider section section--wave-top" aria-labelledby="reviews-title">
+	<div class="container" role="region" aria-roledescription="carousel" aria-labelledby="reviews-title" data-carousel>
+		<div class="tuto-reviews-slider__head">
+			<div class="section-head">
+				<p class="eyebrow">Відгуки батьків</p>
+				<h2 id="reviews-title">Кажуть <span class="hand">мами</span></h2>
+			</div>
+			<div class="tuto-reviews-slider__controls">
+				<button class="btn btn--secondary btn--icon" type="button" aria-label="Попередні відгуки" aria-controls="reviews-track" data-carousel-prev hidden><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-arrow-left"/></svg></button>
+				<button class="btn btn--secondary btn--icon" type="button" aria-label="Наступні відгуки" aria-controls="reviews-track" data-carousel-next hidden><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-arrow-right"/></svg></button>
+			</div>
+		</div>
+
+		<div class="tuto-reviews-slider__track" id="reviews-track" role="group" aria-label="Стрічка відгуків, гортайте стрілками" tabindex="0" data-carousel-track>
+			<ul class="tuto-reviews-slider__list" role="list">
+				<li class="tuto-reviews-slider__slide">
+					<figure class="card tuto-reviews-slider__review" role="group" aria-roledescription="slide" aria-label="Відгук 1 з 5" data-carousel-slide>
+						<blockquote><p>Дивлюсь на&nbsp;заняття, на&nbsp;всі матеріали… і&nbsp;просто в&nbsp;шоці, наскільки потрібно з&nbsp;такою любов'ю ставитися до&nbsp;всього цього… дуже цікаве навіть для&nbsp;дорослих.</p></blockquote>
+						<figcaption><span class="tuto-reviews-slider__avatar" aria-hidden="true">Ю</span><span>Юлія<small>з&nbsp;батьківського чату</small></span></figcaption>
+					</figure>
+				</li>
+				<li class="tuto-reviews-slider__slide">
+					<figure class="card card--sand tuto-reviews-slider__review" role="group" aria-roledescription="slide" aria-label="Відгук 2 з 5" data-carousel-slide>
+						<blockquote><p>За&nbsp;цією гарно організованою навчальною програмою стоїть праця, що&nbsp;не&nbsp;потрапила до&nbsp;кадру. Наша Лєра в&nbsp;захваті й&nbsp;постійно розповідає, як&nbsp;цікаво в&nbsp;садочку.</p></blockquote>
+						<figcaption><span class="tuto-reviews-slider__avatar" aria-hidden="true">М</span><span>Мила<small>з&nbsp;батьківського чату</small></span></figcaption>
+					</figure>
+				</li>
+				<li class="tuto-reviews-slider__slide">
+					<figure class="card card--dark tuto-reviews-slider__review" role="group" aria-roledescription="slide" aria-label="Відгук 3 з 5" data-carousel-slide>
+						<blockquote><p>Я в&nbsp;шоці, як&nbsp;у&nbsp;вас все продумано, я сама б до&nbsp;вас ходила 😍</p></blockquote>
+						<figcaption><span class="tuto-reviews-slider__avatar" aria-hidden="true">З</span><span>Зоряна<small>з&nbsp;батьківського чату</small></span></figcaption>
+					</figure>
+				</li>
+				<li class="tuto-reviews-slider__slide">
+					<figure class="card tuto-reviews-slider__review" role="group" aria-roledescription="slide" aria-label="Відгук 4 з 5" data-carousel-slide>
+						<blockquote><p>Це дуже цінно для&nbsp;нас, що&nbsp;діти почувають себе в&nbsp;безпеці і&nbsp;що&nbsp;їм так цікаво!</p></blockquote>
+						<figcaption><span class="tuto-reviews-slider__avatar" aria-hidden="true">Н</span><span>Наталія<small>з&nbsp;батьківського чату</small></span></figcaption>
+					</figure>
+				</li>
+				<li class="tuto-reviews-slider__slide">
+					<figure class="card card--sand tuto-reviews-slider__review" role="group" aria-roledescription="slide" aria-label="Відгук 5 з 5" data-carousel-slide>
+						<blockquote><p>Домінік в&nbsp;захваті від&nbsp;садочка.</p></blockquote>
+						<figcaption><span class="tuto-reviews-slider__avatar" aria-hidden="true">А</span><span>Альона<small>з&nbsp;батьківського чату</small></span></figcaption>
+					</figure>
+				</li>
+			</ul>
+		</div>
+		<p class="visually-hidden" aria-live="polite" data-carousel-status></p>
+	</div>
+</section>
+
+<!-- ================================================================ 8. locations (без iframe, D-14) -->
+<!-- ⚠️ Google Maps links are copied from a screenshot (BRIEF §4.1) - check before launch [УТОЧНИТИ]. -->
+<section class="tuto-block tuto-locations section section--sand section--wave-top section--wave-flip" id="lokatsii" aria-labelledby="loc-title">
+	<svg class="decor tuto-locations__dots" aria-hidden="true" focusable="false" viewBox="0 0 260 120"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 8" d="M4,112 C40,108 72,90 100,72 C128,54 160,58 160,78 C160,96 132,96 132,76 C132,50 172,28 206,22 C226,18 242,16 256,8"/></svg>
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">Де нас знайти</p>
+			<h2 id="loc-title">Дві локації в <span class="hand">Тернополі</span></h2>
+			<p class="section-head__lead">Мінісадочок працює на&nbsp;обох: пн–&#8288;пт&nbsp;09:00–&#8288;13:00.<br>Графік роботи центру&nbsp;- 08:30–&#8288;20:00 [УТОЧНИТИ: години роботи кожної локації].</p>
+		</div>
+
+		<ul class="tuto-locations__list" role="list">
+			<li><article class="card card--media tuto-locations__card">
+				<div class="card__media">
+					<!-- [УТОЧНИТИ: яка локація на фото] - фасади розподілено за припущенням (TASKS, «Фото») -->
+					<a class="card__media-link" href="https://maps.app.goo.gl/oonU7xApJJH6D4e46" rel="noopener" target="_blank" tabindex="-1" aria-hidden="true"><img src="/tuto-preview/design/refs/photos/location-tarnavskoho-7v.jpg" width="941" height="1672" alt="Фасад ТУТО на вулиці Тарнавського, 7В: вивіска й вітрини" loading="lazy" decoding="async"></a>
+				</div>
+				<div class="card__body">
+					<h3 class="card__title"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>вул.&nbsp;Тарнавського,&nbsp;7В</h3>
+					<ul class="tuto-locations__tags" role="list">
+						<li><span class="chip">Є парковка</span></li>
+						<li><span class="chip">Над&nbsp;парковкою&nbsp;- дитячий майданчик</span></li>
+					</ul>
+					<dl class="tuto-locations__info">
+						<div><dt>Мінісадочок</dt><dd>пн–&#8288;пт, 09:00–&#8288;13:00</dd></div>
+						<div><dt>Заняття</dt><dd>Розвивайко «Мама&nbsp;і&nbsp;я», ліплення й&nbsp;малювання, англіТО (вт і&nbsp;чт&nbsp;16:30)</dd></div>
+					</dl>
+					<div class="card__footer">
+						<a class="btn btn--secondary btn--sm" href="https://maps.app.goo.gl/oonU7xApJJH6D4e46" rel="noopener" target="_blank"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Відкрити в&nbsp;Google Maps<span class="visually-hidden">: Тарнавського,&nbsp;7В</span></a>
+					</div>
+				</div>
+			</article></li>
+			<li><article class="card card--media tuto-locations__card">
+				<div class="card__media">
+					<a class="card__media-link" href="https://maps.app.goo.gl/qoXYExxU5Q367tfAA" rel="noopener" target="_blank" tabindex="-1" aria-hidden="true"><img src="/tuto-preview/design/refs/photos/location-konovaltsia-11.jpg" width="851" height="1514" alt="Вхід до ТУТО на вулиці Коновальця, 11: зелень і червоні сходинки з кошиками" loading="lazy" decoding="async"></a>
+					<span class="badge badge--light tuto-locations__badge">Відкрилась у&nbsp;вересні&nbsp;2026</span>
+				</div>
+				<div class="card__body">
+					<h3 class="card__title"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>вул.&nbsp;Коновальця,&nbsp;11</h3>
+					<dl class="tuto-locations__info">
+						<div><dt>Мінісадочок</dt><dd>пн–&#8288;пт, 09:00–&#8288;13:00</dd></div>
+						<div><dt>Заняття</dt><dd>англіТО (пн і&nbsp;ср&nbsp;16:30)</dd></div>
+					</dl>
+					<div class="card__footer">
+						<a class="btn btn--secondary btn--sm" href="https://maps.app.goo.gl/qoXYExxU5Q367tfAA" rel="noopener" target="_blank"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Відкрити в&nbsp;Google Maps<span class="visually-hidden">: Коновальця,&nbsp;11</span></a>
+					</div>
+				</div>
+			</article></li>
+		</ul>
+	</div>
+</section>
+
+<!-- ================================================================ 9. cta-banner -->
+<section class="tuto-block tuto-cta-banner section section--wave-top section--wave-alt" id="zapys" aria-labelledby="cta-title">
+	<div class="container">
+		<div class="tuto-cta-banner__panel on-dark" data-sticky-cta-hide>
+			<svg class="decor tuto-cta-banner__blob" aria-hidden="true" focusable="false" viewBox="0 0 320 180"><path fill="currentColor" d="M294.8,130.5C277.5,148.2 208.3,159.5 163,160.4C117.8,161.3 44,153.6 23.4,135.8C2.7,118 17.1,75.7 39.2,53.7C61.4,31.7 118.4,3.7 156.3,3.8C194.2,3.9 243.5,33.2 266.6,54.3C289.7,75.4 312.1,112.8 294.8,130.5Z"/></svg>
+			<svg class="decor tuto-cta-banner__heart tuto-cta-banner__heart--1" aria-hidden="true" focusable="false" viewBox="0 0 24 22"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg>
+			<svg class="decor tuto-cta-banner__heart tuto-cta-banner__heart--2" aria-hidden="true" focusable="false" viewBox="0 0 24 22"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg>
+			<div class="tuto-cta-banner__text">
+				<p class="eyebrow">Пробне заняття</p>
+				<h2 id="cta-title">Приходьте <span class="hand">знайомитися</span></h2>
+				<p class="lead">Кожна дитина може відвідати до&nbsp;двох пробних занять за&nbsp;разовим тарифом.<br>Напишіть або зателефонуйте&nbsp;- підкажемо, яке заняття підійде за&nbsp;віком.</p>
+				<p class="tuto-cta-banner__hint">Напишіть вік дитини та&nbsp;зручну локацію&nbsp;- відповімо [УТОЧНИТИ: як&nbsp;швидко].</p>
+				<div class="btn-group tuto-cta-banner__actions">
+					<a class="btn btn--primary" href="https://ig.me/m/tuto.center" rel="noopener" target="_blank"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-instagram"/></svg>Написати в&nbsp;Instagram</a>
+					<a class="btn btn--secondary" href="tel:+380969404901"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg>Подзвонити: 096&nbsp;940&nbsp;49&nbsp;01</a>
+				</div>
+				<p class="caption tuto-cta-banner__note">Пробне заняття&nbsp;- за&nbsp;разовим тарифом, вартість підкажемо при&nbsp;записі.</p>
+			</div>
+			<svg class="tuto-cta-banner__bear tuto-bear" aria-hidden="true" focusable="false" viewBox="0 0 168 198"><g transform="translate(60 58)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="0" cy="100" rx="18" ry="16" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".4" stroke="none"/><ellipse cx="-29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><ellipse cx="29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><path d="M-32.5,40 C-39.2,45.9 -44.3,55.3 -47.7,66M-51,79.5 C-52.7,89.3 -53.1,99.3 -52,108C-51.3,113.4 -48.6,118 -44.2,121.9M-14.6,133.1 C-10.1,133.7 -5.2,134 0,134C5.2,134 10.1,133.7 14.6,133.1M44.2,121.9 C48.6,118 51.3,113.4 52,108C54.9,85.2 47.8,53.4 32.5,40M-48,88.4 A10,20 -26 1 1 -30,79.6 A10,20 -26 1 1 -48,88.4ZM-46,127 A17,11.5 0 1 1 -12,127 A17,11.5 0 1 1 -46,127ZM12,127 A17,11.5 0 1 1 46,127 A17,11.5 0 1 1 12,127Z"/><g class="tuto-bear__arm"><ellipse cx="74" cy="1.2" rx="5" ry="6" transform="rotate(30 74,1.2)" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><path d="M78,-5.7 C83.3,-2.7 80.4,12.2 71.5,27.5C62.7,42.8 51.3,52.8 46,49.7C40.7,46.7 43.6,31.8 52.5,16.5C61.3,1.2 72.7,-8.8 78,-5.7"/></g><path class="tuto-bear__waves" d="M93,-17 Q98,-7 94,3 M101,-25 Q109,-7 102,9"/><g><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-54,0 A54,50 0 1 1 54,0 A54,50 0 1 1 -54,0 ZM-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g></g></svg>
+		</div>
+	</div>
+</section>
+
+</main>
+
+<!-- ================================================================ Footer (theme template, D-15) -->
+<footer class="site-footer section section--chocolate section--wave-top" aria-labelledby="footer-title">
+	<div class="container">
+		<h2 class="visually-hidden" id="footer-title">Контакти та&nbsp;меню</h2>
+		<div class="site-footer__grid">
+			<div class="site-footer__brand">
+				<a class="site-footer__logo" href="/tuto-preview/design/home.html" aria-label="ТУТО - на головну"><svg class="tuto-logo" aria-hidden="true" focusable="false" viewBox="0 0 1354 455"><path fill="currentColor" d="M0,100 H255 V160 H157 V404 H98 V160 H0 Z M318.5,100 L383.5,100 L457,261.9 L530.5,100 L595.5,100 L457.5,404 L392.5,404 L424.5,333.5 Z M658.5,100 H914 V160 H815.8 V404 H756.8 V160 H658.5 Z"/><circle cx="1166.5" cy="268" r="121" fill="none" stroke="currentColor" stroke-width="27"/><g class="tuto-logo__accent" style="color:var(--logo-accent,var(--c-brick,#6E2B1E))"><circle cx="1166.5" cy="268" r="174.4" fill="none" stroke="currentColor" stroke-width="25"/><path fill="currentColor" d="M1225,0 H1268 L1232,61 H1189 Z"/></g></svg></a>
+				<p class="site-footer__slogan"><span class="hand">місце щасливого дитинства</span></p>
+				<p class="site-footer__about">Навчальний простір розвитку в&nbsp;Тернополі: мінісадочок і&nbsp;заняття для&nbsp;малюків зі&nbsp;скандинавським підходом.</p>
+			</div>
+
+			<nav id="footer-nav" aria-labelledby="footer-nav-title">
+				<h3 class="site-footer__title" id="footer-nav-title">Меню</h3>
+				<ul class="site-footer__list" role="list">
+					<li><a href="/tuto-preview/design/programy.html">Програми</a></li>
+					<li><a href="/tuto-preview/design/minisadochok.html">Мінісадочок</a></li>
+					<li><a href="/tuto-preview/design/rozklad.html">Розклад</a></li>
+					<li><a href="/tuto-preview/design/tsiny.html">Ціни</a></li>
+					<li><a href="/tuto-preview/design/pro-nas.html">Про&nbsp;нас</a></li>
+					<li><a href="/tuto-preview/design/kontakty.html">Контакти</a></li>
+					<li><a href="/tuto-preview/design/blog.html">Тема тижня</a></li>
+					<li><a href="/tuto-preview/design/materialy.html">Матеріали</a></li>
+					<li><a href="/tuto-preview/design/faq.html">Питання батьків</a></li>
+					<li><a href="https://www.instagram.com/tuto.hraiko/" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-gift"/></svg>Магазин іграшок «Грайко»</a></li>
+				</ul>
+			</nav>
+
+			<div>
+				<h3 class="site-footer__title">Локації</h3>
+				<p class="site-footer__place"><strong>вул.&nbsp;Тарнавського,&nbsp;7В</strong><span>Парковка, над&nbsp;нею&nbsp;- дитячий майданчик</span><a class="btn btn--secondary btn--sm site-footer__map" href="https://maps.app.goo.gl/oonU7xApJJH6D4e46" rel="noopener" target="_blank"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Google Maps<span class="visually-hidden">: Тарнавського,&nbsp;7В</span></a></p>
+				<p class="site-footer__place"><strong>вул.&nbsp;Коновальця,&nbsp;11</strong><span>Мінісадочок пн–&#8288;пт&nbsp;09:00–&#8288;13:00</span><a class="btn btn--secondary btn--sm site-footer__map" href="https://maps.app.goo.gl/qoXYExxU5Q367tfAA" rel="noopener" target="_blank"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Google Maps<span class="visually-hidden">: Коновальця,&nbsp;11</span></a></p>
+			</div>
+
+			<div>
+				<h3 class="site-footer__title">Зв’язок</h3>
+				<ul class="site-footer__list" role="list">
+					<li><a href="tel:+380969404901"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg>096&nbsp;940&nbsp;49&nbsp;01</a></li>
+					<li><a href="https://www.instagram.com/tuto.center/" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-instagram"/></svg>@tuto.center</a></li>
+					<li><a href="https://ig.me/m/tuto.center" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-instagram"/></svg>Написати в&nbsp;Direct</a></li>
+					<li><a href="https://t.me/+r38M1W35IIRhMWQq" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-telegram"/></svg>Новини в&nbsp;Telegram</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="site-footer__bottom">
+			<p>© 2026 ТУТО&nbsp;- навчальний простір розвитку</p>
+			<p><a href="#top">Нагору</a></p>
+		</div>
+	</div>
+</footer>
+
+<!-- Booking sheet (theme template, footer.php): booking-sheet.js opens it from every link to #zapys.
+     Bottom sheet on phones, small modal from 768px. Without JS the links just scroll to the CTA banner. -->
+<dialog class="booking-sheet" id="booking-sheet" aria-labelledby="booking-sheet-title" aria-describedby="booking-sheet-hint">
+	<div class="booking-sheet__panel">
+		<div class="booking-sheet__head">
+			<h2 class="h3 booking-sheet__title" id="booking-sheet-title">Записатися на&nbsp;пробне</h2>
+			<button class="btn btn--icon booking-sheet__close" type="button" aria-label="Закрити" data-booking-close><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-close"/></svg></button>
+		</div>
+		<p class="booking-sheet__choice" data-booking-choice hidden>Ви обрали: <strong data-booking-choice-text></strong></p>
+		<p class="booking-sheet__hint" id="booking-sheet-hint">Напишіть вік дитини та&nbsp;зручну локацію&nbsp;- відповімо [УТОЧНИТИ: як&nbsp;швидко].</p>
+		<div class="booking-sheet__actions">
+			<a class="btn btn--primary btn--block" href="https://ig.me/m/tuto.center" rel="noopener" target="_blank"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-instagram"/></svg>Написати в&nbsp;Instagram</a>
+			<a class="btn btn--secondary btn--block" href="tel:+380969404901"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg>Подзвонити: 096&nbsp;940&nbsp;49&nbsp;01</a>
+		</div>
+		<p class="caption booking-sheet__note">Пробне заняття&nbsp;- за&nbsp;разовим тарифом, вартість підкажемо при&nbsp;записі.</p>
+	</div>
+</dialog>
+
+<!-- Sticky CTA (mobile only, < 768px); hidden while the hero buttons or the CTA banner are on screen -->
+<div class="sticky-cta">
+	<a class="btn btn--primary" href="#zapys">Записатися на&nbsp;пробне</a>
+	<a class="btn btn--icon" href="tel:+380969404901" aria-label="Подзвонити: 096 940 49 01"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,393 @@
+/*
+ * Block tuto/page-hero — header of an inner page: breadcrumbs, eyebrow, h1 with
+ * a .hand word, lead, optional buttons, optional photo in an arch.
+ * Photo: under the text on phones/tablets, right column from 1024px.
+ * Modifier .tuto-page-hero--compact: no photo, less vertical room (404, FAQ, blog).
+ * Modifier .tuto-page-hero--media-desktop: the photo only from 768px; phones go straight
+ *   from the text to the content (Ціни, Контакти - people come for numbers and addresses).
+ * Optional illustration .tuto-page-hero__art (instead of a photo): an inline bear scene
+ * from assets/svg (bear-ask / bear-book / bear-board), decorative (aria-hidden).
+ * Phones: small, in the top-right corner next to the breadcrumbs (adds no height);
+ * from 768px: right column. __art--wide for landscape scenes (bear-board).
+ * If __media is present, __art is not shown.
+ * Modifier .tuto-page-hero--photo-top (showcase pages: мінісадочок, програми, про нас, матеріали):
+ *   phones get the photo first, full width under the floating header, and the text on a rounded
+ *   sheet over its bottom edge - like the home hero. From 768px nothing changes.
+ * Facts (__facts): a list with icons (when / where / age / trial), not chips - chips read as buttons.
+ * Markup contract: design/_brief-pages.md. Mobile-first, tokens only.
+ */
+.tuto-page-hero {
+	padding-block: var(--space-5) var(--section-pad-s);
+}
+
+.tuto-page-hero__inner {
+	position: relative;
+	z-index: var(--z-raised);
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--space-7);
+	align-items: center;
+}
+
+.tuto-page-hero__text {
+	max-inline-size: 40rem;
+}
+
+.tuto-page-hero__text > * {
+	margin-block: 0;
+}
+
+/* ---------- Breadcrumbs ---------- */
+.tuto-page-hero__crumbs {
+	margin-block-end: var(--space-5);
+	font-size: var(--fs-small);
+}
+
+.tuto-page-hero__crumbs ol {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-1) var(--space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-page-hero__crumbs li {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	color: var(--c-muted);
+}
+
+/* Small arrow between items (the mask colour follows the text) */
+.tuto-page-hero__crumbs li + li::before {
+	content: "";
+	flex: none;
+	inline-size: 0.9em;
+	block-size: 0.9em;
+	background-color: var(--c-coffee);
+	-webkit-mask: var(--mask-arrow) center / contain no-repeat;
+	mask: var(--mask-arrow) center / contain no-repeat;
+}
+
+.tuto-page-hero__crumbs a {
+	display: inline-flex;
+	align-items: center;
+	min-block-size: 2.25rem;
+	color: var(--c-link);
+	font-weight: var(--fw-semibold);
+	text-decoration-color: transparent;
+	text-underline-offset: 0.2em;
+}
+
+.tuto-page-hero__crumbs a:hover {
+	color: var(--c-link-hover);
+	text-decoration-color: currentColor;
+}
+
+.tuto-page-hero__crumbs [aria-current="page"] {
+	color: var(--c-text);
+	font-weight: var(--fw-semibold);
+}
+
+/* ---------- Text ---------- */
+.tuto-page-hero__text > .eyebrow {
+	margin-block-end: var(--space-3);
+}
+
+.tuto-page-hero__title {
+	font-size: var(--fs-h1);
+	line-height: var(--lh-heading);
+}
+
+.tuto-page-hero__lead {
+	max-inline-size: 36rem;
+	margin-block-start: var(--space-4);
+}
+
+.tuto-page-hero__actions {
+	margin-block-start: var(--space-6);
+}
+
+/* Optional facts under the lead (chips / short list) */
+.tuto-page-hero__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin-block-start: var(--space-5);
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-page-hero__meta .chip {
+	--chip-bg: var(--c-white);
+	gap: var(--space-2);
+	white-space: normal;
+}
+
+.tuto-page-hero__meta .icon {
+	inline-size: 1.15em;
+	block-size: 1.15em;
+	color: var(--c-coffee-ink);
+}
+
+/* Key facts: icon + text, one per line; two columns from 480px */
+.tuto-page-hero__facts {
+	display: grid;
+	gap: var(--space-2) var(--space-5);
+	margin-block-start: var(--space-5);
+	padding: 0;
+	color: var(--c-heading);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-semibold);
+	line-height: var(--lh-snug);
+	list-style: none;
+}
+
+.tuto-page-hero__facts li {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-2);
+	min-inline-size: 0;
+}
+
+.tuto-page-hero__facts .icon {
+	flex: none;
+	inline-size: 1.25em;
+	block-size: 1.25em;
+	color: var(--c-coffee-ink);
+}
+
+@media (min-width: 30em) {
+	.tuto-page-hero__facts {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+/* Chips as links (jump to groups, FAQ) */
+.tuto-page-hero__meta a.chip:hover {
+	border-color: var(--c-coffee);
+}
+
+/* ---------- Photo ---------- */
+.tuto-page-hero__media {
+	--frame-ratio: 4 / 5;
+	inline-size: min(100% - var(--frame-offset), 22rem);
+	justify-self: center;
+}
+
+.tuto-page-hero__media img {
+	object-position: var(--focus, 50% 35%);
+}
+
+/* Phones: buttons stretch to full width like the home hero */
+@media (max-width: 29.99em) {
+	.tuto-page-hero__actions .btn {
+		flex: 1 1 100%;
+		white-space: normal; /* long labels («Маршрут: Тарнавського, 7В») wrap at 320px */
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-page-hero {
+		padding-block-start: var(--space-7);
+	}
+
+	.tuto-page-hero__media {
+		--frame-ratio: 4 / 3;
+		inline-size: min(100% - var(--frame-offset), 34rem);
+	}
+
+	/* 4:3 arch looks too domed; tablets get a softer top */
+	.tuto-page-hero__media img {
+		border-radius: var(--radius-l) var(--radius-l) var(--radius-m) var(--radius-m);
+	}
+
+	.tuto-page-hero__media::before {
+		border-radius: var(--radius-l) var(--radius-l) var(--radius-m) var(--radius-m);
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-page-hero__inner:has(> .tuto-page-hero__media) {
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+		gap: var(--space-8);
+	}
+
+	.tuto-page-hero__media {
+		--frame-ratio: 4 / 5;
+		inline-size: min(100% - var(--frame-offset), 26rem);
+		justify-self: end;
+	}
+
+	.tuto-page-hero__media img,
+	.tuto-page-hero__media::before {
+		border-radius: 50cqi 50cqi var(--radius-m) var(--radius-m);
+	}
+}
+
+/* ---------- Compact: 404, FAQ, blog ---------- */
+.tuto-page-hero--compact {
+	padding-block: var(--space-5) var(--space-7);
+}
+
+.tuto-page-hero--compact .tuto-page-hero__inner {
+	gap: var(--space-5);
+}
+
+.tuto-page-hero--compact .tuto-page-hero__crumbs {
+	margin-block-end: var(--space-4);
+}
+
+.tuto-page-hero--compact .tuto-page-hero__media {
+	display: none;
+}
+
+@media (min-width: 48em) {
+	.tuto-page-hero--compact {
+		padding-block: var(--space-6) var(--space-8);
+	}
+}
+
+/* ---------- Photo on top on phones: showcase pages (T-125) ---------- */
+@media (max-width: 47.99em) {
+	.tuto-page-hero--photo-top {
+		/* height the floating header takes in the flow: 12px + 64px pill + 12px (as in blocks/hero) */
+		--page-hero-header-h: calc(var(--tap) + 2 * var(--space-2) + 2 * var(--space-3));
+		margin-block-start: calc(-1 * var(--page-hero-header-h)); /* the hero must be the first block of the page */
+		padding-block-start: 0;
+	}
+
+	.tuto-page-hero--photo-top .tuto-page-hero__inner {
+		gap: 0;
+	}
+
+	.tuto-page-hero--photo-top .tuto-page-hero__media {
+		order: -1;
+		inline-size: auto;
+		margin: 0 calc(-1 * var(--gutter)) calc(-1 * var(--radius-l));
+		overflow: hidden;
+		justify-self: stretch;
+	}
+
+	.tuto-page-hero--photo-top .tuto-page-hero__media::before {
+		content: none;
+	}
+
+	.tuto-page-hero--photo-top .tuto-page-hero__media img {
+		block-size: clamp(17rem, 46svh, 24rem);
+		aspect-ratio: auto;
+		border-radius: 0;
+	}
+
+	/* the sheet: the section colour, rounded top over the photo */
+	.tuto-page-hero--photo-top .tuto-page-hero__text {
+		position: relative;
+		margin-inline: calc(-1 * var(--gutter));
+		padding: var(--space-5) var(--gutter) 0;
+		border-radius: var(--radius-l) var(--radius-l) 0 0;
+		background-color: var(--section-bg, var(--c-sand));
+	}
+
+	.tuto-page-hero--photo-top .tuto-page-hero__crumbs {
+		margin-block-end: var(--space-4);
+	}
+}
+
+/* ---------- Photo only from 768px: Ціни, Контакти (T-114, №15) ---------- */
+@media (max-width: 47.99em) {
+	.tuto-page-hero--media-desktop .tuto-page-hero__media {
+		display: none;
+	}
+}
+
+/* ---------- Illustration instead of a photo (T-111) ---------- */
+/* --art-w lives on __inner: the picture and the text next to it both read it */
+.tuto-page-hero__inner:has(> .tuto-page-hero__art) {
+	--art-w: 4rem;
+}
+
+.tuto-page-hero__inner:has(> .tuto-page-hero__art--wide) {
+	--art-w: 5.25rem;
+}
+
+.tuto-page-hero__art {
+	position: absolute;
+	inset-block-start: 0;
+	inset-inline-end: 0;
+	inline-size: var(--art-w, 4rem);
+	margin: 0;
+	color: var(--c-chocolate);
+	pointer-events: none;
+	user-select: none;
+}
+
+.tuto-page-hero__art svg {
+	display: block;
+	max-inline-size: 100%;
+	inline-size: auto;
+	block-size: 4.5rem; /* phones: one height for every scene, ends above the h1 */
+	margin-inline-start: auto;
+}
+
+.tuto-page-hero__art--wide svg {
+	inline-size: 100%;
+	block-size: auto;
+}
+
+/* Phones: the crumbs and the eyebrow never run under the corner picture */
+.tuto-page-hero__inner:has(> .tuto-page-hero__art) :is(.tuto-page-hero__crumbs, .tuto-page-hero__text > .eyebrow) {
+	padding-inline-end: calc(var(--art-w) + var(--space-3));
+}
+
+/* A photo wins over the illustration */
+.tuto-page-hero__media ~ .tuto-page-hero__art {
+	display: none;
+}
+
+@media (min-width: 48em) {
+	.tuto-page-hero__inner:has(> .tuto-page-hero__art) {
+		--art-w: 11rem;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: var(--space-6);
+	}
+
+	.tuto-page-hero__inner:has(> .tuto-page-hero__art--wide) {
+		--art-w: 17rem;
+	}
+
+	.tuto-page-hero__inner:has(> .tuto-page-hero__art) :is(.tuto-page-hero__crumbs, .tuto-page-hero__text > .eyebrow) {
+		padding-inline-end: 0;
+	}
+
+	.tuto-page-hero__art {
+		position: static;
+		justify-self: end;
+	}
+
+	.tuto-page-hero__art svg {
+		inline-size: 100%;
+		block-size: auto;
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-page-hero__inner:has(> .tuto-page-hero__art) {
+		--art-w: 15rem;
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+		gap: var(--space-8);
+	}
+
+	.tuto-page-hero__inner:has(> .tuto-page-hero__art--wide) {
+		--art-w: min(100%, 27rem);
+	}
+
+	.tuto-page-hero__art {
+		justify-self: center;
+	}
+
+	.tuto-page-hero__art--wide {
+		justify-self: end;
+	}
+}

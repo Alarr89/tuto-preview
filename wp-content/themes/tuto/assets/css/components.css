@@ -1,0 +1,1158 @@
+/*
+ * ТУТО — shared components used by many blocks.
+ * BEM, no prefix (names chosen not to collide with WP core: .btn, .chip, .badge, .card, …).
+ * Block-specific styles live in blocks/<name>/style.css.
+ * Mobile-first; only tokens from tokens.css.
+ */
+
+/* =========================================================================
+ * Buttons
+ * <a class="btn btn--primary" href="…">Записатися на пробне</a>
+ * Modifiers: --primary --secondary --ghost --light (on dark) · --sm --lg --block --icon
+ * ======================================================================= */
+.btn {
+	--btn-bg: transparent;
+	--btn-fg: var(--c-chocolate);
+	--btn-border: transparent;
+	--btn-bg-hover: var(--btn-bg);
+	--btn-fg-hover: var(--btn-fg);
+	--btn-border-hover: var(--btn-border);
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	min-height: var(--tap);
+	padding: var(--space-3) var(--space-6);
+	border: var(--border-w) solid var(--btn-border);
+	border-radius: var(--radius-pill);
+	background-color: var(--btn-bg);
+	color: var(--btn-fg);
+	font-family: var(--font-sans);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-bold);
+	line-height: 1.2;
+	letter-spacing: var(--ls-normal);
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	transition:
+		background-color var(--dur) var(--ease-out),
+		color var(--dur) var(--ease-out),
+		border-color var(--dur) var(--ease-out),
+		box-shadow var(--dur) var(--ease-out),
+		transform var(--dur-fast) var(--ease-out);
+}
+
+.btn:hover {
+	background-color: var(--btn-bg-hover);
+	border-color: var(--btn-border-hover);
+	color: var(--btn-fg-hover);
+}
+
+.btn:active {
+	transform: translateY(1px) scale(0.985);
+}
+
+.btn:focus-visible {
+	outline: var(--focus-w) solid var(--c-focus);
+	outline-offset: var(--focus-offset);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"],
+.btn.is-disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+	pointer-events: none;
+	box-shadow: none;
+	transform: none;
+}
+
+/* Primary — chocolate pill (ref 03 «ПРАЙС», KinderHeaven CTA) */
+.btn--primary {
+	--btn-bg: var(--c-chocolate);
+	--btn-fg: var(--c-white);
+	--btn-bg-hover: var(--c-chocolate-2);
+	box-shadow: var(--shadow-s);
+}
+
+.btn--primary:hover {
+	box-shadow: var(--shadow-m);
+}
+
+/* Secondary — outline */
+.btn--secondary {
+	--btn-fg: var(--c-chocolate);
+	--btn-border: var(--c-chocolate);
+	--btn-bg-hover: var(--c-chocolate);
+	--btn-fg-hover: var(--c-white);
+}
+
+/* Soft — sand pill, quiet action inside cards (KinderHeaven «Explore …») */
+.btn--soft {
+	--btn-bg: var(--c-sand);
+	--btn-fg: var(--c-chocolate);
+	--btn-bg-hover: var(--c-latte);
+}
+
+/* Ghost / link — text with arrow */
+.btn--ghost {
+	--btn-fg: var(--c-coffee-ink);
+	--btn-fg-hover: var(--c-chocolate);
+	min-height: var(--tap-min); /* text link with arrow, still a 44px touch target */
+	padding: 0;
+	border-radius: var(--radius-xs);
+}
+
+.btn--ghost::after {
+	content: "";
+	inline-size: 1.1em;
+	block-size: 1.1em;
+	background-color: currentColor;
+	-webkit-mask: var(--mask-arrow) center / contain no-repeat;
+	mask: var(--mask-arrow) center / contain no-repeat;
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.btn--ghost:hover::after {
+	transform: translateX(0.25em);
+}
+
+.btn--ghost.btn--no-arrow::after {
+	content: none;
+}
+
+/* On dark backgrounds: .btn--light, or automatically inside .section--chocolate / .on-dark */
+.btn--light,
+:is(.section--chocolate, .on-dark, .card--dark) .btn--primary {
+	--btn-bg: var(--c-cream);
+	--btn-fg: var(--c-chocolate);
+	--btn-bg-hover: var(--c-white);
+	--btn-fg-hover: var(--c-chocolate);
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) .btn--secondary {
+	--btn-fg: var(--c-cream);
+	--btn-border: var(--c-latte);
+	--btn-bg-hover: var(--c-cream);
+	--btn-fg-hover: var(--c-chocolate);
+	--btn-border-hover: var(--c-cream);
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) .btn--ghost {
+	--btn-fg: var(--c-cream);
+	--btn-fg-hover: var(--c-white);
+}
+
+/* Sizes */
+.btn--sm {
+	min-height: var(--tap-min);
+	padding: var(--space-2) var(--space-4);
+	font-size: var(--fs-small);
+}
+
+.btn--lg {
+	min-height: 3.5rem;
+	padding: var(--space-4) var(--space-7);
+	font-size: var(--fs-lead);
+}
+
+.btn--block {
+	display: flex;
+	inline-size: 100%;
+}
+
+/* Icon inside a button: <svg class="btn__icon" aria-hidden="true"> */
+.btn__icon {
+	flex: none;
+	inline-size: 1.25em;
+	block-size: 1.25em;
+}
+
+/* Icon-only round button (needs aria-label) */
+.btn--icon {
+	inline-size: var(--tap);
+	padding: 0;
+	flex: none;
+}
+
+/* Group of buttons */
+.btn-group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-3);
+}
+
+/* =========================================================================
+ * Chip (age «2–4 роки», tabs/filters) and badge («Найпопулярніший»)
+ * ======================================================================= */
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
+	min-height: 1.875rem;
+	padding: var(--space-1) var(--space-3);
+	border: var(--border-w) solid transparent;
+	border-radius: var(--radius-pill);
+	background-color: var(--chip-bg, var(--c-sand));
+	color: var(--c-chocolate);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-semibold);
+	line-height: 1.2;
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+.chip--outline {
+	background-color: transparent;
+	border-color: var(--c-latte);
+}
+
+/* Interactive chips (age tabs, filters): full tap target */
+button.chip,
+a.chip,
+.chip--lg {
+	min-height: 2.75rem;
+	padding-inline: var(--space-5);
+	font-size: var(--fs-body);
+	cursor: pointer;
+	transition: background-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+
+:is(button, a).chip:not(.is-active, [aria-pressed="true"], [aria-selected="true"], [aria-current]):hover {
+	border-color: var(--c-coffee);
+}
+
+.chip.is-active,
+.chip[aria-pressed="true"],
+.chip[aria-selected="true"],
+.chip[aria-current] {
+	background-color: var(--c-chocolate);
+	border-color: var(--c-chocolate);
+	color: var(--c-cream);
+}
+
+/* On dark: idle chips are a lighter chocolate with cream text… */
+:is(.section--chocolate, .on-dark, .card--dark) .chip {
+	--chip-bg: var(--c-chocolate-2);
+	color: var(--c-cream);
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) .chip--outline {
+	border-color: var(--c-latte);
+}
+
+/* …and the active chip turns cream (a chocolate chip would vanish on chocolate) */
+:is(.section--chocolate, .on-dark, .card--dark) .chip:is(.is-active, [aria-pressed="true"], [aria-selected="true"], [aria-current]) {
+	background-color: var(--c-cream);
+	border-color: var(--c-cream);
+	color: var(--c-chocolate);
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) :is(button, a).chip:not(.is-active, [aria-pressed="true"], [aria-selected="true"], [aria-current]):hover {
+	border-color: var(--c-latte);
+}
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
+	padding: var(--space-1) var(--space-3);
+	border-radius: var(--radius-pill);
+	background-color: var(--c-chocolate);
+	color: var(--c-cream);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+	line-height: 1.3;
+	letter-spacing: 0.02em;
+	white-space: nowrap;
+}
+
+.badge--heart::before {
+	content: "";
+	inline-size: 0.95em;
+	block-size: 0.95em;
+	background-color: currentColor;
+	-webkit-mask: var(--mask-heart) center / contain no-repeat;
+	mask: var(--mask-heart) center / contain no-repeat;
+}
+
+.badge--soft {
+	background-color: var(--c-latte);
+	color: var(--c-chocolate);
+}
+
+.badge--light {
+	background-color: var(--c-white);
+	color: var(--c-chocolate);
+	box-shadow: var(--shadow-s);
+}
+
+/* On dark the default chocolate badge would vanish: invert it */
+:is(.section--chocolate, .on-dark, .card--dark) .badge:not(.badge--soft, .badge--light) {
+	background-color: var(--c-cream);
+	color: var(--c-chocolate);
+}
+
+/* =========================================================================
+ * Eyebrow, section head, handwritten accent
+ * ======================================================================= */
+.eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	margin-block-end: var(--space-3);
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-bold);
+	line-height: 1.3;
+	letter-spacing: var(--ls-wide);
+	text-transform: uppercase;
+}
+
+.eyebrow::before {
+	content: "";
+	flex: none;
+	inline-size: 0.9em;
+	block-size: 0.9em;
+	background-color: var(--c-coffee);
+	-webkit-mask: var(--mask-heart) center / contain no-repeat;
+	mask: var(--mask-heart) center / contain no-repeat;
+}
+
+.eyebrow--plain::before {
+	content: none;
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) .eyebrow {
+	color: var(--c-latte);
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) .eyebrow::before {
+	background-color: var(--c-latte);
+}
+
+.section-head {
+	max-inline-size: 42rem;
+	margin-block-end: var(--space-7);
+}
+
+.section-head > :is(h1, h2, h3, .display, .h1, .h2) {
+	margin: 0;
+}
+
+.section-head__lead {
+	margin-block-start: var(--space-4);
+	font-size: var(--fs-lead);
+	line-height: var(--lh-snug);
+}
+
+.section-head--center {
+	margin-inline: auto;
+	text-align: center;
+}
+
+.section-head--center .eyebrow {
+	justify-content: center;
+}
+
+/*
+ * Handwritten accent for 1–2 words in a heading (like «народження» on the card).
+ * <h2>Місце <span class="hand">щасливого</span> дитинства</h2>
+ * Coffee is ≥ 3:1 on cream/white/sand as large text; use only at heading sizes.
+ */
+.hand {
+	display: inline-block;
+	font-family: var(--font-hand);
+	font-weight: var(--fw-hand);
+	font-size: calc(var(--fs-hand-scale) * 1em);
+	line-height: 0.85;
+	letter-spacing: var(--ls-normal);
+	color: var(--c-coffee);
+	transform: rotate(-2deg);
+	transform-origin: left bottom;
+}
+
+.hand--brick {
+	color: var(--c-brick);
+}
+
+.hand--block {
+	display: block;
+	margin-block-start: 0.05em;
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) .hand {
+	color: var(--c-latte);
+}
+
+/* Line — heart — line (card ornament). <div class="divider-heart" aria-hidden="true"></div> */
+.divider-heart {
+	position: relative;
+	max-inline-size: 16rem;
+	block-size: 1rem;
+	margin: var(--space-5) auto;
+	background:
+		linear-gradient(var(--c-latte) 0 0) left center / calc(50% - 1.5rem) 1px no-repeat,
+		linear-gradient(var(--c-latte) 0 0) right center / calc(50% - 1.5rem) 1px no-repeat;
+}
+
+.divider-heart::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	margin-inline: auto;
+	inline-size: 1rem;
+	background-color: var(--c-coffee);
+	-webkit-mask: var(--mask-heart) center / contain no-repeat;
+	mask: var(--mask-heart) center / contain no-repeat;
+}
+
+/* =========================================================================
+ * Cards
+ * <article class="card"> · --sand · --cream · --dark · --outline · --accent · --featured · --media
+ * ======================================================================= */
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	padding: var(--card-pad);
+	border-radius: var(--radius-m);
+	background-color: var(--c-white);
+	color: var(--c-text);
+	--chip-bg: var(--c-sand);
+}
+
+.card > * {
+	margin: 0;
+}
+
+.card--sand {
+	background-color: var(--c-sand);
+	--chip-bg: var(--c-white);
+	--c-line: var(--c-latte);
+}
+
+.card--cream {
+	background-color: var(--c-cream);
+}
+
+.card--outline {
+	background-color: transparent;
+	border: var(--border-w) solid var(--c-latte);
+}
+
+/* Dark accent card (ref 03 «Індивідуальне заняття», ref 05 last rule) */
+.card--dark {
+	background-color: var(--c-chocolate);
+	color: var(--c-sand);
+	--c-heading: var(--c-cream);
+	--c-body: var(--c-sand);
+	--c-muted: var(--c-latte);
+	--c-link: var(--c-cream);
+	--c-link-hover: var(--c-white);
+	--c-focus: var(--c-latte);
+	--chip-bg: var(--c-chocolate-2);
+}
+
+.card--dark .chip {
+	color: var(--c-cream);
+}
+
+/* Vertical coffee bar on the left, inset from the corners (ref 03 first row) */
+.card--accent::before {
+	content: "";
+	position: absolute;
+	inset-block: var(--space-4);
+	inset-inline-start: 0;
+	inline-size: var(--accent-w);
+	border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+	background-color: var(--c-coffee);
+}
+
+/* Highlighted card with a badge on the top edge (KinderHeaven pricing) */
+.card--featured {
+	border: var(--border-w) solid var(--c-chocolate);
+	box-shadow: var(--shadow-l);
+}
+
+.card__badge {
+	position: absolute;
+	inset-block-start: 0;
+	inset-inline-start: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.card--raised {
+	box-shadow: var(--shadow-m);
+}
+
+/* Whole card clickable via its title link */
+.card--interactive {
+	transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+
+.card--interactive:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow-m);
+}
+
+.card__link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.card__link::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: var(--z-base);
+	border-radius: inherit;
+}
+
+.card:has(.card__link:focus-visible) {
+	outline: var(--focus-w) solid var(--c-focus);
+	outline-offset: var(--focus-offset);
+}
+
+.card__link:focus-visible {
+	outline: none;
+}
+
+.card__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2) var(--space-3);
+}
+
+.card__title {
+	color: var(--c-heading);
+	font-size: var(--fs-h3);
+	font-weight: var(--fw-heading);
+	line-height: var(--lh-snug);
+	letter-spacing: var(--ls-snug);
+}
+
+.card__meta {
+	color: var(--c-muted);
+	font-size: var(--fs-small);
+}
+
+.card__text {
+	color: var(--c-body);
+}
+
+.card__footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-3);
+	margin-block-start: auto;
+	padding-block-start: var(--space-2);
+}
+
+/* Footer actions stay above the stretched link */
+.card__footer :is(a, button) {
+	position: relative;
+	z-index: var(--z-raised);
+}
+
+/* Card with a photo on top (KinderHeaven program cards) */
+.card--media {
+	padding: var(--space-3);
+}
+
+.card--media > .card__body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: var(--space-3);
+	padding: var(--space-2) calc(var(--card-pad) - var(--space-3)) calc(var(--card-pad) - var(--space-3));
+}
+
+.card--media > .card__body > :not(.card__footer) {
+	margin: 0;
+}
+
+.card__media {
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 4 / 3;
+	border-radius: var(--radius-s);
+	background-color: var(--c-sand);
+}
+
+.card__media img {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+	transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.card--interactive:hover .card__media img {
+	transform: scale(1.04);
+}
+
+/* Photo as a second link to the card's page (same href as its button; the duplicate is out of
+   the tab order and hidden from screen readers):
+   <a class="card__media-link" href="…" tabindex="-1" aria-hidden="true"><img …></a> */
+.card__media-link {
+	display: block;
+	block-size: 100%;
+}
+
+.card__media-link:hover img {
+	transform: scale(1.04);
+}
+
+/* Full-bleed photo card with text on a soft gradient */
+.card--photo {
+	isolation: isolate;
+	justify-content: flex-end;
+	min-block-size: 20rem;
+	overflow: hidden;
+	color: var(--c-white);
+	--c-heading: var(--c-white);
+	--c-body: var(--c-cream);
+}
+
+.card--photo > .card__media {
+	position: absolute;
+	inset: 0;
+	z-index: var(--z-below);
+	aspect-ratio: auto;
+	border-radius: 0;
+}
+
+.card--photo::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: var(--z-below);
+	background-image: linear-gradient(to top, var(--c-overlay) 0%, var(--c-overlay-soft) 45%, transparent 75%);
+	pointer-events: none;
+}
+
+/* Simple responsive grid for cards */
+.card-grid {
+	display: grid;
+	gap: var(--gap);
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr));
+}
+
+/* =========================================================================
+ * Photo frames: arch (ref 08 + birthday card) and organic blob (ref 07)
+ * <figure class="frame-arch"><img …></figure>
+ * ======================================================================= */
+.frame-arch,
+.frame-blob {
+	position: relative;
+	isolation: isolate;
+	margin: 0;
+	container-type: inline-size;
+}
+
+/* Reserve room for the shifted underlay so it never pokes out of the column */
+.frame-arch {
+	margin-inline-end: var(--frame-offset);
+	margin-block-end: var(--frame-offset);
+}
+
+.frame-arch--left {
+	margin-inline: var(--frame-offset) 0;
+}
+
+.frame-arch--ring {
+	margin: var(--frame-offset);
+}
+
+.frame-blob {
+	margin: calc(var(--frame-offset) * 1.5);
+}
+
+.frame-arch > img,
+.frame-arch > picture > img,
+.frame-arch__media {
+	display: block;
+	inline-size: 100%;
+	aspect-ratio: var(--frame-ratio, 3 / 4);
+	object-fit: cover;
+	border-radius: 50cqi 50cqi var(--radius-m) var(--radius-m);
+	background-color: var(--c-sand);
+}
+
+/* Thin contour shifted down-right, sitting behind the photo */
+.frame-arch::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: var(--z-below);
+	border: var(--border-w) solid var(--frame-line, var(--c-coffee));
+	border-radius: 50cqi 50cqi var(--radius-m) var(--radius-m);
+	transform: translate(var(--frame-offset), var(--frame-offset));
+	pointer-events: none;
+}
+
+.frame-arch--left::before {
+	transform: translate(calc(-1 * var(--frame-offset)), var(--frame-offset));
+}
+
+/* Contour around the photo with an even gap (ref 08 large arch) */
+.frame-arch--ring::before {
+	inset: calc(-1 * var(--frame-offset));
+	border-radius: calc(50cqi + var(--frame-offset)) calc(50cqi + var(--frame-offset)) calc(var(--radius-m) + var(--frame-offset)) calc(var(--radius-m) + var(--frame-offset));
+	transform: none;
+}
+
+/* Soft filled arch behind the photo instead of a line (birthday card) */
+.frame-arch--fill::before {
+	border: 0;
+	background-color: var(--frame-fill, var(--c-sand));
+}
+
+.frame-arch--plain::before {
+	content: none;
+}
+
+/* Organic blob with a coloured underlay */
+.frame-blob > img,
+.frame-blob > picture > img,
+.frame-blob__media {
+	display: block;
+	inline-size: 100%;
+	aspect-ratio: var(--frame-ratio, 1);
+	object-fit: cover;
+	border-radius: 58% 42% 47% 53% / 50% 56% 44% 50%;
+	background-color: var(--c-sand);
+}
+
+.frame-blob::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: var(--z-below);
+	border-radius: 46% 54% 60% 40% / 55% 45% 55% 45%;
+	background-color: var(--frame-fill, var(--c-sand));
+	transform: translate(calc(var(--frame-offset) * 0.8), var(--frame-offset)) rotate(-6deg) scale(1.04);
+	pointer-events: none;
+}
+
+.frame-blob--alt > img,
+.frame-blob--alt > picture > img,
+.frame-blob--alt .frame-blob__media {
+	border-radius: 44% 56% 52% 48% / 58% 42% 58% 42%;
+}
+
+.frame-blob--alt::before {
+	border-radius: 60% 40% 45% 55% / 45% 60% 40% 55%;
+	transform: translate(calc(-1 * var(--frame-offset)), var(--frame-offset)) rotate(8deg) scale(1.05);
+}
+
+.frame-blob--latte {
+	--frame-fill: var(--c-latte);
+}
+
+/* Slight tilt for collage liveliness (ref 08) */
+.is-tilted-left {
+	rotate: -2.5deg;
+}
+
+.is-tilted-right {
+	rotate: 2.5deg;
+}
+
+/* Rounded photo (plain) */
+.frame-round {
+	overflow: hidden;
+	margin: 0;
+	border-radius: var(--radius-l);
+	background-color: var(--c-sand);
+}
+
+.frame-round > img {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+}
+
+/* =========================================================================
+ * Wave divider between sections (ref 11) — cream ↔ sand
+ * <section class="section section--sand section--wave-top">
+ * The wave is painted in the section's own --section-bg and bites into the
+ * previous section, so no extra markup is needed.
+ * ======================================================================= */
+.section--wave-top::before,
+.section--wave-bottom::after {
+	content: "";
+	position: absolute;
+	inset-inline: 0;
+	block-size: var(--wave-h);
+	background-color: var(--section-bg);
+	-webkit-mask: var(--wave-mask, var(--mask-wave-1)) center bottom / 100% 100% no-repeat;
+	mask: var(--wave-mask, var(--mask-wave-1)) center bottom / 100% 100% no-repeat;
+	pointer-events: none;
+}
+
+.section--wave-top::before {
+	inset-block-end: calc(100% - 1px);
+}
+
+.section--wave-bottom {
+	z-index: var(--z-base);
+}
+
+.section--wave-bottom::after {
+	inset-block-start: calc(100% - 1px);
+	transform: scaleY(-1);
+}
+
+.section--wave-alt {
+	--wave-mask: var(--mask-wave-2);
+}
+
+.section--wave-flip::before,
+.section--wave-flip::after {
+	scale: -1 1;
+}
+
+/* =========================================================================
+ * Lists
+ * ======================================================================= */
+.list-check,
+.list-heart {
+	display: grid;
+	gap: var(--space-3);
+	padding: 0;
+	list-style: none;
+}
+
+.list-check > li,
+.list-heart > li {
+	position: relative;
+	padding-inline-start: 2.25em;
+}
+
+/* Check in a soft circle (Ochre & Ivy) */
+.list-check > li::before,
+.list-check > li::after {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	inset-block-start: calc((1lh - 1.5em) / 2);
+	inline-size: 1.5em;
+	block-size: 1.5em;
+	border-radius: 50%;
+}
+
+.list-check > li::before {
+	background-color: var(--check-bg, var(--c-sand));
+}
+
+.list-check > li::after {
+	background-color: var(--c-coffee-ink);
+	-webkit-mask: var(--mask-check) center / 70% no-repeat;
+	mask: var(--mask-check) center / 70% no-repeat;
+}
+
+:is(.section--sand, .card--sand) .list-check {
+	--check-bg: var(--c-white);
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) .list-check {
+	--check-bg: var(--c-chocolate-2);
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) .list-check > li::after {
+	background-color: var(--c-latte);
+}
+
+/* Hearts like the birthday card wishes */
+.list-heart > li::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0.15em;
+	inset-block-start: calc((1lh - 1.15em) / 2);
+	inline-size: 1.15em;
+	block-size: 1.15em;
+	background-color: var(--c-latte);
+	-webkit-mask: var(--mask-heart) center / contain no-repeat;
+	mask: var(--mask-heart) center / contain no-repeat;
+}
+
+.list-heart--coffee > li::before {
+	background-color: var(--c-coffee);
+}
+
+/* «Що входить» panel on a card (KinderHeaven pricing) */
+.includes {
+	padding: var(--space-4) var(--space-5);
+	border-radius: var(--radius-s);
+	background-color: var(--c-cream);
+	font-size: var(--fs-body-s);
+	--check-bg: var(--c-sand);
+}
+
+/* =========================================================================
+ * Numbered rules with a vertical line on the left (ref 05)
+ * <ol class="rules" role="list"><li class="rules__item"><h3 class="rules__title">…</h3><p>…</p></li></ol>
+ * Items alternate white / sand automatically; .rules__item--dark for the last accent.
+ * ======================================================================= */
+.rules {
+	display: grid;
+	gap: var(--space-3);
+	padding: 0;
+	list-style: none;
+	counter-reset: rule;
+}
+
+.rules__item {
+	counter-increment: rule;
+	display: grid;
+	gap: var(--space-2);
+	padding: var(--space-5) var(--card-pad);
+	padding-inline-start: calc(var(--card-pad) + var(--accent-w));
+	border-radius: var(--radius-s);
+	background-color: var(--c-white);
+	box-shadow: inset var(--accent-w) 0 0 var(--c-coffee);
+}
+
+.rules__item:nth-child(even) {
+	background-color: var(--c-sand);
+}
+
+.rules__item > * {
+	margin: 0;
+}
+
+.rules__title {
+	display: flex;
+	align-items: baseline;
+	gap: var(--space-3);
+	color: var(--c-heading);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-heavy);
+	line-height: var(--lh-snug);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.rules__title::before {
+	content: counter(rule, decimal-leading-zero);
+	flex: none;
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-bold);
+	font-variant-numeric: tabular-nums;
+}
+
+.rules__item--dark,
+.rules__item--dark:nth-child(even) {
+	background-color: var(--c-chocolate);
+	box-shadow: inset var(--accent-w) 0 0 var(--c-latte);
+	color: var(--c-sand);
+	--c-heading: var(--c-cream);
+}
+
+.rules__item--dark .rules__title::before {
+	color: var(--c-latte);
+}
+
+:is(.section--sand) .rules__item:nth-child(odd):not(.rules__item--dark) {
+	background-color: var(--c-white);
+}
+
+:is(.section--sand) .rules__item:nth-child(even):not(.rules__item--dark) {
+	background-color: var(--c-cream);
+}
+
+/* =========================================================================
+ * Price: big number + «грн» + note
+ * <p class="price"><span class="price__value">2400</span> <span class="price__unit">грн</span>
+ *   <span class="price__note">8 занять по 50 хв</span></p>
+ * ======================================================================= */
+.price {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	column-gap: var(--space-2);
+	margin: 0;
+	color: var(--c-heading);
+	line-height: 1;
+}
+
+.price__value {
+	font-size: var(--fs-price);
+	font-weight: var(--fw-heavy);
+	letter-spacing: var(--ls-tight);
+	font-variant-numeric: lining-nums tabular-nums;
+}
+
+.price__unit {
+	font-size: var(--fs-lead);
+	font-weight: var(--fw-bold);
+}
+
+.price__note {
+	flex-basis: 100%;
+	margin-block-start: var(--space-2);
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-regular);
+	line-height: var(--lh-snug);
+}
+
+.price--sm .price__value {
+	font-size: var(--fs-h3);
+}
+
+.price--sm .price__unit {
+	font-size: var(--fs-body);
+}
+
+/* =========================================================================
+ * Sticky mobile CTA (< 768px)
+ * <div class="sticky-cta"><a class="btn btn--primary btn--block" href="…">Записатися</a></div>
+ * Add .has-sticky-cta to <body> so the footer is not hidden behind it.
+ * JS may toggle .is-hidden (e.g. while the hero CTA is visible).
+ * ======================================================================= */
+.sticky-cta {
+	position: fixed;
+	inset-inline: 0;
+	inset-block-end: 0;
+	z-index: var(--z-sticky);
+	display: flex;
+	gap: var(--space-2);
+	padding: var(--space-3) var(--gutter) calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+	pointer-events: none;
+	transition: transform var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out);
+}
+
+.sticky-cta > * {
+	pointer-events: auto;
+	box-shadow: var(--shadow-l);
+}
+
+.sticky-cta > .btn--primary {
+	flex: 1;
+	/* cream ring keeps the chocolate pill visible over a chocolate footer/section */
+	box-shadow: 0 0 0 2px var(--c-cream), var(--shadow-l);
+}
+
+.sticky-cta > .btn--icon {
+	--btn-bg: var(--c-cream);
+	--btn-bg-hover: var(--c-white);
+	--btn-border: var(--c-latte);
+}
+
+.sticky-cta.is-hidden {
+	transform: translateY(calc(100% + var(--space-4)));
+	opacity: 0;
+}
+
+.has-sticky-cta {
+	padding-block-end: calc(var(--tap) + var(--space-6) + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 48em) {
+	.sticky-cta {
+		display: none;
+	}
+
+	.has-sticky-cta {
+		padding-block-end: 0;
+	}
+}
+
+/* =========================================================================
+ * Misc helpers shared by blocks
+ * ======================================================================= */
+.icon {
+	flex: none;
+	inline-size: 1.5em;
+	block-size: 1.5em;
+	color: var(--c-coffee);
+}
+
+/*
+ * Inline logo & bear (assets/svg/*.svg pasted inline: currentColor + custom properties).
+ * Light backgrounds: colour comes from the wrapper (chocolate letters, brick accent).
+ * On chocolate: cream lines, --c-brick-on-dark accent, coffee tint (svg/README.md, D-13).
+ */
+:is(.section--chocolate, .on-dark, .card--dark) .tuto-logo {
+	color: var(--c-cream);
+	--logo-accent: var(--c-brick-on-dark);
+}
+
+:is(.section--chocolate, .on-dark, .card--dark) .tuto-bear {
+	color: var(--c-cream);
+	--bear-tint: var(--c-coffee);
+}
+
+/* Waving bear (bear-wave: CTA banner, 404): the raised arm swings slowly from the shoulder,
+   the motion lines next to the paw breathe with it. The arm group is <g class="tuto-bear__arm">;
+   fill-box origin = the shoulder (bottom-left corner of the arm), whatever the SVG translate. */
+@media (prefers-reduced-motion: no-preference) {
+	.tuto-bear__arm {
+		transform-box: fill-box;
+		transform-origin: 12% 95%;
+		animation: tuto-bear-wave 1.5s ease-in-out infinite alternate;
+	}
+
+	.tuto-bear__waves {
+		animation: tuto-bear-waves 1.5s ease-in-out infinite alternate;
+	}
+}
+
+@keyframes tuto-bear-wave {
+	from { transform: rotate(6deg); }
+	to { transform: rotate(-12deg); }
+}
+
+/* Tap / click on any bear: it winks (assets/js/modules/bear-wink.js adds .is-winking to the right eye).
+   Bears are decoration, but they take the tap themselves (even inside .decor, which is click-through). */
+.tuto-bear,
+.decor.tuto-bear {
+	pointer-events: auto;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.tuto-bear .is-winking {
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: tuto-bear-wink 0.6s ease-in-out;
+}
+
+@keyframes tuto-bear-wink {
+	0%, 100% { transform: scale(1); }
+	35%, 70% { transform: scale(1.25, 0.3); } /* a short thick dash: readable even on a small bear */
+}
+
+/* the same wink under another name for the one on page load (hero): an element whose animation
+   keeps the same name would not restart when .is-winking is added on tap */
+@keyframes tuto-bear-wink-once {
+	0%, 100% { transform: scale(1); }
+	35%, 70% { transform: scale(1.25, 0.3); }
+}
+
+@keyframes tuto-bear-waves {
+	from { opacity: 0.25; }
+	to { opacity: 1; }
+}
+
+/* Absolutely placed decoration (twigs, hearts, peeking bear) — never blocks clicks */
+.decor {
+	position: absolute;
+	z-index: var(--z-base);
+	pointer-events: none;
+	user-select: none;
+	color: var(--c-latte);
+}

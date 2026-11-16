@@ -1,0 +1,391 @@
+/*
+ * Block tuto/day-timeline — «Мінісадочок» in short + «Як проходить день» (09:00–13:00).
+ * Left: intro, facts, prices. Right: vertical timeline card. Steps without a known
+ * time get a dot instead of a time pill.
+ * Modifier --short (home page): no timeline, a row of four icon facts (__glance)
+ * and the prices card (__aside).
+ */
+.tuto-day-timeline__grid {
+	display: grid;
+	gap: var(--space-8);
+	align-items: start;
+}
+
+.tuto-day-timeline__intro > .lead {
+	margin-block: var(--space-5) var(--space-6);
+}
+
+.tuto-day-timeline__facts {
+	display: grid;
+	gap: var(--space-3);
+	margin-block-end: var(--space-6);
+	color: var(--c-chocolate);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-day-timeline__facts li {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+}
+
+.tuto-day-timeline__facts .icon {
+	color: var(--c-coffee-ink);
+}
+
+/* ---------- Prices ---------- */
+.tuto-day-timeline__prices {
+	gap: var(--space-4);
+	margin-block-end: var(--space-5);
+}
+
+.tuto-day-timeline__plans {
+	display: grid;
+	gap: var(--space-2);
+	font-size: var(--fs-body-s);
+}
+
+.tuto-day-timeline__plans li {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: var(--space-1) var(--space-3);
+	padding-block: var(--space-2);
+	border-block-start: 1px solid var(--c-line);
+}
+
+.tuto-day-timeline__plans strong {
+	color: var(--c-chocolate);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-heavy);
+	white-space: nowrap;
+}
+
+.tuto-day-timeline__gift {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	padding: var(--space-3) var(--space-4);
+	border-radius: var(--radius-s);
+	background-color: var(--c-cream);
+	color: var(--c-chocolate);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-day-timeline__gift .icon {
+	color: var(--c-brick);
+}
+
+/* ---------- Timeline card ---------- */
+.tuto-day-timeline__day {
+	gap: var(--space-5);
+	padding-block: var(--card-pad);
+}
+
+.tuto-day-timeline__day > h3 {
+	font-size: var(--fs-h3);
+}
+
+/* ---------- Fold-out on phones (home, T-129): <details class="… __day--toggle" open> ----------
+   <summary class="__summary"><h3>…</h3><span class="__chevron">…</span></summary><div class="__body">…</div>
+   From 48em it looks and behaves exactly like the plain card: heading, no chevron, always open. */
+.tuto-day-timeline__day--toggle {
+	gap: 0;
+}
+
+.tuto-day-timeline__summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-4);
+	list-style: none;
+}
+
+.tuto-day-timeline__summary::-webkit-details-marker {
+	display: none;
+}
+
+.tuto-day-timeline__summary h3 {
+	margin: 0;
+	font-size: var(--fs-h3);
+}
+
+.tuto-day-timeline__body {
+	display: grid;
+	gap: var(--space-5);
+	padding-block-start: var(--space-5);
+}
+
+.tuto-day-timeline__chevron {
+	display: none;
+}
+
+@media (max-width: 47.99em) {
+	.tuto-day-timeline__summary {
+		min-block-size: var(--tap);
+		margin: calc(-1 * var(--space-2));
+		padding: var(--space-2);
+		border-radius: var(--radius-s);
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.tuto-day-timeline__summary:focus-visible {
+		outline: var(--focus-w) solid var(--c-focus);
+		outline-offset: 0;
+	}
+
+	.tuto-day-timeline__chevron {
+		display: grid;
+		flex: none;
+		place-items: center;
+		inline-size: 2.5rem;
+		block-size: 2.5rem;
+		border-radius: 50%;
+		background-color: var(--c-sand);
+		color: var(--c-chocolate);
+		transition: background-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out), rotate var(--dur) var(--ease-out);
+	}
+
+	.tuto-day-timeline__day--toggle[open] .tuto-day-timeline__chevron {
+		background-color: var(--c-chocolate);
+		color: var(--c-cream);
+		rotate: 180deg;
+	}
+}
+
+/* tablets and up: the summary is just the heading - not clickable */
+@media (min-width: 48em) {
+	.tuto-day-timeline__summary {
+		pointer-events: none;
+	}
+}
+
+@media (max-width: 47.99em) and (prefers-reduced-motion: no-preference) {
+	/* smooth height where supported (Chromium 131+), as in the FAQ */
+	.tuto-day-timeline__day--toggle::details-content {
+		block-size: 0;
+		overflow-y: clip;
+		transition:
+			block-size var(--dur-slow) var(--ease-out),
+			content-visibility var(--dur-slow) allow-discrete;
+	}
+
+	.tuto-day-timeline__day--toggle[open]::details-content {
+		block-size: auto;
+	}
+
+	/* everywhere: the steps slide down and fade in */
+	.tuto-day-timeline__day--toggle[open] .tuto-day-timeline__body {
+		animation: tuto-day-in var(--dur-slow) var(--ease-out);
+	}
+}
+
+@keyframes tuto-day-in {
+	from {
+		opacity: 0;
+		transform: translateY(-0.5rem);
+	}
+}
+
+/* «Порядок дня залежить від теми тижня» + small placeholder (review №9) */
+.tuto-day-timeline__note {
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+}
+
+.tuto-day-timeline__todo {
+	display: inline-block;
+	padding: 0 var(--space-2);
+	border: 1px dashed var(--c-coffee);
+	border-radius: var(--radius-xs);
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-day-timeline__list {
+	--marker: 4rem;
+	position: relative;
+	display: grid;
+	gap: var(--space-5);
+}
+
+/* the thread that connects the steps */
+.tuto-day-timeline__list::before {
+	content: "";
+	position: absolute;
+	inset-block: var(--space-4);
+	inset-inline-start: calc(var(--marker) / 2);
+	border-inline-start: 2px dotted var(--c-latte);
+}
+
+.tuto-day-timeline__step {
+	position: relative;
+	display: grid;
+	grid-template-columns: var(--marker) minmax(0, 1fr);
+	gap: var(--space-4);
+	align-items: start;
+}
+
+.tuto-day-timeline__time {
+	display: grid;
+	place-items: center;
+	justify-self: center;
+	min-inline-size: var(--marker);
+	min-block-size: 2rem;
+	padding-inline: var(--space-2);
+	border-radius: var(--radius-pill);
+	background-color: var(--c-chocolate);
+	color: var(--c-cream);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-heavy);
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+}
+
+.tuto-day-timeline__time--soft {
+	background-color: var(--c-latte);
+	color: var(--c-chocolate);
+	font-size: var(--fs-caption);
+}
+
+.tuto-day-timeline__dot {
+	justify-self: center;
+	inline-size: 1rem;
+	block-size: 1rem;
+	margin-block-start: 0.5rem;
+	border: 3px solid var(--c-white);
+	border-radius: 50%;
+	background-color: var(--c-coffee);
+	box-shadow: 0 0 0 1.5px var(--c-latte);
+}
+
+.tuto-day-timeline__step h4 {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-heavy);
+}
+
+.tuto-day-timeline__step h4 .icon {
+	inline-size: 1.25em;
+	block-size: 1.25em;
+}
+
+.tuto-day-timeline__step p:not(.tuto-day-timeline__time) {
+	margin-block-start: var(--space-1);
+	font-size: var(--fs-body-s);
+}
+
+.tuto-day-timeline__friday {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	padding: var(--space-4);
+	border-radius: var(--radius-s);
+	background-color: var(--c-sand);
+	color: var(--c-chocolate);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-day-timeline__friday .icon {
+	color: var(--c-coffee-ink);
+}
+
+/* =========================================================================
+ * --short: the home page version (review №9/№16) — no full timeline, a row of four
+ * icon facts instead; the full day lives only on the Мінісадочок page.
+ * ======================================================================= */
+.tuto-day-timeline__glance {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-3);
+}
+
+.tuto-day-timeline__glance li {
+	display: grid;
+	align-content: start;
+	gap: var(--space-2);
+	padding: var(--space-3) var(--space-4);
+	border-radius: var(--radius-s);
+	background-color: var(--c-white);
+	color: var(--c-text);
+	font-size: var(--fs-body-s);
+	line-height: var(--lh-snug);
+}
+
+.tuto-day-timeline__glance strong {
+	display: block;
+	color: var(--c-chocolate);
+	font-size: var(--fs-body);
+	font-weight: var(--fw-heavy);
+}
+
+.tuto-day-timeline__glance-icon {
+	display: grid;
+	place-items: center;
+	inline-size: 2.5rem;
+	block-size: 2.5rem;
+	border-radius: 50%;
+	background-color: var(--c-sand);
+}
+
+.tuto-day-timeline__glance-icon .icon {
+	inline-size: 1.35rem;
+	block-size: 1.35rem;
+	color: var(--c-coffee-ink);
+}
+
+.tuto-day-timeline--short .tuto-day-timeline__grid {
+	gap: var(--space-6);
+}
+
+.tuto-day-timeline--short .tuto-day-timeline__intro > .lead {
+	margin-block-end: var(--space-5);
+}
+
+.tuto-day-timeline__aside {
+	display: grid;
+	justify-items: start;
+}
+
+.tuto-day-timeline__aside .tuto-day-timeline__prices {
+	justify-self: stretch;
+}
+
+@media (min-width: 48em) {
+	.tuto-day-timeline__glance {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-day-timeline__grid {
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		gap: var(--space-9);
+	}
+
+	.tuto-day-timeline__intro {
+		position: sticky;
+		inset-block-start: var(--space-10);
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-day-timeline--short .tuto-day-timeline__grid {
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+		align-items: center;
+	}
+
+	.tuto-day-timeline--short .tuto-day-timeline__intro {
+		position: static;
+	}
+
+	.tuto-day-timeline--short .tuto-day-timeline__glance {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}

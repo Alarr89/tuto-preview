@@ -1,0 +1,167 @@
+/*
+ * Block tuto/materials-grid - digital kits (CPT material): cover, title, price,
+ * «що входить» list, WayForPay buy button, access note.
+ * __card--soon: placeholder for the next kit (bear, no title invented).
+ * Phones: everything stacked. ≥ 768px: the kit card lays photo | body side by side.
+ * ≥ 1024px: kit card 2/3 + «soon» card 1/3. Mobile-first, tokens only.
+ */
+.tuto-materials-grid__list {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tuto-materials-grid__card {
+	block-size: 100%;
+}
+
+/* ---------- Kit card ---------- */
+.tuto-materials-grid__card--kit {
+	display: grid;
+	gap: var(--space-5);
+	padding: var(--space-3);
+}
+
+.tuto-materials-grid__media {
+	position: relative;
+	overflow: hidden;
+	margin: 0;
+	aspect-ratio: 4 / 3;
+	border-radius: var(--radius-s);
+	background-color: var(--c-sand);
+}
+
+.tuto-materials-grid__media img {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+	object-position: var(--focus, 50% 45%);
+}
+
+.tuto-materials-grid__tag {
+	position: absolute;
+	inset-block-start: var(--space-3);
+	inset-inline-start: var(--space-3);
+}
+
+.tuto-materials-grid__body {
+	display: grid;
+	gap: var(--space-4);
+	align-content: start;
+	padding: 0 calc(var(--card-pad) - var(--space-3)) calc(var(--card-pad) - var(--space-3));
+}
+
+.tuto-materials-grid__body > * {
+	margin: 0;
+}
+
+.tuto-materials-grid__title {
+	font-size: var(--fs-h3);
+	line-height: var(--lh-snug);
+}
+
+.tuto-materials-grid__lead {
+	color: var(--c-muted);
+}
+
+.tuto-materials-grid__inc-title {
+	margin: 0 0 var(--space-3);
+	color: var(--c-heading);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-heavy);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.tuto-materials-grid__includes .list-check {
+	gap: var(--space-2);
+	margin: 0;
+}
+
+.tuto-materials-grid__buy {
+	display: grid;
+	gap: var(--space-3);
+	justify-items: start;
+}
+
+.tuto-materials-grid__buy .btn {
+	inline-size: 100%;
+}
+
+.tuto-materials-grid__note {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	margin: 0;
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-materials-grid__note .icon {
+	inline-size: 1.25em;
+	block-size: 1.25em;
+	color: var(--c-coffee-ink);
+}
+
+/* ---------- «Soon» placeholder ---------- */
+.tuto-materials-grid__card--soon {
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-3);
+	min-block-size: 18rem;
+	border-style: dashed;
+	text-align: center;
+}
+
+.tuto-materials-grid__bear {
+	inline-size: 5rem;
+	block-size: auto;
+	color: var(--c-chocolate);
+}
+
+.tuto-materials-grid__card--soon h3 {
+	font-size: var(--fs-h4);
+}
+
+.tuto-materials-grid__card--soon p {
+	max-inline-size: 18rem;
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+}
+
+@media (min-width: 30em) {
+	.tuto-materials-grid__includes .list-check {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		column-gap: var(--space-5);
+	}
+
+	.tuto-materials-grid__buy .btn {
+		inline-size: auto;
+	}
+}
+
+@media (min-width: 48em) {
+	.tuto-materials-grid__card--kit {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		align-items: stretch;
+	}
+
+	.tuto-materials-grid__media {
+		aspect-ratio: auto;
+		min-block-size: 22rem;
+	}
+
+	.tuto-materials-grid__body {
+		padding: calc(var(--card-pad) - var(--space-3)) calc(var(--card-pad) - var(--space-3)) calc(var(--card-pad) - var(--space-3)) 0;
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-materials-grid__list {
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+	}
+}

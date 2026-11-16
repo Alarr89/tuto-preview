@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Стайлгайд - ТУТО, місце щасливого дитинства</title>
+<meta name="description" content="Візуальна мова сайту ТУТО: палітра, типографіка, кнопки, картки, рамки для фото, ведмедик і декор.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/tuto-preview/wp-content/themes/tuto/assets/svg/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/tuto-preview/wp-content/themes/tuto/assets/fonts/nunito-cyrillic-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/tuto-preview/wp-content/themes/tuto/assets/fonts/caveat-cyrillic-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/assets/css/tokens.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/assets/css/base.css">
+<link rel="stylesheet" href="/tuto-preview/wp-content/themes/tuto/assets/css/components.css">
+<style>
+/*
+ * Службова розкладка ВІТРИНИ (лише styleguide): сітки зразків, підписи токенів,
+ * перемикачі. Вигляд компонентів - тільки з CSS теми. Усі класи з префіксом .sg-
+ */
+:root { --sg-logo-ink: var(--c-chocolate); }
+
+.sg-logo { display: block; color: var(--sg-logo-ink); }
+.sg-logo svg { inline-size: 100%; block-size: auto; }
+.sg-logo--dark { color: var(--c-cream); --logo-accent: #d9a08a; }
+
+/* Top bar */
+.sg-nav { position: sticky; inset-block-start: var(--space-3); z-index: var(--z-header); padding-inline: var(--gutter); }
+.sg-nav__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); max-inline-size: var(--container-wide); margin-inline: auto; padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5); border-radius: var(--radius-pill); background-color: rgb(255 255 255 / 0.92); box-shadow: var(--shadow-m); backdrop-filter: blur(8px); }
+.sg-nav__logo { inline-size: 5.5rem; text-decoration: none; }
+.sg-nav__links { display: none; gap: var(--space-5); padding: 0; margin: 0; list-style: none; font-size: var(--fs-small); font-weight: var(--fw-semibold); }
+.sg-nav__links a { color: var(--c-chocolate); text-decoration: none; }
+.sg-nav__links a:hover { color: var(--c-coffee-ink); }
+.sg-nav__meta { color: var(--c-muted); font-size: var(--fs-caption); font-weight: var(--fw-semibold); }
+@media (min-width: 64em) { .sg-nav__links { display: flex; } .sg-nav__meta { display: none; } }
+.sg-nav .btn { display: none; }
+@media (min-width: 48em) { .sg-nav .btn { display: inline-flex; } }
+
+/* Hero */
+.sg-hero { padding-block: var(--space-8) var(--section-pad); }
+.sg-hero__grid { position: relative; z-index: var(--z-raised); display: grid; gap: var(--space-8); align-items: center; }
+@media (min-width: 64em) { .sg-hero__grid { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-9); } }
+.sg-hero__chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.sg-hero__logo { inline-size: min(17rem, 70%); margin-block: var(--space-6) var(--space-5); }
+.sg-hero__title { margin-block-end: var(--space-5); }
+.sg-hero__lead { max-inline-size: 34rem; margin-block-end: var(--space-6); }
+.sg-facts { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); margin-block-start: var(--space-6); padding: 0; list-style: none; font-size: var(--fs-small); font-weight: var(--fw-semibold); color: var(--c-chocolate); }
+.sg-facts li { display: flex; align-items: center; gap: var(--space-2); }
+.sg-hero__media { position: relative; inline-size: 100%; max-inline-size: 27rem; margin: var(--space-7) auto 0; }
+.sg-hero__media .frame-arch img { object-position: 60% 50%; }
+.sg-hero__peek { position: absolute; inset-block-end: calc(100% - 0.4rem); inset-inline-start: 50%; inline-size: 7rem; translate: -55% 0; color: var(--c-chocolate); z-index: var(--z-raised); }
+.sg-hero__tag { position: absolute; inset-block-end: 12%; inset-inline-start: calc(-1 * var(--space-3)); z-index: var(--z-raised); }
+.sg-hero__blob { inset-block-start: 8%; inset-inline-end: -18%; inline-size: 95%; color: var(--c-sand); z-index: var(--z-below); }
+.sg-hero__branch-a { display: none; inset-block-end: 18%; inset-inline-start: -1.5rem; inline-size: 7rem; color: var(--c-coffee); opacity: 0.6; rotate: 8deg; }
+.sg-hero__branch-b { inset-block-end: -2rem; inset-inline-end: -1.5rem; inline-size: 4rem; color: var(--c-coffee); opacity: 0.7; }
+.sg-hero__dots { inset-block-end: 4%; inset-inline-start: 45%; inline-size: 12rem; color: var(--c-latte); display: none; }
+@media (min-width: 64em) { .sg-hero__dots, .sg-hero__branch-a { display: block; } }
+.sg-heart { inline-size: 1rem; color: var(--c-brick); }
+.sg-heart--1 { inset-block-start: 14%; inset-inline-end: 6%; }
+.sg-heart--2 { inset-block-start: 22%; inset-inline-end: 12%; inline-size: 0.6rem; color: var(--c-latte); }
+.sg-heart--3 { inset-block-end: 22%; inset-inline-start: 4%; inline-size: 0.75rem; color: var(--c-latte); }
+
+.sg-toc { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-block-start: var(--space-8); padding: 0; list-style: none; position: relative; z-index: var(--z-raised); }
+
+/* Generic grids */
+.sg-grid-2, .sg-grid-3 { display: grid; gap: var(--gap); }
+@media (min-width: 48em) { .sg-grid-2 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64em) { .sg-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+.sg-split { display: grid; gap: var(--space-8); align-items: center; }
+@media (min-width: 64em) { .sg-split { grid-template-columns: 1fr 1fr; gap: var(--space-9); } .sg-split--wide-left { grid-template-columns: 1.2fr 0.8fr; } }
+.sg-sub { margin-block: var(--space-8) var(--space-5); }
+.sg-sub:first-child { margin-block-start: 0; }
+.sg-note { max-inline-size: var(--measure); margin-block-start: var(--space-4); color: var(--c-muted); font-size: var(--fs-small); }
+.sg-code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.85em; overflow-wrap: anywhere; }
+
+/* Palette */
+.sg-swatches { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr)); padding: 0; list-style: none; }
+.sg-swatch { display: grid; gap: var(--space-1); align-content: start; }
+.sg-swatch__chip { aspect-ratio: 16 / 9; margin-block-end: var(--space-2); border-radius: var(--radius-m); box-shadow: inset 0 0 0 1px rgb(59 42 34 / 0.1); }
+.sg-swatch__name { color: var(--c-heading); font-weight: var(--fw-bold); }
+.sg-swatch__hex { font-weight: var(--fw-semibold); font-variant-numeric: tabular-nums; color: var(--c-chocolate); }
+.sg-swatch__role { color: var(--c-muted); font-size: var(--fs-caption); line-height: var(--lh-snug); }
+.sg-swatch__token { color: var(--c-coffee-ink); font-size: var(--fs-caption); }
+
+.sg-table-wrap { overflow-x: auto; margin-block-start: var(--space-5); border-radius: var(--radius-m); background-color: var(--c-white); }
+.sg-contrast { inline-size: 100%; min-inline-size: 33rem; font-size: var(--fs-small); }
+.sg-contrast th, .sg-contrast td { padding: var(--space-2) var(--space-3); text-align: start; vertical-align: middle; border-block-end: 1px solid var(--c-sand-2); }
+.sg-contrast thead th { color: var(--c-muted); font-size: var(--fs-caption); font-weight: var(--fw-bold); letter-spacing: 0.04em; text-transform: uppercase; }
+.sg-contrast tbody th { font-weight: var(--fw-semibold); color: var(--c-chocolate); white-space: nowrap; }
+.sg-contrast tr:last-child > * { border-block-end: 0; }
+.sg-cell { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-1) var(--space-3) var(--space-1) var(--space-2); border-radius: var(--radius-xs); font-variant-numeric: tabular-nums; font-weight: var(--fw-bold); white-space: nowrap; }
+.sg-cell b { font-size: 1.15em; }
+.sg-cell small { font-weight: var(--fw-semibold); font-size: 0.8em; opacity: 0.9; }
+.chip[aria-pressed="true"] .sg-dot { box-shadow: 0 0 0 1.5px var(--c-cream); }
+.sg-dot { display: inline-block; inline-size: 0.85em; block-size: 0.85em; border-radius: 50%; box-shadow: inset 0 0 0 1px rgb(59 42 34 / 0.15); vertical-align: -0.05em; }
+
+/* Typography specimen */
+.sg-fonts { display: grid; gap: var(--gap); margin-block-end: var(--space-8); }
+@media (min-width: 48em) { .sg-fonts { grid-template-columns: 1.4fr 1fr; } }
+.sg-font__aa { font-size: clamp(4rem, 3rem + 4vw, 6.5rem); line-height: 1; color: var(--c-heading); font-weight: var(--fw-bold); }
+.sg-font__aa--hand { font-family: var(--font-hand); font-weight: var(--fw-hand); color: var(--c-coffee); }
+.sg-font__abc { font-size: var(--fs-lead); letter-spacing: 0.04em; overflow-wrap: anywhere; color: var(--c-chocolate); }
+.sg-weights { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); color: var(--c-chocolate); }
+.sg-spec { display: grid; gap: var(--space-2) var(--space-6); padding-block: var(--space-5); border-block-start: 1px solid var(--c-line); }
+@media (min-width: 48em) { .sg-spec { grid-template-columns: 11rem 1fr; align-items: baseline; } }
+.sg-spec__meta { display: grid; gap: 2px; color: var(--c-muted); font-size: var(--fs-caption); line-height: var(--lh-snug); }
+.sg-spec__meta b { color: var(--c-chocolate); font-size: var(--fs-small); }
+.sg-spec__sample { margin: 0; max-inline-size: 48rem; }
+.sg-body-s { font-size: var(--fs-body-s); }
+
+/* Component showcase */
+.sg-panel { display: grid; gap: var(--space-5); align-content: start; }
+.sg-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-4) var(--space-5); }
+.sg-item { display: grid; justify-items: start; gap: var(--space-2); }
+.sg-label { color: var(--c-muted); font-size: var(--fs-caption); font-weight: var(--fw-semibold); }
+.sg-group-title { margin-block-end: var(--space-1); font-size: var(--fs-small); font-weight: var(--fw-heavy); letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-heading); }
+/* Static mirrors of live states (values come from the component's own variables) */
+.sg-state-hover { background-color: var(--btn-bg-hover); border-color: var(--btn-border-hover); color: var(--btn-fg-hover); }
+.btn--primary.sg-state-hover { box-shadow: var(--shadow-m); }
+.sg-state-focus { outline: var(--focus-w) solid var(--c-focus); outline-offset: var(--focus-offset); }
+.sg-state-active { transform: translateY(1px) scale(0.985); }
+.sg-age-out { min-block-size: 1.6em; font-size: var(--fs-small); color: var(--c-muted); }
+.sg-age-out b { color: var(--c-chocolate); }
+
+/* Pricing */
+.sg-pricing { display: grid; gap: var(--gap); align-items: stretch; }
+.sg-pricing > .card--featured { margin-block: var(--space-8) var(--space-3); }
+@media (min-width: 64em) { .sg-pricing { grid-template-columns: repeat(3, 1fr); padding-block-start: var(--space-8); } .sg-pricing > .card--featured { margin: 0; } }
+.sg-peek { position: absolute; inset-block-end: calc(100% - 2px); inset-inline-start: var(--space-5); inline-size: 5.5rem; color: var(--c-chocolate); pointer-events: none; }
+.sg-adapt { display: grid; gap: var(--space-4); margin-block-start: var(--gap); }
+@media (min-width: 48em) { .sg-adapt { grid-template-columns: 1fr auto; align-items: center; } }
+.sg-adapt__prices { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
+
+/* Reviews */
+.sg-review blockquote { margin: 0; }
+.sg-review figcaption { display: flex; align-items: center; gap: var(--space-3); margin-block-start: auto; color: var(--c-heading); font-size: var(--fs-body); font-weight: var(--fw-bold); }
+.sg-review__avatar { display: grid; place-items: center; inline-size: 2.75rem; block-size: 2.75rem; border-radius: 50%; background-color: var(--c-sand); color: var(--c-chocolate); }
+.card--sand .sg-review__avatar { background-color: var(--c-white); }
+.card--dark .sg-review__avatar { background-color: var(--c-chocolate-2); color: var(--c-cream); }
+.sg-review small { display: block; color: var(--c-muted); font-weight: var(--fw-regular); font-size: var(--fs-small); }
+
+/* Frames */
+.sg-frames { display: grid; gap: var(--space-7) var(--gap); grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; }
+@media (min-width: 64em) { .sg-frames { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8) var(--space-8); } }
+.sg-frame { display: grid; gap: var(--space-3); }
+.sg-frame .frame-round { aspect-ratio: 3 / 4; }
+
+/* Features (safety) */
+.sg-features { display: grid; gap: var(--space-5); margin-block-start: var(--space-6); padding: 0; list-style: none; }
+@media (min-width: 48em) { .sg-features { grid-template-columns: repeat(2, 1fr); } }
+.sg-feature { display: grid; grid-template-columns: auto 1fr; gap: var(--space-1) var(--space-4); }
+.sg-feature__icon { grid-row: span 2; display: grid; place-items: center; inline-size: 3rem; block-size: 3rem; border-radius: 50%; background-color: var(--c-white); }
+.sg-feature h3 { font-size: var(--fs-h4); }
+.sg-feature p { font-size: var(--fs-body-s); }
+.sg-safety-media { position: relative; inline-size: 100%; max-inline-size: 24rem; margin-inline: auto; }
+
+/* Dark manifesto */
+.sg-manifest { display: grid; gap: var(--space-7); align-items: center; }
+@media (min-width: 64em) { .sg-manifest { grid-template-columns: 1fr 1.1fr; gap: var(--space-9); } }
+.sg-manifest__bear { inline-size: 8rem; color: var(--c-cream); --bear-tint: var(--c-coffee); margin-block-start: var(--space-6); }
+.sg-manifest .list-check { font-size: var(--fs-lead); }
+
+/* Price list (ref 03) */
+.sg-pricelist { display: grid; gap: var(--space-3); padding: 0; list-style: none; }
+.sg-pricelist > .card { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-4); }
+.sg-pricelist .card__title { font-size: var(--fs-body); }
+.sg-pricelist .price { flex: none; }
+.sg-docs { margin-block-start: var(--space-6); }
+
+/* Bear, decor, icons */
+.sg-bears { display: grid; gap: var(--gap); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 64em) { .sg-bears { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.sg-bear { align-items: center; justify-content: flex-end; text-align: center; }
+.sg-bear svg { block-size: 9rem; inline-size: auto; color: var(--c-chocolate); }
+.sg-bear--edge { padding-block-end: 0; }
+.sg-bear--edge .sg-bear__stage { inline-size: 100%; display: flex; justify-content: center; border-block-end: var(--border-w) solid var(--c-latte); }
+.sg-bear--edge svg { block-size: 5.5rem; }
+.sg-bear--edge .caption { padding-block-end: var(--card-pad); }
+.card--dark.sg-bear svg { color: var(--c-cream); --bear-tint: var(--c-coffee); }
+.sg-decor { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.5rem), 1fr)); }
+.sg-decor .card { align-items: center; justify-content: space-between; text-align: center; padding: var(--space-4); }
+.sg-decor svg { block-size: 5rem; inline-size: auto; max-inline-size: 100%; }
+.sg-decor .sg-decor__wide { inline-size: 100%; block-size: 2.5rem; }
+.sg-icons { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 7.5rem), 1fr)); padding: 0; list-style: none; }
+.sg-icons li { display: grid; justify-items: center; gap: var(--space-2); padding: var(--space-4) var(--space-2); border-radius: var(--radius-s); background-color: var(--c-white); text-align: center; }
+.sg-icons .icon { inline-size: 2rem; block-size: 2rem; color: var(--c-chocolate); }
+.sg-icons span { font-size: var(--fs-caption); color: var(--c-muted); line-height: var(--lh-snug); }
+
+/* Approval */
+.sg-approve { display: grid; gap: var(--gap); }
+@media (min-width: 64em) { .sg-approve { grid-template-columns: repeat(3, 1fr); } }
+.sg-toggle__opts { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.sg-toggle .chip { gap: var(--space-2); }
+.sg-preview { display: grid; gap: var(--space-6); align-items: center; margin-block-start: var(--gap); }
+@media (min-width: 64em) { .sg-preview { grid-template-columns: 0.8fr 1.2fr; } }
+.sg-preview__logo { inline-size: min(100%, 22rem); }
+.sg-decisions { display: grid; gap: var(--space-3); padding: 0; list-style: none; counter-reset: dec; }
+.sg-decisions h3 { font-size: var(--fs-body); }
+.sg-decision-visual { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+.sg-favicon { inline-size: 2.5rem; block-size: 2.5rem; }
+.sg-favicon--sm { inline-size: 1rem; block-size: 1rem; }
+
+/* Floating approval dock */
+.sg-dock { position: fixed; inset-inline-end: var(--gutter); inset-block-end: calc(var(--tap) + var(--space-6) + env(safe-area-inset-bottom, 0px)); z-index: calc(var(--z-sticky) + 1); }
+@media (min-width: 48em) { .sg-dock { inset-block-end: var(--space-5); } }
+.sg-dock > summary { list-style: none; box-shadow: var(--shadow-l); }
+.sg-dock > summary::-webkit-details-marker { display: none; }
+.sg-dock__panel { position: absolute; inset-block-end: calc(100% + var(--space-3)); inset-inline-end: 0; inline-size: min(21rem, calc(100vw - 2 * var(--gutter))); max-block-size: 70vh; overflow-y: auto; box-shadow: var(--shadow-l); }
+.sg-dock .sg-toggle .chip { min-height: 2.5rem; padding-inline: var(--space-3); font-size: var(--fs-small); }
+
+/* Footer */
+/* Mobile: the footer covers the body padding reserved for the sticky CTA (recommendation for the theme footer) */
+@media (max-width: 47.99em) { .sg-site-footer { margin-block-end: calc(-1 * (var(--tap) + var(--space-6) + env(safe-area-inset-bottom, 0px))); padding-block-end: calc(var(--section-pad-s) + var(--tap) + var(--space-6) + env(safe-area-inset-bottom, 0px)); } }
+.sg-footer { display: grid; gap: var(--space-6); }
+@media (min-width: 48em) { .sg-footer { grid-template-columns: 1fr auto; align-items: end; } }
+.sg-footer__logo { inline-size: 12rem; }
+.sg-footer__links { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); padding: 0; list-style: none; }
+.sg-footer__links a { display: inline-flex; align-items: center; gap: var(--space-2); }
+.sg-footer .icon { color: var(--c-latte); }
+</style>
+</head>
+<body class="has-sticky-cta" id="top">
+<a class="skip-link" href="#main">Перейти до&nbsp;змісту</a>
+
+<header class="sg-nav">
+	<div class="sg-nav__bar">
+		<a class="sg-logo sg-nav__logo" href="#top" aria-label="ТУТО - на початок">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1354 455" class="tuto-logo" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0,100 H255 V160 H157 V404 H98 V160 H0 Z M318.5,100 L383.5,100 L457,261.9 L530.5,100 L595.5,100 L457.5,404 L392.5,404 L424.5,333.5 Z M658.5,100 H914 V160 H815.8 V404 H756.8 V160 H658.5 Z"/><circle cx="1166.5" cy="268" r="121" fill="none" stroke="currentColor" stroke-width="27"/><g class="tuto-logo__accent" style="color:var(--logo-accent,var(--c-brick,#6E2B1E))"><circle cx="1166.5" cy="268" r="174.4" fill="none" stroke="currentColor" stroke-width="25"/><path fill="currentColor" d="M1225,0 H1268 L1232,61 H1189 Z"/></g></svg>
+		</a>
+		<ul class="sg-nav__links">
+			<li><a href="#palette">Палітра</a></li>
+			<li><a href="#type">Шрифти</a></li>
+			<li><a href="#ui">Кнопки</a></li>
+			<li><a href="#cards">Картки</a></li>
+			<li><a href="#frames">Фото</a></li>
+			<li><a href="#sections">Секції</a></li>
+			<li><a href="#bear">Ведмедик</a></li>
+			<li><a href="#approve">На&nbsp;утвердження</a></li>
+		</ul>
+		<span class="sg-nav__meta">Стайлгайд · v1</span>
+		<a class="btn btn--primary btn--sm" href="#cards">Записатися на&nbsp;пробне</a>
+	</div>
+</header>
+
+<main id="main">
+<!-- ================================================================ 1. Hero -->
+<section class="section sg-hero" aria-labelledby="hero-title">
+	<svg class="decor sg-hero__branch-a" viewBox="0 0 141 172" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-5 0)" d="M8,170 C30,130 60,70 118,22M25.5,138.2 L24.1,134.4 C30.3,125.6 22.3,106 7.4,95.8 C8.8,106.1 14,127.8 24.1,134.4M24.1,134.4 Q21.1,122.6 17.2,110.8M36.7,119 L40.6,118.3 C47.8,125.4 67.5,121 80.3,112.7 C69.7,108.7 48.5,110.1 40.6,118.3M40.6,118.3 Q52.1,117.4 63.8,115.6M50.6,97.4 L49.7,93.5 C57.3,86.1 52.5,66.5 39.5,54.8 C39.3,64.7 40.9,86 49.7,93.5M49.7,93.5 Q48.7,82.1 46.8,70.4M65.3,77 L69.3,76.4 C75.2,84 93.3,80.6 105.2,73.1 C95.6,68.5 76.2,68.7 69.3,76.4M69.3,76.4 Q79.4,76.2 90.1,75.1M83.6,55.1 L83.7,51.1 C91.5,47.4 91.5,30.9 83.1,19 C80.8,26.9 77.9,44.1 83.7,51.1M83.7,51.1 Q85.2,42.5 85.9,32.8M118,22 L121.1,19.4 C127.9,22.9 138.9,13.1 143.7,2.8 C135,3.4 121.8,11.6 121.1,19.4M121.1,19.4 Q127.3,15.7 134.2,10.5"/></svg>
+	<svg class="decor sg-heart sg-heart--1" viewBox="0 0 24 22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg>
+	<svg class="decor sg-heart sg-heart--2" viewBox="0 0 24 22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg>
+	<svg class="decor sg-heart sg-heart--3" viewBox="0 0 24 22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg>
+	<svg class="decor sg-hero__dots" viewBox="0 0 260 120" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 8" d="M4,112 C40,108 72,90 100,72 C128,54 160,58 160,78 C160,96 132,96 132,76 C132,50 172,28 206,22 C226,18 242,16 256,8"/></svg>
+
+	<div class="container sg-hero__grid">
+		<div class="sg-hero__text">
+			<ul class="sg-hero__chips" role="list">
+				<li><span class="chip chip--outline">Скандинавський підхід</span></li>
+				<li><span class="chip chip--outline">Білінгвальне і&nbsp;сенсорне середовище</span></li>
+			</ul>
+			<div class="sg-logo sg-hero__logo">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1354 548" class="tuto-logo tuto-logo--full" role="img" aria-labelledby="logo-full-title"><title id="logo-full-title">ТУТО - навчальний простір розвитку</title><path fill="currentColor" d="M0,100 H255 V160 H157 V404 H98 V160 H0 Z M318.5,100 L383.5,100 L457,261.9 L530.5,100 L595.5,100 L457.5,404 L392.5,404 L424.5,333.5 Z M658.5,100 H914 V160 H815.8 V404 H756.8 V160 H658.5 Z"/><circle cx="1166.5" cy="268" r="121" fill="none" stroke="currentColor" stroke-width="27"/><g class="tuto-logo__accent" style="color:var(--logo-accent,var(--c-brick,#6E2B1E))"><circle cx="1166.5" cy="268" r="174.4" fill="none" stroke="currentColor" stroke-width="25"/><path fill="currentColor" d="M1225,0 H1268 L1232,61 H1189 Z"/></g><path fill="none" stroke="currentColor" stroke-width="11.3" stroke-linejoin="round" d="M5.7,484.7V536.3M39.7,484.7V536.3M5.7,510.5H39.7 M58.5,538.9L80.6,484L102.6,538.9M66,520.6H95.2 M121.5,510.5H140A12.9,12.9 0 0 1 140,536.3H121.5V484.7H137.5A12.9,12.9 0 0 1 137.5,510.5 M175.6,484.7V501.7Q175.6,515.5 190.7,515.5H205.8M205.8,484.7V536.3 M224.6,538.9L246.7,484L268.7,538.9M232.1,520.6H261.3 M321.6,536.3V484.7H295.8L283.8,538.9 M344.2,484.7V536.3H360.6A13.9,13.9 0 0 0 360.6,508.6H344.2 M397,484.7V536.3M431.1,484.7V536.3M397,510.5H431.1 M453.7,484.7V536.3L487.7,484.7V536.3 M510.3,484.7V536.3L544.3,484.7V536.3M519.1,465.1Q527.3,475.2 535.5,465.1 M587.7,536.3V484.7H620.4V536.3 M641.3,536.3V484.7H657A14.5,14.5 0 0 1 657,513.6H641.3 M692.4,502.9V518.1A18.3,18.3 0 0 0 728.9,518.1V502.9A18.3,18.3 0 0 0 692.4,502.9Z M780.2,491.2A17,17 0 0 0 749.8,501.7V519.3A17,17 0 0 0 780.2,529.8 M797.1,484.7H837.4M817.3,484.7V536.3 M853.2,484.7V536.3 M874.1,536.3V484.7H889.8A14.5,14.5 0 0 1 889.8,513.6H874.1 M947.7,536.3V484.7H963.4A14.5,14.5 0 0 1 963.4,513.6H947.7 M998,502.9V518.1A18.3,18.3 0 0 0 1034.5,518.1V502.9A18.3,18.3 0 0 0 998,502.9Z M1055.6,490.7A14.8,12.9 0 1 1 1066.9,510.5A16.7,12.9 0 1 1 1054,530.3 M1104.9,510.5H1123.5A12.9,12.9 0 0 1 1123.5,536.3H1104.9V484.7H1121A12.9,12.9 0 0 1 1121,510.5 M1156.5,484.7V536.3L1190.5,484.7V536.3 M1205.5,484.7H1245.8M1225.7,484.7V536.3 M1260.9,484.7V536.3M1294.9,483.4L1262.8,511.8L1295.5,538.2 M1309.9,483.4L1332,520.6M1351.5,483.4L1315.6,538.9"/></svg>
+			</div>
+			<h1 class="display sg-hero__title" id="hero-title">Місце <span class="hand">щасливого</span> дитинства</h1>
+			<p class="lead sg-hero__lead">Навчальний простір розвитку зі&nbsp;скандинавським підходом: тематичні тижні, сенсорні станції, природні матеріали й&nbsp;мінісадочок з&nbsp;адаптацією разом з&nbsp;мамою.</p>
+			<div class="btn-group">
+				<a class="btn btn--primary" href="#cards">Записатися на&nbsp;пробне</a>
+				<a class="btn btn--secondary" href="#pricing">Програми та&nbsp;ціни</a>
+			</div>
+			<ul class="sg-facts" role="list">
+				<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg>Тарнавського,&nbsp;7В · Коновальця,&nbsp;11</li>
+				<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg>Мінісадочок пн–&#8288;пт&nbsp;09:00–&#8288;13:00</li>
+				<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg><a href="tel:+380969404901">096&nbsp;940&nbsp;49&nbsp;01</a></li>
+			</ul>
+		</div>
+
+		<div class="sg-hero__media">
+			<svg class="decor sg-hero__blob" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><path fill="currentColor" d="M187.9,127.2C180.5,147.5 150.6,164.2 128.4,172.6C106.3,181.1 73.5,187.9 54.9,177.9C36.4,167.9 21,136.2 16.9,112.5C12.8,88.7 15.6,50 30.4,35.3C45.2,20.6 82,21.7 105.7,24.2C129.5,26.7 159.1,33.3 172.7,50.5C186.4,67.6 195.3,106.8 187.9,127.2Z"/></svg>
+			<svg class="decor sg-hero__peek tuto-bear" viewBox="0 0 124 100" aria-hidden="true" focusable="false"><g transform="translate(66 64)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-8)"><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-47.7,23.5 A54,50 0 1 1 39,34.6M-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g><path d="M-45.5,36 A12.5,12.5 0 0 1 -20.5,36M-37.5,36 V31 M-28.5,36 V31M20.5,36 A12.5,12.5 0 0 1 45.5,36M28.5,36 V31 M37.5,36 V31"/></g></svg>
+			<figure class="frame-arch">
+				<img src="/tuto-preview/design/refs/photos/instagram/ig-106-kids-teacher-with-child.jpg" width="941" height="1672" alt="Вихователька й дитина разом розглядають матеріали заняття за столом" fetchpriority="high">
+			</figure>
+			<span class="badge badge--light badge--heart sg-hero__tag">Щовечора&nbsp;- фото й&nbsp;відео з&nbsp;занять</span>
+			<svg class="decor sg-hero__branch-b" viewBox="0 0 97 283" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-5 31)" d="M30,250 C38,180 50,100 82,10M33.6,220 L36.6,217.3 C50.3,218.6 70.1,199.3 79.4,181.1 C64.7,184.7 41.4,201.8 36.6,217.3M37.7,191.1 L36,187.5 C41.4,173.7 28,147.5 7.9,134.4 C11.4,148.3 21.6,177.5 36,187.5M43,158.9 L46.1,156.4 C59.3,159.1 79.9,142.1 90.2,125.1 C75.6,127.1 51.7,141.8 46.1,156.4M49,127.9 L47.6,124.1 C54.2,112.3 44.3,87.6 26.8,74.2 C28.7,87.1 35.4,114.3 47.6,124.1M56.3,95.8 L59.7,93.7 C70.7,98.1 89.8,85.2 99.8,71.1 C86.8,71.1 64.9,81.4 59.7,93.7M64.3,65.4 L63.4,61.5 C70,54 64.4,34.5 51.7,23.2 C52,33.1 54.7,54.2 63.4,61.5M82,10 L83.3,6.2 C92.3,3.9 98.2,-14.5 97.7,-29 C89.5,-22.1 80.5,-3.9 83.3,6.2"/></svg>
+		</div>
+	</div>
+
+	<div class="container">
+		<nav aria-label="Зміст стайлгайду">
+			<ul class="sg-toc" role="list">
+				<li><a class="chip" href="#palette">01 Палітра</a></li>
+				<li><a class="chip" href="#type">02 Типографіка</a></li>
+				<li><a class="chip" href="#ui">03 Кнопки й&nbsp;чипи</a></li>
+				<li><a class="chip" href="#cards">04 Картки</a></li>
+				<li><a class="chip" href="#frames">05 Рамки фото</a></li>
+				<li><a class="chip" href="#sections">06 Секції</a></li>
+				<li><a class="chip" href="#lists">07 Списки й&nbsp;ціни</a></li>
+				<li><a class="chip" href="#bear">08 Ведмедик та&nbsp;іконки</a></li>
+				<li><a class="chip" href="#approve">09 На&nbsp;утвердження</a></li>
+			</ul>
+		</nav>
+	</div>
+</section>
+
+<!-- ================================================================ 2. Palette -->
+<section class="section section--sand section--wave-top" id="palette" aria-labelledby="palette-title">
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">01 · Палітра</p>
+			<h2 id="palette-title">Кольори з <span class="hand">листівки</span> ТУТО</h2>
+			<p class="section-head__lead">Крем, пісок, лате й&nbsp;шоколад&nbsp;- як&nbsp;природні матеріали в&nbsp;просторі центру. Цеглястий&nbsp;- рідкісна іскра з&nbsp;логотипа.</p>
+		</div>
+
+		<h3 class="sg-group-title">Бренд</h3>
+		<ul class="sg-swatches" role="list">
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-cream)"></span><span class="sg-swatch__name">Крем</span><span class="sg-swatch__hex">#F8F3EC</span><code class="sg-code sg-swatch__token">--c-cream</code><span class="sg-swatch__role">Фон сторінки</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-sand)"></span><span class="sg-swatch__name">Пісок</span><span class="sg-swatch__hex">#EADFD2</span><code class="sg-code sg-swatch__token">--c-sand</code><span class="sg-swatch__role">Секції, що&nbsp;чергуються, картки</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-latte)"></span><span class="sg-swatch__name">Лате</span><span class="sg-swatch__hex">#CDB8A3</span><code class="sg-code sg-swatch__token">--c-latte</code><span class="sg-swatch__role">Плями, контури; другорядний текст на&nbsp;шоколаді</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-coffee)"></span><span class="sg-swatch__name">Кава</span><span class="sg-swatch__hex">#8B6B57</span><code class="sg-code sg-swatch__token">--c-coffee</code><span class="sg-swatch__role">Іконки, сердечка, рукописний акцент від&nbsp;24px</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-chocolate)"></span><span class="sg-swatch__name">Шоколад</span><span class="sg-swatch__hex">#3B2A22</span><code class="sg-code sg-swatch__token">--c-chocolate</code><span class="sg-swatch__role">Заголовки, кнопки, темні плашки</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-text)"></span><span class="sg-swatch__name">Текст</span><span class="sg-swatch__hex">#4A3B33</span><code class="sg-code sg-swatch__token">--c-text</code><span class="sg-swatch__role">Основний текст</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-white)"></span><span class="sg-swatch__name">Білий</span><span class="sg-swatch__hex">#FFFFFF</span><code class="sg-code sg-swatch__token">--c-white</code><span class="sg-swatch__role">Картки</span></li>
+		</ul>
+
+		<h3 class="sg-group-title sg-sub">Похідні</h3>
+		<ul class="sg-swatches" role="list">
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-coffee-ink)"></span><span class="sg-swatch__name">Кава-чорнило</span><span class="sg-swatch__hex">#6F5141</span><code class="sg-code sg-swatch__token">--c-coffee-ink</code><span class="sg-swatch__role">Посилання, eyebrow, дрібний кольоровий текст (AA)</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-muted)"></span><span class="sg-swatch__name">Приглушений</span><span class="sg-swatch__hex">#6B5A50</span><code class="sg-code sg-swatch__token">--c-muted</code><span class="sg-swatch__role">Підписи, примітки до&nbsp;цін</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-sand-2)"></span><span class="sg-swatch__name">Пісок-2</span><span class="sg-swatch__hex">#DFD2C3</span><code class="sg-code sg-swatch__token">--c-sand-2</code><span class="sg-swatch__role">Тонкі лінії на&nbsp;кремовому</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-chocolate-2)"></span><span class="sg-swatch__name">Шоколад-2</span><span class="sg-swatch__hex">#4E3A30</span><code class="sg-code sg-swatch__token">--c-chocolate-2</code><span class="sg-swatch__role">Наведення на&nbsp;темні поверхні</span></li>
+			<li class="sg-swatch"><span class="sg-swatch__chip" style="background-color:var(--c-brick)"></span><span class="sg-swatch__name">Цеглястий <span class="badge badge--soft">пропозиція</span></span><span class="sg-swatch__hex" data-sg-show="accent">#A8473A</span><code class="sg-code sg-swatch__token">--c-brick</code><span class="sg-swatch__role">Кружок над&nbsp;«О», сердечка, дрібні деталі. Не&nbsp;для&nbsp;кнопок</span></li>
+		</ul>
+
+		<h3 class="sg-group-title sg-sub">Контраст (WCAG 2.x)</h3>
+		<p class="small">AA: 4.5&nbsp;- звичайний текст; 3.0&nbsp;- великий текст (від&nbsp;24px або 18.66px жирним), іконки й&nbsp;межі полів. Пораховано за&nbsp;формулою відносної яскравості.</p>
+		<div class="sg-table-wrap" tabindex="0" role="region" aria-label="Таблиця контрастів">
+			<table class="sg-contrast">
+				<thead>
+					<tr><th scope="col">Колір тексту</th><th scope="col">на&nbsp;кремі</th><th scope="col">на&nbsp;піску</th><th scope="col">на&nbsp;білому</th><th scope="col">на&nbsp;шоколаді</th></tr>
+				</thead>
+				<tbody>
+					<tr><th scope="row"><span class="sg-dot" style="background:var(--c-text)"></span> text #4A3B33</th>
+						<td><span class="sg-cell" style="background:var(--c-cream);color:var(--c-text)"><b>Аа</b> 9.68 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-sand);color:var(--c-text)"><b>Аа</b> 8.14 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-white);color:var(--c-text)"><b>Аа</b> 10.69 <small>AA</small></span></td><td>-</td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:var(--c-chocolate)"></span> chocolate #3B2A22</th>
+						<td><span class="sg-cell" style="background:var(--c-cream);color:var(--c-chocolate)"><b>Аа</b> 12.35 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-sand);color:var(--c-chocolate)"><b>Аа</b> 10.38 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-white);color:var(--c-chocolate)"><b>Аа</b> 13.63 <small>AA</small></span></td><td>-</td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:var(--c-coffee-ink)"></span> coffee-ink #6F5141</th>
+						<td><span class="sg-cell" style="background:var(--c-cream);color:var(--c-coffee-ink)"><b>Аа</b> 6.49 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-sand);color:var(--c-coffee-ink)"><b>Аа</b> 5.46 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-white);color:var(--c-coffee-ink)"><b>Аа</b> 7.17 <small>AA</small></span></td><td>-</td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:var(--c-muted)"></span> muted #6B5A50</th>
+						<td><span class="sg-cell" style="background:var(--c-cream);color:var(--c-muted)"><b>Аа</b> 5.94 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-sand);color:var(--c-muted)"><b>Аа</b> 4.99 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-white);color:var(--c-muted)"><b>Аа</b> 6.56 <small>AA</small></span></td><td>-</td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:var(--c-coffee)"></span> coffee #8B6B57</th>
+						<td><span class="sg-cell" style="background:var(--c-cream);color:var(--c-coffee)"><b>Аа</b> 4.38 <small>великий</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-sand);color:var(--c-coffee)"><b>Аа</b> 3.68 <small>великий</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-white);color:var(--c-coffee)"><b>Аа</b> 4.84 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-chocolate);color:var(--c-coffee)"><b>Аа</b> 2.82 <small>✗</small></span></td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:#a8473a"></span> brick #A8473A</th>
+						<td><span class="sg-cell" style="background:var(--c-cream);color:#a8473a"><b>Аа</b> 5.24 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-sand);color:#a8473a"><b>Аа</b> 4.41 <small>великий</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-white);color:#a8473a"><b>Аа</b> 5.79 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-chocolate);color:#a8473a"><b>Аа</b> 2.36 <small>✗</small></span></td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:#6e2b1e"></span> brick-рідний #6E2B1E</th>
+						<td><span class="sg-cell" style="background:var(--c-cream);color:#6e2b1e"><b>Аа</b> 9.38 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-sand);color:#6e2b1e"><b>Аа</b> 7.88 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-white);color:#6e2b1e"><b>Аа</b> 10.36 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-chocolate);color:#6e2b1e"><b>Аа</b> 1.32 <small>✗</small></span></td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:#4a4a4c"></span> графіт #4A4A4C</th>
+						<td><span class="sg-cell" style="background:var(--c-cream);color:#4a4a4c"><b>Аа</b> 8.01 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-sand);color:#4a4a4c"><b>Аа</b> 6.73 <small>AA</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-white);color:#4a4a4c"><b>Аа</b> 8.84 <small>AA</small></span></td><td>-</td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:var(--c-cream)"></span> cream / white</th><td>-</td><td>-</td><td>-</td>
+						<td><span class="sg-cell" style="background:var(--c-chocolate);color:var(--c-cream)"><b>Аа</b> 12.35 / 13.63 <small>AA</small></span></td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:var(--c-sand)"></span> sand #EADFD2</th><td>-</td><td>-</td><td>-</td>
+						<td><span class="sg-cell" style="background:var(--c-chocolate);color:var(--c-sand)"><b>Аа</b> 10.38 <small>AA</small></span></td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:var(--c-latte)"></span> latte #CDB8A3</th>
+						<td><span class="sg-cell" style="background:var(--c-cream);color:var(--c-latte)"><b>Аа</b> 1.73 <small>декор</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-sand);color:var(--c-latte)"><b>Аа</b> 1.46 <small>декор</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-white);color:var(--c-latte)"><b>Аа</b> 1.91 <small>декор</small></span></td>
+						<td><span class="sg-cell" style="background:var(--c-chocolate);color:var(--c-latte)"><b>Аа</b> 7.13 <small>AA</small></span></td></tr>
+					<tr><th scope="row"><span class="sg-dot" style="background:#d9a08a"></span> акцент на&nbsp;темному #D9A08A</th><td>-</td><td>-</td><td>-</td>
+						<td><span class="sg-cell" style="background:var(--c-chocolate);color:#d9a08a"><b>Аа</b> 6.07 <small>AA</small></span></td></tr>
+				</tbody>
+			</table>
+		</div>
+		<p class="sg-note">Звідси правила: посилання й&nbsp;дрібний кольоровий текст&nbsp;- <code class="sg-code">--c-coffee-ink</code>, ніколи не <code class="sg-code">--c-coffee</code>; кава&nbsp;- для&nbsp;іконок і&nbsp;великого тексту; лате&nbsp;- лише декор на&nbsp;світлому; на&nbsp;шоколаді текст кремовий, другорядний&nbsp;- лате.</p>
+	</div>
+</section>
+
+<!-- ================================================================ 3. Typography -->
+<section class="section section--wave-top section--wave-alt" id="type" aria-labelledby="type-title">
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">02 · Типографіка</p>
+			<h2 id="type-title">Nunito і <span class="hand">трохи</span> рукопису</h2>
+			<p class="section-head__lead">Округлий дружній гротеск для&nbsp;всього тексту й&nbsp;рукописний Caveat для&nbsp;одного-двох слів у&nbsp;заголовку&nbsp;- як&nbsp;«народження» на&nbsp;листівці.</p>
+		</div>
+
+		<div class="sg-fonts">
+			<div class="card">
+				<p class="sg-label">Nunito · текст та&nbsp;інтерфейс · 200–&#8288;1000</p>
+				<p class="sg-font__aa" aria-hidden="true">Аа Ґґ Її</p>
+				<p class="sg-font__abc">АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ<br>абвгґдеєжзиіїйклмнопрстуфхцчшщьюя<br>0123456789 · 2400&nbsp;грн · ₴ · «»&nbsp;- ’</p>
+				<p class="sg-weights"><span style="font-weight:400">Звичайний 400</span><span style="font-weight:600">Напівжирний 600</span><span style="font-weight:700">Жирний 700</span><span style="font-weight:800">Щільний 800</span></p>
+			</div>
+			<div class="card card--sand">
+				<p class="sg-label">Caveat · рукописний акцент · 400–&#8288;700</p>
+				<p class="sg-font__aa sg-font__aa--hand" aria-hidden="true">Аа Її</p>
+				<p class="h3"><span class="hand">щасливого дитинства</span></p>
+				<p class="small">Лише 1–&#8288;2&nbsp;слова в&nbsp;заголовку, колір кава, нахил −2°, масштаб 1.3em від&nbsp;контексту.</p>
+			</div>
+		</div>
+
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Display</b><span class="sg-code">.display · --fs-display</span><span>40 → 76px · 700</span></div>
+			<p class="display sg-spec__sample">Місце <span class="hand">щасливого</span> дитинства</p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>H1</b><span class="sg-code">h1 · --fs-h1</span><span>34 → 60px</span></div>
+			<p class="h1 sg-spec__sample">Мінісадочок&nbsp;- денний простір активного розвитку</p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>H2</b><span class="sg-code">h2 · --fs-h2</span><span>28 → 44px</span></div>
+			<p class="h2 sg-spec__sample">Як&nbsp;ми <span class="hand">навчаємося</span></p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>H3</b><span class="sg-code">h3 · --fs-h3</span><span>22 → 28px</span></div>
+			<p class="h3 sg-spec__sample">Пробне заняття</p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>H4</b><span class="sg-code">h4 · --fs-h4</span><span>18 → 21px</span></div>
+			<p class="h4 sg-spec__sample">Що&nbsp;взяти з&nbsp;собою</p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Lead</b><span class="sg-code">.lead · --fs-lead</span><span>18 → 21px</span></div>
+			<p class="lead sg-spec__sample">Перший день&nbsp;- «День знайомства та&nbsp;відкриттів». Наша мета&nbsp;- щоб дитині було комфортно й&nbsp;безпечно і&nbsp;їй захотілося повернутися, а&nbsp;не&nbsp;провести якомога більше занять.</p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Body</b><span class="sg-code">p · --fs-body</span><span>16 → 18px · 1.6</span></div>
+			<p class="sg-spec__sample">Кожен тиждень має свою тему, а&nbsp;кожен день&nbsp;- свій колір і&nbsp;героя. Наприклад, «Погодні&nbsp;пригоди»: хмаринка, дощик-краплинка, вітер-мандрівник і&nbsp;веселка. По&nbsp;п’ятницях діти вільно досліджують у&nbsp;стилі Reggio Emilia.</p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Body S</b><span class="sg-code">--fs-body-s</span><span>16 → 17px · текст карток, пояснення в&nbsp;прайсі, слоти розкладу, підвал</span></div>
+			<p class="sg-spec__sample sg-body-s">Сенсорні заняття для&nbsp;малюків разом із&nbsp;мамою · 4&nbsp;заняття&nbsp;×&nbsp;45&nbsp;хв. Абонемент списується лише за&nbsp;фактичне відвідування.</p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Caption</b><span class="sg-code">.caption · --fs-body-s</span><span>16 → 17px · muted · примітки, які читають</span></div>
+			<p class="caption sg-spec__sample">Пробне заняття&nbsp;- за&nbsp;разовим тарифом, вартість підкажемо при&nbsp;записі.</p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Small</b><span class="sg-code">.small · figcaption · --fs-small</span><span>15 → 16px · чипи, малі кнопки, крихти, «грн», підписи до&nbsp;фото</span></div>
+			<p class="small sg-spec__sample">Абонемент англіТО діє на&nbsp;обох локаціях, без&nbsp;терміну дії.</p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Мітка</b><span class="sg-code">--fs-caption</span><span>14 → 15px · лише eyebrow, бейджі, дрібні мітки, [УТОЧНИТИ]</span></div>
+			<div class="sg-spec__sample sg-row"><span class="badge badge--heart">Найпопулярніший</span><span class="badge badge--light">2–&#8288;4&nbsp;роки</span></div></div>
+		<p class="sg-note">Поріг кегля (T-116, юзабіліті-ревю №6): усе, що&nbsp;батьки читають як&nbsp;зміст, на&nbsp;телефоні ≥ 16px (--fs-body-s або --fs-body), на&nbsp;десктопі 16–&#8288;18px. 14–&#8288;15px&nbsp;- тільки мітки. Менше 14px на&nbsp;сайті немає. Hero V1&nbsp;лишається на&nbsp;старому кеглі міток (14 → 15px): він вивірений під&nbsp;перший екран.</p>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Рукопис</b><span class="sg-code">.hand · .hand--brick</span><span>Caveat 600 · 1.3em</span></div>
+			<p class="h2 sg-spec__sample"><span class="hand">місце щасливого дитинства</span> · <span class="hand hand--brick">Осінь завітала</span></p></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Eyebrow</b><span class="sg-code">.eyebrow · .eyebrow--plain</span><span>14 → 15px · капс 0.12em</span></div>
+			<div class="sg-spec__sample"><p class="eyebrow">Підхід Reggio Emilia</p><br><p class="eyebrow eyebrow--plain">Мінісадочок · пн–&#8288;пт&nbsp;09:00–&#8288;13:00</p></div></div>
+		<div class="sg-spec"><div class="sg-spec__meta"><b>Ціна</b><span class="sg-code">.price · .price--sm</span><span>34 → 48px · 800</span></div>
+			<div class="sg-spec__sample sg-row">
+				<p class="price"><span class="price__value">800</span> <span class="price__unit">грн</span><span class="price__note">Суботній ТУТО клуб · 09:00–&#8288;16:00</span></p>
+				<p class="price price--sm"><span class="price__value">390</span> <span class="price__unit">грн</span><span class="price__note">казкоТО · 1&nbsp;заняття&nbsp;×&nbsp;50&nbsp;хв</span></p>
+			</div></div>
+	</div>
+</section>
+
+<!-- ================================================================ 4. Buttons, chips, badges -->
+<section class="section section--white section--wave-top" id="ui" aria-labelledby="ui-title">
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">03 · Кнопки, чипи, бейджі</p>
+			<h2 id="ui-title">М’які <span class="hand">пігулки</span></h2>
+			<p class="section-head__lead">Головна дія&nbsp;- шоколадна кнопка «Записатися на&nbsp;пробне». Решта тихіші: контур, пісок або текст зі&nbsp;стрілкою. Стани наведення, фокусу й&nbsp;натискання живі&nbsp;- наведіть курсор або натисніть Tab.</p>
+		</div>
+
+		<div class="sg-grid-2">
+			<div class="card card--cream sg-panel">
+				<div>
+					<h3 class="sg-group-title">Варіанти</h3>
+					<div class="sg-row">
+						<div class="sg-item"><a class="btn btn--primary" href="#cards">Записатися на&nbsp;пробне</a><span class="sg-label">--primary</span></div>
+						<div class="sg-item"><a class="btn btn--secondary" href="tel:+380969404901"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg>Подзвонити</a><span class="sg-label">--secondary + іконка</span></div>
+						<div class="sg-item"><a class="btn btn--soft" href="#cards">Детальніше</a><span class="sg-label">--soft</span></div>
+						<div class="sg-item"><a class="btn btn--ghost" href="#cards">Усі програми</a><span class="sg-label">--ghost</span></div>
+					</div>
+				</div>
+				<div>
+					<h3 class="sg-group-title">Розміри</h3>
+					<div class="sg-row">
+						<div class="sg-item"><a class="btn btn--primary btn--sm" href="#cards">Записатися</a><span class="sg-label">--sm</span></div>
+						<div class="sg-item"><a class="btn btn--primary" href="#cards">Записатися</a><span class="sg-label">типовий · 48px</span></div>
+						<div class="sg-item"><a class="btn btn--primary btn--lg" href="#cards">Записатися</a><span class="sg-label">--lg</span></div>
+						<div class="sg-item"><a class="btn btn--secondary btn--icon" href="tel:+380969404901" aria-label="Подзвонити: 096 940 49 01"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg></a><span class="sg-label">--icon</span></div>
+					</div>
+				</div>
+				<div>
+					<h3 class="sg-group-title">Стани</h3>
+					<div class="sg-row">
+						<div class="sg-item"><span class="btn btn--primary">Записатися</span><span class="sg-label">звичайна</span></div>
+						<div class="sg-item"><span class="btn btn--primary sg-state-hover">Записатися</span><span class="sg-label">наведення</span></div>
+						<div class="sg-item"><span class="btn btn--primary sg-state-focus">Записатися</span><span class="sg-label">фокус (Tab)</span></div>
+						<div class="sg-item"><span class="btn btn--primary sg-state-active">Записатися</span><span class="sg-label">натиснута</span></div>
+						<div class="sg-item"><button class="btn btn--primary" type="button" disabled>Записатися</button><span class="sg-label">неактивна</span></div>
+					</div>
+					<div class="sg-row" style="margin-block-start:var(--space-4)">
+						<div class="sg-item"><span class="btn btn--secondary">Подзвонити</span><span class="sg-label">звичайна</span></div>
+						<div class="sg-item"><span class="btn btn--secondary sg-state-hover">Подзвонити</span><span class="sg-label">наведення</span></div>
+						<div class="sg-item"><span class="btn btn--secondary sg-state-focus">Подзвонити</span><span class="sg-label">фокус</span></div>
+						<div class="sg-item"><span class="btn btn--soft sg-state-hover">Детальніше</span><span class="sg-label">soft · наведення</span></div>
+					</div>
+				</div>
+				<div>
+					<a class="btn btn--primary btn--block" href="#cards">Записатися на&nbsp;пробне</a>
+					<p class="sg-label" style="margin-block-start:var(--space-2)">--block · на&nbsp;всю ширину (мобільний)</p>
+				</div>
+			</div>
+
+			<div class="card card--dark sg-panel">
+				<div>
+					<h3 class="sg-group-title">На&nbsp;темному</h3>
+					<div class="sg-row">
+						<div class="sg-item"><a class="btn btn--primary" href="#cards">Записатися на&nbsp;пробне</a><span class="sg-label">primary → світла</span></div>
+						<div class="sg-item"><a class="btn btn--secondary" href="tel:+380969404901">Подзвонити</a><span class="sg-label">--secondary</span></div>
+						<div class="sg-item"><a class="btn btn--soft" href="#cards">Детальніше</a><span class="sg-label">--soft</span></div>
+						<div class="sg-item"><a class="btn btn--ghost" href="#cards">Усі програми</a><span class="sg-label">--ghost</span></div>
+					</div>
+				</div>
+				<div>
+					<h3 class="sg-group-title">Стани на&nbsp;темному</h3>
+					<div class="sg-row">
+						<div class="sg-item"><span class="btn btn--primary sg-state-hover">Записатися</span><span class="sg-label">наведення</span></div>
+						<div class="sg-item"><span class="btn btn--primary sg-state-focus">Записатися</span><span class="sg-label">фокус · лате</span></div>
+						<div class="sg-item"><span class="btn btn--secondary sg-state-hover">Подзвонити</span><span class="sg-label">наведення</span></div>
+						<div class="sg-item"><button class="btn btn--primary" type="button" disabled>Записатися</button><span class="sg-label">неактивна</span></div>
+					</div>
+				</div>
+				<div>
+					<h3 class="sg-group-title">Чипи й&nbsp;бейджі на&nbsp;темному</h3>
+					<div class="sg-row">
+						<span class="chip">2–&#8288;4&nbsp;роки</span>
+						<span class="chip is-active">Обрано</span>
+						<span class="chip">Не&nbsp;обрано</span>
+						<span class="badge badge--heart">Найвигідніше</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="sg-grid-2" style="margin-block-start:var(--gap)">
+			<div class="card card--cream">
+				<h3 class="sg-group-title">Вибір за&nbsp;віком</h3>
+				<p class="small">Інтерактивні чипи з <code class="sg-code">aria-pressed</code>&nbsp;- основа блоку «Вибір&nbsp;за&nbsp;віком».</p>
+				<div class="sg-row" role="group" aria-label="Вік дитини">
+					<button class="chip" type="button" data-sg-age="0–1" aria-pressed="false">0–&#8288;1&nbsp;рік</button>
+					<button class="chip" type="button" data-sg-age="1–2" aria-pressed="false">1–&#8288;2&nbsp;роки</button>
+					<button class="chip" type="button" data-sg-age="2–4" aria-pressed="true">2–&#8288;4&nbsp;роки</button>
+					<button class="chip" type="button" data-sg-age="4–6" aria-pressed="false">4–&#8288;6&nbsp;років</button>
+				</div>
+				<p class="sg-age-out" aria-live="polite" data-sg-age-out>Для&nbsp;2–&#8288;4&nbsp;років: <b>англіТО</b>&nbsp;- англійська через рух, гру й&nbsp;пісні.</p>
+			</div>
+			<div class="card card--cream">
+				<h3 class="sg-group-title">Статичні чипи</h3>
+				<div class="sg-row">
+					<span class="chip">2–&#8288;4&nbsp;роки</span>
+					<span class="chip chip--outline">8&nbsp;занять&nbsp;×&nbsp;50&nbsp;хв</span>
+					<span class="chip chip--lg">Тарнавського,&nbsp;7В</span>
+				</div>
+				<h3 class="sg-group-title">Бейджі</h3>
+				<div class="sg-row">
+					<span class="badge badge--heart">Найвигідніше</span>
+					<span class="badge">Рюкзачок у&nbsp;подарунок</span>
+					<span class="badge badge--soft">Нова локація</span>
+					<span class="badge badge--light">Обидві локації</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ================================================================ 5. Cards -->
+<section class="section section--sand section--wave-top" id="cards" aria-labelledby="cards-title">
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">04 · Картки</p>
+			<h2 id="cards-title">Програми для <span class="hand">кожного</span> віку</h2>
+			<p class="section-head__lead">Фото, назва, чип віку, ціна й&nbsp;одна дія. Уся картка клікабельна, кнопка лишається окремою.</p>
+		</div>
+
+		<div class="card-grid">
+			<article class="card card--media card--interactive">
+				<div class="card__media"><img src="/tuto-preview/design/refs/photos/instagram/ig-128-kids-bear-rug-cards.jpg" width="941" height="1672" alt="Діти сидять на килимку-ведмедику й розкладають картки" loading="lazy" style="object-position:50% 38%"></div>
+				<div class="card__body">
+					<div class="card__head"><h3 class="card__title"><a class="card__link" href="#cards">англіТО</a></h3><span class="chip">2–&#8288;4&nbsp;роки</span></div>
+					<p class="card__text">Англійська через рух, гру й&nbsp;пісні. Абонемент діє на&nbsp;обох локаціях, без&nbsp;терміну дії.</p>
+					<div class="card__footer">
+						<p class="price price--sm"><span class="price__value">2400</span> <span class="price__unit">грн</span><span class="price__note">8&nbsp;занять&nbsp;×&nbsp;50&nbsp;хв · разово 350&nbsp;грн</span></p>
+						<a class="btn btn--soft btn--sm" href="#cards">Записатися</a>
+					</div>
+				</div>
+			</article>
+			<article class="card card--media card--interactive">
+				<div class="card__media"><img src="/tuto-preview/design/refs/photos/instagram/ig-029-kids-pouring-sensory.jpg" width="720" height="1280" alt="Малюк пересипає пісок через лійку на сенсорному занятті" loading="lazy" style="object-position:50% 55%"></div>
+				<div class="card__body">
+					<div class="card__head"><h3 class="card__title"><a class="card__link" href="#cards">малюТО</a></h3><span class="chip">0–&#8288;13&nbsp;міс.</span></div>
+					<p class="card__text">Сенсорні заняття для&nbsp;малюків разом із&nbsp;мамою.</p>
+					<div class="card__footer">
+						<p class="price price--sm"><span class="price__value">1400</span> <span class="price__unit">грн</span><span class="price__note">4&nbsp;заняття&nbsp;×&nbsp;45&nbsp;хв</span></p>
+						<a class="btn btn--soft btn--sm" href="#cards">Записатися</a>
+					</div>
+				</div>
+			</article>
+			<article class="card card--media card--interactive">
+				<div class="card__media"><img src="/tuto-preview/design/refs/photos/instagram/ig-042-kids-table-cards.jpg" width="720" height="1280" alt="Мами з малюками за столом розглядають картки на занятті" loading="lazy" style="object-position:50% 45%"></div>
+				<div class="card__body">
+					<div class="card__head"><h3 class="card__title"><a class="card__link" href="#cards">Розвивайко «Мама&nbsp;і&nbsp;я»</a></h3><span class="chip">від&nbsp;1&nbsp;року</span></div>
+					<p class="card__text">Заняття разом з&nbsp;мамою. Вт&nbsp;10:00&nbsp;і&nbsp;14:00, ср&nbsp;10:00&nbsp;на&nbsp;Тарнавського.</p>
+					<div class="card__footer">
+						<p class="price price--sm"><span class="price__value">2000</span> <span class="price__unit">грн</span><span class="price__note">8&nbsp;занять&nbsp;×&nbsp;45&nbsp;хв</span></p>
+						<a class="btn btn--soft btn--sm" href="#cards">Записатися</a>
+					</div>
+				</div>
+			</article>
+		</div>
+
+		<div class="section-head sg-sub" id="pricing">
+			<p class="eyebrow">Мінісадочок · пн–&#8288;пт&nbsp;09:00–&#8288;13:00</p>
+			<h3 class="h2">Абонементи <span class="hand">мінісадочка</span></h3>
+		</div>
+		<div class="sg-pricing">
+			<article class="card">
+				<div class="card__head"><h4 class="card__title">Разове відвідування</h4><span class="chip">1&nbsp;день</span></div>
+				<p class="card__text">Щоб познайомитися: до&nbsp;двох пробних занять за&nbsp;разовим тарифом.</p>
+				<p class="price"><span class="price__value">500</span> <span class="price__unit">грн</span><span class="price__note">4&nbsp;години · навчання, розвиток, соціалізація</span></p>
+				<div class="includes"><ul class="list-check" role="list"><li>Сухий перекус і&nbsp;вода</li><li>Змінне взуття від&nbsp;центру</li><li>Фото й&nbsp;відео з&nbsp;занять у&nbsp;чаті</li></ul></div>
+				<div class="card__footer"><a class="btn btn--secondary btn--block" href="#cards">Записатися на&nbsp;пробне</a></div>
+			</article>
+			<article class="card">
+				<div class="card__head"><h4 class="card__title">Абонемент</h4><span class="chip">8&nbsp;днів</span></div>
+				<p class="card__text">Заняття списуються лише тоді, коли дитина була присутня.</p>
+				<p class="price"><span class="price__value">3600</span> <span class="price__unit">грн</span><span class="price__note">450&nbsp;грн за&nbsp;день</span></p>
+				<div class="includes"><ul class="list-check" role="list"><li>Сухий перекус і&nbsp;вода</li><li>Змінне взуття від&nbsp;центру</li><li>Фото й&nbsp;відео з&nbsp;занять у&nbsp;чаті</li></ul></div>
+				<div class="card__footer"><a class="btn btn--secondary btn--block" href="#cards">Обрати абонемент</a></div>
+			</article>
+			<article class="card card--featured">
+				<svg class="sg-peek tuto-bear" viewBox="0 0 124 100" aria-hidden="true" focusable="false"><g transform="translate(66 64)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-8)"><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-47.7,23.5 A54,50 0 1 1 39,34.6M-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g><path d="M-45.5,36 A12.5,12.5 0 0 1 -20.5,36M-37.5,36 V31 M-28.5,36 V31M20.5,36 A12.5,12.5 0 0 1 45.5,36M28.5,36 V31 M37.5,36 V31"/></g></svg>
+				<span class="badge badge--heart card__badge">Найвигідніше</span>
+				<div class="card__head"><h4 class="card__title">Місячний абонемент</h4><span class="chip">20&nbsp;днів</span></div>
+				<p class="card__text">Повний місяць у&nbsp;мінісадочку&nbsp;- і&nbsp;рюкзачок ТУТО в&nbsp;подарунок.</p>
+				<p class="price"><span class="price__value">8600</span> <span class="price__unit">грн</span><span class="price__note">430&nbsp;грн за&nbsp;день</span></p>
+				<div class="includes"><ul class="list-check" role="list"><li>Сухий перекус і&nbsp;вода</li><li>Змінне взуття від&nbsp;центру</li><li>Фото й&nbsp;відео з&nbsp;занять у&nbsp;чаті</li><li><strong>Рюкзачок ТУТО у&nbsp;подарунок</strong></li></ul></div>
+				<div class="card__footer"><a class="btn btn--primary btn--block" href="#cards">Обрати місячний</a></div>
+			</article>
+		</div>
+		<div class="card card--cream sg-adapt">
+			<div>
+				<h4 class="card__title">Адаптаційний період разом з&nbsp;мамою</h4>
+				<p class="card__meta">Перебування в&nbsp;мінісадочку разом з&nbsp;мамою.</p>
+			</div>
+			<div class="sg-adapt__prices">
+				<p class="price price--sm"><span class="price__value">350</span> <span class="price__unit">грн</span><span class="price__note">до&nbsp;2&nbsp;год</span></p>
+				<p class="price price--sm"><span class="price__value">400</span> <span class="price__unit">грн</span><span class="price__note">до&nbsp;3&nbsp;год</span></p>
+				<p class="price price--sm"><span class="price__value">500</span> <span class="price__unit">грн</span><span class="price__note">понад 3&nbsp;год</span></p>
+			</div>
+		</div>
+		<p class="caption">Додатково: обід із&nbsp;їдальні «Діброва»&nbsp;- +100&nbsp;грн, гарнір і&nbsp;основна страва на&nbsp;вибір. Сухий перекус і&nbsp;вода входять у&nbsp;вартість.</p>
+
+		<div class="section-head sg-sub">
+			<p class="eyebrow">Відгуки батьків</p>
+			<h3 class="h2">Кажуть <span class="hand">мами</span></h3>
+		</div>
+		<div class="sg-grid-3">
+			<figure class="card sg-review">
+				<blockquote><p>Дивлюсь на&nbsp;заняття, на&nbsp;всі матеріали… і&nbsp;просто в&nbsp;шоці, наскільки потрібно з&nbsp;такою любов'ю ставитися до&nbsp;всього цього… дуже цікаве навіть для&nbsp;дорослих.</p></blockquote>
+				<figcaption><span class="sg-review__avatar" aria-hidden="true">Ю</span><span>Юлія<small>з&nbsp;батьківського чату</small></span></figcaption>
+			</figure>
+			<figure class="card card--cream sg-review">
+				<blockquote><p>Так цікаво, що&nbsp;не&nbsp;хочеться пропускати жодного дня!</p></blockquote>
+				<figcaption><span class="sg-review__avatar" aria-hidden="true">Н</span><span>Наталія<small>з&nbsp;батьківського чату</small></span></figcaption>
+			</figure>
+			<figure class="card card--dark sg-review">
+				<blockquote><p>Я в&nbsp;шоці, як&nbsp;у&nbsp;вас все продумано, я сама б до&nbsp;вас ходила 😍</p></blockquote>
+				<figcaption><span class="sg-review__avatar" aria-hidden="true">З</span><span>Зоряна<small>з&nbsp;батьківського чату</small></span></figcaption>
+			</figure>
+		</div>
+	</div>
+</section>
+
+<!-- ================================================================ 6. Photo frames -->
+<section class="section section--wave-top section--wave-alt" id="frames" aria-labelledby="frames-title">
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">05 · Рамки для&nbsp;фото</p>
+			<h2 id="frames-title">Арки, плями й <span class="hand">живий</span> колаж</h2>
+			<p class="section-head__lead">Арка&nbsp;- з&nbsp;листівки ТУТО, органічна пляма&nbsp;- з&nbsp;декору, легкий нахил&nbsp;- щоб колаж дихав. Фото&nbsp;- справжні, з&nbsp;Instagram центру.</p>
+		</div>
+		<div class="sg-frames">
+			<div class="sg-frame">
+				<figure class="frame-arch"><img src="/tuto-preview/design/refs/photos/instagram/ig-036-space-shelves-bears-balloons.jpg" width="720" height="1280" alt="Світлі полиці з ведмедиками й повітряними кульками в центрі" loading="lazy"></figure>
+				<p class="caption"><code class="sg-code">.frame-arch</code>&nbsp;- контур зі&nbsp;зсувом</p>
+			</div>
+			<div class="sg-frame">
+				<figure class="frame-arch frame-arch--fill"><img src="/tuto-preview/design/refs/photos/instagram/ig-160-space-birdcage-bear-lemons.jpg" width="1215" height="2160" alt="Полиця з фігуркою ведмедика, лимонами й рослиною" loading="lazy"></figure>
+				<p class="caption"><code class="sg-code">.frame-arch--fill</code>&nbsp;- піщана підкладка</p>
+			</div>
+			<div class="sg-frame">
+				<figure class="frame-arch frame-arch--ring"><img src="/tuto-preview/design/refs/photos/instagram/ig-172-space-shelves-cage-plants.jpg" width="1217" height="2160" alt="Білі полиці з будиночком для хом’ячків і рослинами" loading="lazy"></figure>
+				<p class="caption"><code class="sg-code">.frame-arch--ring</code>&nbsp;- рівний контур навколо</p>
+			</div>
+			<div class="sg-frame">
+				<figure class="frame-blob"><img src="/tuto-preview/design/refs/photos/instagram/ig-121-material-ducklings-sensory.jpg" width="941" height="1672" alt="Живі каченята на сенсорній станції з квітами" loading="lazy" style="object-position:50% 25%"></figure>
+				<p class="caption"><code class="sg-code">.frame-blob</code>&nbsp;- пляма з&nbsp;піщаною підкладкою</p>
+			</div>
+			<div class="sg-frame">
+				<figure class="frame-blob frame-blob--alt frame-blob--latte"><img src="/tuto-preview/design/refs/photos/instagram/ig-174-material-shell-sandbox.jpg" width="1215" height="2160" alt="Пісочниця-мушля з кінетичним піском" loading="lazy" style="object-position:50% 60%"></figure>
+				<p class="caption"><code class="sg-code">.frame-blob--alt --latte</code></p>
+			</div>
+			<div class="sg-frame">
+				<figure class="frame-round is-tilted-left"><img src="/tuto-preview/design/refs/photos/instagram/ig-162-brand-embroidery-tuto.jpg" width="1215" height="2160" alt="Вишитий логотип ТУТО на шоколадному худі" loading="lazy"></figure>
+				<p class="caption"><code class="sg-code">.frame-round .is-tilted-left</code></p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ================================================================ 7. Sections demo -->
+<section class="section section--sand section--wave-top" id="sections" aria-labelledby="safety-title">
+	<div class="container sg-split sg-split--wide-left">
+		<div>
+			<div class="section-head" style="margin-block-end:0">
+				<p class="eyebrow">06 · Секції · пісок</p>
+				<h2 id="safety-title">Безпека і <span class="hand">турбота</span></h2>
+				<p class="section-head__lead">Наша мета&nbsp;- щоб дитині було комфортно й&nbsp;безпечно і&nbsp;їй захотілося повернутися.</p>
+			</div>
+			<ul class="sg-features" role="list">
+				<li class="sg-feature"><span class="sg-feature__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-badge"/></svg></span><h3>Тривожний бейдж</h3><p>Щоранку дитина отримує бейдж із&nbsp;важливою інформацією та&nbsp;контактами батьків.</p></li>
+				<li class="sg-feature"><span class="sg-feature__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-shelter"/></svg></span><h3>Повітряна тривога</h3><p>Приміщення напівпідвальні: під&nbsp;час тривоги залишаємося на&nbsp;місці й&nbsp;одразу пишемо батькам у&nbsp;чат.</p></li>
+				<li class="sg-feature"><span class="sg-feature__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-safety"/></svg></span><h3>Хто забирає дитину</h3><p>Лише батьки. Інший дорослий&nbsp;- за&nbsp;попереднім повідомленням і&nbsp;фото паспорта чи&nbsp;ID.</p></li>
+				<li class="sg-feature"><span class="sg-feature__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-camera"/></svg></span><h3>Щоденні звіти</h3><p>Зранку&nbsp;- анонс дня в&nbsp;чаті, ввечері&nbsp;- фото й&nbsp;відео з&nbsp;занять.</p></li>
+			</ul>
+		</div>
+		<div class="sg-safety-media">
+			<figure class="frame-arch frame-arch--left"><img src="/tuto-preview/design/refs/photos/instagram/ig-172-space-shelves-cage-plants.jpg" width="1217" height="2160" alt="Полиці з кліткою, рослинами й природними матеріалами" loading="lazy"></figure>
+		</div>
+	</div>
+</section>
+
+<section class="section section--chocolate section--wave-top" aria-labelledby="reggio-title">
+	<div class="container sg-manifest">
+		<div>
+			<p class="eyebrow">Секція · шоколад · Підхід Reggio Emilia</p>
+			<h2 id="reggio-title">По&nbsp;п’ятницях&nbsp;- <span class="hand">вільне</span> дослідження</h2>
+			<p class="lead" style="margin-block:var(--space-5) var(--space-6)">Розвиток через гру й&nbsp;дослідження: у&nbsp;кожного дня тематичного тижня своя тема, колір і&nbsp;герой, а&nbsp;п’ятниця&nbsp;- для&nbsp;вільного дослідження в&nbsp;стилі Reggio Emilia.</p>
+			<div class="btn-group">
+				<a class="btn btn--primary" href="#cards">Записатися на&nbsp;пробне</a>
+				<a class="btn btn--secondary" href="#lists">Як&nbsp;ми навчаємося</a>
+			</div>
+			<svg class="sg-manifest__bear tuto-bear" viewBox="0 0 168 198" aria-hidden="true" focusable="false"><g transform="translate(60 58)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="0" cy="100" rx="18" ry="16" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".4" stroke="none"/><ellipse cx="-29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><ellipse cx="29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><path d="M-32.5,40 C-39.2,45.9 -44.3,55.3 -47.7,66M-51,79.5 C-52.7,89.3 -53.1,99.3 -52,108C-51.3,113.4 -48.6,118 -44.2,121.9M-14.6,133.1 C-10.1,133.7 -5.2,134 0,134C5.2,134 10.1,133.7 14.6,133.1M44.2,121.9 C48.6,118 51.3,113.4 52,108C54.9,85.2 47.8,53.4 32.5,40M-48,88.4 A10,20 -26 1 1 -30,79.6 A10,20 -26 1 1 -48,88.4ZM-46,127 A17,11.5 0 1 1 -12,127 A17,11.5 0 1 1 -46,127ZM12,127 A17,11.5 0 1 1 46,127 A17,11.5 0 1 1 12,127Z"/><g class="tuto-bear__arm"><ellipse cx="74" cy="1.2" rx="5" ry="6" transform="rotate(30 74,1.2)" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><path d="M78,-5.7 C83.3,-2.7 80.4,12.2 71.5,27.5C62.7,42.8 51.3,52.8 46,49.7C40.7,46.7 43.6,31.8 52.5,16.5C61.3,1.2 72.7,-8.8 78,-5.7"/></g><path class="tuto-bear__waves" d="M93,-17 Q98,-7 94,3 M101,-25 Q109,-7 102,9"/><g><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-54,0 A54,50 0 1 1 54,0 A54,50 0 1 1 -54,0 ZM-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g></g></svg>
+		</div>
+		<ul class="list-check" role="list">
+			<li>Тематичні тижні: у&nbsp;кожного дня своя тема, колір і&nbsp;герой</li>
+			<li>Сенсорні станції та&nbsp;природні матеріали</li>
+			<li>Хореотерапія, адаптивна фізкультура, English Time</li>
+			<li>Кулінарні майстер-класи й&nbsp;лялькові вистави</li>
+			<li>У&nbsp;центрі живуть хом’ячки та&nbsp;кролик</li>
+		</ul>
+	</div>
+</section>
+
+<!-- ================================================================ 8. Lists, rules, prices -->
+<section class="section section--wave-top" id="lists" aria-labelledby="lists-title">
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">07 · Списки, правила, ціни · крем</p>
+			<h2 id="lists-title">Перший <span class="hand">день</span> у&nbsp;ТУТО</h2>
+		</div>
+		<div class="sg-split" style="align-items:start">
+			<div>
+				<div class="card card--sand">
+					<h3 class="h4">Що&nbsp;взяти з&nbsp;собою</h3>
+					<ul class="list-check" role="list">
+						<li>Змінний одяг</li>
+						<li>Підгузки (за&nbsp;потреби)</li>
+						<li>Свій перекус&nbsp;- за&nbsp;бажанням</li>
+					</ul>
+					<p class="small">Змінне взуття дає центр.</p>
+				</div>
+				<div class="card sg-docs">
+					<h3 class="h4">Документи</h3>
+					<ul class="list-heart list-heart--coffee" role="list">
+						<li>Свідоцтво про&nbsp;народження</li>
+						<li>Копія паспорта одного з&nbsp;батьків</li>
+					</ul>
+				</div>
+				<h3 class="h4 sg-sub">Прайс як&nbsp;у&nbsp;сторіс</h3>
+				<ul class="sg-pricelist" role="list">
+					<li class="card card--accent"><div><p class="card__title">Денний простір активного розвитку</p><p class="card__meta">мінісадочок · 4&nbsp;години</p></div><p class="price price--sm"><span class="price__value">500</span> <span class="price__unit">грн</span></p></li>
+					<li class="card card--sand"><div><p class="card__title">Суботній ТУТО клуб</p><p class="card__meta">1&nbsp;заняття · 7&nbsp;годин</p></div><p class="price price--sm"><span class="price__value">800</span> <span class="price__unit">грн</span></p></li>
+					<li class="card"><div><p class="card__title">англіТО</p><p class="card__meta">англійська мова · 8&nbsp;занять по&nbsp;50&nbsp;хв</p></div><p class="price price--sm"><span class="price__value">2400</span> <span class="price__unit">грн</span></p></li>
+					<li class="card card--sand"><div><p class="card__title">казкоТО</p><p class="card__meta">пригоди у&nbsp;великому світі казок · 1&nbsp;заняття · 50&nbsp;хв</p></div><p class="price price--sm"><span class="price__value">390</span> <span class="price__unit">грн</span></p></li>
+					<li class="card card--dark"><div><p class="card__title">Індивідуальне заняття</p></div><p class="price price--sm"><span class="price__value">450</span> <span class="price__unit">грн</span></p></li>
+				</ul>
+			</div>
+			<div>
+				<h3 class="h4" style="margin-block-end:var(--space-4)">Правила відвідування та&nbsp;оплати</h3>
+				<ol class="rules" role="list">
+					<li class="rules__item"><h4 class="rules__title">Пробні заняття</h4><p>Кожна дитина може відвідати до&nbsp;двох пробних занять за&nbsp;разовим тарифом. Після другого&nbsp;- лише за&nbsp;абонементом.</p></li>
+					<li class="rules__item"><h4 class="rules__title">Списання занять</h4><p>Абонемент розрахований на&nbsp;фактичне відвідування: заняття списуються, лише коли дитина була.</p></li>
+					<li class="rules__item"><h4 class="rules__title">Державні програми</h4><p>Оплатити можна коштами, отриманими в&nbsp;межах державних програм і&nbsp;виплат.</p></li>
+					<li class="rules__item"><h4 class="rules__title">Знижка для&nbsp;сімей військових</h4><p>10% на&nbsp;абонемент за&nbsp;посвідченням УБД.</p></li>
+					<li class="rules__item rules__item--dark"><h4 class="rules__title">Знижка на&nbsp;другий абонемент</h4><p>10% на&nbsp;другий абонемент для&nbsp;другої дитини в&nbsp;сім’ї.</p></li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ================================================================ 9. Bear, decor, icons -->
+<section class="section section--sand section--wave-top" id="bear" aria-labelledby="bear-title">
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">08 · Ведмедик, декор, іконки</p>
+			<h2 id="bear-title">Знайомтеся: <span class="hand">ведмедик</span></h2>
+			<p class="section-head__lead">Наскрізний персонаж: визирає з-за блоків, сидить біля CTA, розгублено шукає дорогу на&nbsp;404. З’являється в&nbsp;деталях, а&nbsp;не&nbsp;заливає інтерфейс.</p>
+		</div>
+		<div class="sg-bears">
+			<figure class="card sg-bear">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 198" class="tuto-bear" role="img" aria-labelledby="bear-1"><title id="bear-1">Ведмедик ТУТО сидить</title><g transform="translate(60 58)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="0" cy="100" rx="18" ry="16" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".4" stroke="none"/><ellipse cx="-29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><ellipse cx="29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><path d="M-32.5,40 C-39.2,45.9 -44.3,55.3 -47.7,66M-51,79.5 C-52.7,89.3 -53.1,99.3 -52,108C-51.3,113.4 -48.6,118 -44.2,121.9M-14.6,133.1 C-10.1,133.7 -5.2,134 0,134C5.2,134 10.1,133.7 14.6,133.1M44.2,121.9 C48.6,118 51.3,113.4 52,108C53.1,99.3 52.7,89.3 51,79.5M47.7,66 C44.3,55.3 39.2,45.9 32.5,40M-48,88.4 A10,20 -26 1 1 -30,79.6 A10,20 -26 1 1 -48,88.4ZM30,79.6 A10,20 26 1 1 48,88.4 A10,20 26 1 1 30,79.6ZM-46,127 A17,11.5 0 1 1 -12,127 A17,11.5 0 1 1 -46,127ZM12,127 A17,11.5 0 1 1 46,127 A17,11.5 0 1 1 12,127Z"/><g><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-54,0 A54,50 0 1 1 54,0 A54,50 0 1 1 -54,0 ZM-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g></g></svg>
+				<figcaption class="caption"><code class="sg-code">bear.svg</code> · сидить</figcaption>
+			</figure>
+			<figure class="card sg-bear">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 198" class="tuto-bear" role="img" aria-labelledby="bear-2"><title id="bear-2">Ведмедик ТУТО махає лапкою</title><g transform="translate(60 58)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="0" cy="100" rx="18" ry="16" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".4" stroke="none"/><ellipse cx="-29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><ellipse cx="29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><ellipse cx="74" cy="1.2" rx="5" ry="6" transform="rotate(30 74,1.2)" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><path d="M-32.5,40 C-39.2,45.9 -44.3,55.3 -47.7,66M-51,79.5 C-52.7,89.3 -53.1,99.3 -52,108C-51.3,113.4 -48.6,118 -44.2,121.9M-14.6,133.1 C-10.1,133.7 -5.2,134 0,134C5.2,134 10.1,133.7 14.6,133.1M44.2,121.9 C48.6,118 51.3,113.4 52,108C54.9,85.2 47.8,53.4 32.5,40M-48,88.4 A10,20 -26 1 1 -30,79.6 A10,20 -26 1 1 -48,88.4ZM78,-5.7 C83.3,-2.7 80.4,12.2 71.5,27.5C62.7,42.8 51.3,52.8 46,49.7C40.7,46.7 43.6,31.8 52.5,16.5C61.3,1.2 72.7,-8.8 78,-5.7M-46,127 A17,11.5 0 1 1 -12,127 A17,11.5 0 1 1 -46,127ZM12,127 A17,11.5 0 1 1 46,127 A17,11.5 0 1 1 12,127ZM93,-17 Q98,-7 94,3 M101,-25 Q109,-7 102,9"/><g><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-54,0 A54,50 0 1 1 54,0 A54,50 0 1 1 -54,0 ZM-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g></g></svg>
+				<figcaption class="caption"><code class="sg-code">bear-wave.svg</code> · вітається</figcaption>
+			</figure>
+			<figure class="card sg-bear sg-bear--edge">
+				<span class="sg-bear__stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 100" class="tuto-bear" role="img" aria-labelledby="bear-3"><title id="bear-3">Ведмедик ТУТО визирає</title><g transform="translate(66 64)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-8)"><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-47.7,23.5 A54,50 0 1 1 39,34.6M-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g><path d="M-45.5,36 A12.5,12.5 0 0 1 -20.5,36M-37.5,36 V31 M-28.5,36 V31M20.5,36 A12.5,12.5 0 0 1 45.5,36M28.5,36 V31 M37.5,36 V31"/></g></svg></span>
+				<figcaption class="caption"><code class="sg-code">bear-peek.svg</code> · визирає з-за краю</figcaption>
+			</figure>
+			<figure class="card sg-bear">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 210" class="tuto-bear" role="img" aria-labelledby="bear-4"><title id="bear-4">Ведмедик ТУТО розгублено дивиться на мапу</title><g transform="translate(62 70)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="-29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><ellipse cx="29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><path d="M-32.5,40 C-38.3,45.1 -42.9,52.8 -46.3,61.7M-50.7,77.8 C-52.7,88.2 -53.1,98.8 -52,108C-51.3,113.4 -48.6,118 -44.2,121.9M-14.6,133.1 C-10.1,133.7 -5.2,134 0,134C5.2,134 10.1,133.7 14.6,133.1M44.2,121.9 C48.6,118 51.3,113.4 52,108C53.1,98.8 52.7,88.2 50.7,77.8M46.3,61.7 C42.9,52.8 38.3,45.1 32.5,40M-46,127 A17,11.5 0 1 1 -12,127 A17,11.5 0 1 1 -46,127ZM12,127 A17,11.5 0 1 1 46,127 A17,11.5 0 1 1 12,127ZM-27.6,70 C-9.2,70 9.2,70 27.6,70M40,81.1 C40,90.7 40,100.4 40,110C13.3,110 -13.3,110 -40,110C-40,100.4 -40,90.7 -40,81.1M-44.9,59.8 A10,19 38 1 1 -29.1,72.2 A10,19 38 1 1 -44.9,59.8ZM29.1,72.2 A10,19 -38 1 1 44.9,59.8 A10,19 -38 1 1 29.1,72.2ZM64,-58 C64,-67 78,-67 78,-58 C78,-51 71,-50 71,-43"/><g stroke-width="2.25"><path d="M-13,70 C-13,83.3 -13,96.7 -13,110M13,70 C13,83.3 13,96.7 13,110M25,78 l7,7 M32,78 l-7,7"/><path d="M-32,102 C-26,88 -14,102 -4,92 S12,80 22,88" stroke-dasharray="1 5"/></g><circle cx="71" cy="-35" r="2.2" fill="currentColor" stroke="none"/><g transform="rotate(10)"><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-54,0 A54,50 0 1 1 54,0 A54,50 0 1 1 -54,0 ZM-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M-6,28 Q-3,25 0,28 T6,28M-27,-10 Q-22,-14.5 -16,-12.5 M16,-14 Q21,-17.5 27,-15"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g></g></svg>
+				<figcaption class="caption"><code class="sg-code">bear-404.svg</code> · шукає дорогу</figcaption>
+			</figure>
+			<figure class="card card--dark sg-bear">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 198" class="tuto-bear" aria-hidden="true" focusable="false"><g transform="translate(60 58)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="0" cy="100" rx="18" ry="16" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".4" stroke="none"/><ellipse cx="-29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><ellipse cx="29" cy="128.5" rx="7" ry="4.8" style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".8" stroke="none"/><path d="M-32.5,40 C-39.2,45.9 -44.3,55.3 -47.7,66M-51,79.5 C-52.7,89.3 -53.1,99.3 -52,108C-51.3,113.4 -48.6,118 -44.2,121.9M-14.6,133.1 C-10.1,133.7 -5.2,134 0,134C5.2,134 10.1,133.7 14.6,133.1M44.2,121.9 C48.6,118 51.3,113.4 52,108C53.1,99.3 52.7,89.3 51,79.5M47.7,66 C44.3,55.3 39.2,45.9 32.5,40M-48,88.4 A10,20 -26 1 1 -30,79.6 A10,20 -26 1 1 -48,88.4ZM30,79.6 A10,20 26 1 1 48,88.4 A10,20 26 1 1 30,79.6ZM-46,127 A17,11.5 0 1 1 -12,127 A17,11.5 0 1 1 -46,127ZM12,127 A17,11.5 0 1 1 46,127 A17,11.5 0 1 1 12,127Z"/><g><path style="fill:var(--bear-tint,#CDB8A3)" fill-opacity=".55" d="M-19.8,16.5 A23,23 0 0 1 19.8,16.5 C22,31 12,36.5 0,36.5 C-12,36.5 -22,31 -19.8,16.5 Z"/><path d="M-54,0 A54,50 0 1 1 54,0 A54,50 0 1 1 -54,0 ZM-48.9,-21.3 A18,18 0 1 1 -23.8,-44.9M23.8,-44.9 A18,18 0 1 1 48.9,-21.3M-45.1,-30.8 A8.5,8.5 0 1 1 -33.8,-42.1M45.1,-30.8 A8.5,8.5 0 1 0 33.8,-42.1M-19.8,16.5 A23,23 0 0 1 19.8,16.5M0,20 V25.5 M-10.5,23 Q-5.5,30 0,25.5 Q5.5,30 10.5,23"/><g fill="currentColor" stroke="none"><circle cx="-21" cy="2" r="3.6"/><circle cx="21" cy="2" r="3.6"/><path d="M-7.6,10.6 Q0,8.4 7.6,10.6 Q10,11.6 7,15.2 L2,19.6 Q0,21.2 -2,19.6 L-7,15.2 Q-10,11.6 -7.6,10.6 Z"/></g></g></g></svg>
+				<figcaption class="caption">на&nbsp;темному · <code class="sg-code">--bear-tint: coffee</code></figcaption>
+			</figure>
+		</div>
+
+		<h3 class="sg-group-title sg-sub">Декор</h3>
+		<div class="sg-decor">
+			<figure class="card"><svg viewBox="0 0 141 172" style="color:var(--c-coffee)" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-5 0)" d="M8,170 C30,130 60,70 118,22M25.5,138.2 L24.1,134.4 C30.3,125.6 22.3,106 7.4,95.8 C8.8,106.1 14,127.8 24.1,134.4M24.1,134.4 Q21.1,122.6 17.2,110.8M36.7,119 L40.6,118.3 C47.8,125.4 67.5,121 80.3,112.7 C69.7,108.7 48.5,110.1 40.6,118.3M40.6,118.3 Q52.1,117.4 63.8,115.6M50.6,97.4 L49.7,93.5 C57.3,86.1 52.5,66.5 39.5,54.8 C39.3,64.7 40.9,86 49.7,93.5M49.7,93.5 Q48.7,82.1 46.8,70.4M65.3,77 L69.3,76.4 C75.2,84 93.3,80.6 105.2,73.1 C95.6,68.5 76.2,68.7 69.3,76.4M69.3,76.4 Q79.4,76.2 90.1,75.1M83.6,55.1 L83.7,51.1 C91.5,47.4 91.5,30.9 83.1,19 C80.8,26.9 77.9,44.1 83.7,51.1M83.7,51.1 Q85.2,42.5 85.9,32.8M118,22 L121.1,19.4 C127.9,22.9 138.9,13.1 143.7,2.8 C135,3.4 121.8,11.6 121.1,19.4M121.1,19.4 Q127.3,15.7 134.2,10.5"/></svg><figcaption class="caption"><code class="sg-code">branch-1</code></figcaption></figure>
+			<figure class="card"><svg viewBox="0 0 97 283" style="color:var(--c-coffee)" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-5 31)" d="M30,250 C38,180 50,100 82,10M33.6,220 L36.6,217.3 C50.3,218.6 70.1,199.3 79.4,181.1 C64.7,184.7 41.4,201.8 36.6,217.3M37.7,191.1 L36,187.5 C41.4,173.7 28,147.5 7.9,134.4 C11.4,148.3 21.6,177.5 36,187.5M43,158.9 L46.1,156.4 C59.3,159.1 79.9,142.1 90.2,125.1 C75.6,127.1 51.7,141.8 46.1,156.4M49,127.9 L47.6,124.1 C54.2,112.3 44.3,87.6 26.8,74.2 C28.7,87.1 35.4,114.3 47.6,124.1M56.3,95.8 L59.7,93.7 C70.7,98.1 89.8,85.2 99.8,71.1 C86.8,71.1 64.9,81.4 59.7,93.7M64.3,65.4 L63.4,61.5 C70,54 64.4,34.5 51.7,23.2 C52,33.1 54.7,54.2 63.4,61.5M82,10 L83.3,6.2 C92.3,3.9 98.2,-14.5 97.7,-29 C89.5,-22.1 80.5,-3.9 83.3,6.2"/></svg><figcaption class="caption"><code class="sg-code">branch-2</code></figcaption></figure>
+			<figure class="card"><svg viewBox="0 0 24 22" style="color:var(--c-latte);block-size:2.5rem" aria-hidden="true" focusable="false"><path fill="currentColor" d="M11.9 21.3C5.7 17 1.3 12.9 1.3 7.7 1.3 4.2 3.9 1.4 7.3 1.4c2.1 0 3.7 1.1 4.6 2.8C12.9 2.5 14.6 1.4 16.7 1.4c3.4 0 6 2.8 6 6.3 0 5.2-4.5 9.4-10.8 13.6z"/></svg><figcaption class="caption"><code class="sg-code">heart</code></figcaption></figure>
+			<figure class="card"><svg viewBox="0 0 200 200" style="color:var(--c-sand)" aria-hidden="true" focusable="false"><path fill="currentColor" d="M187.9,127.2C180.5,147.5 150.6,164.2 128.4,172.6C106.3,181.1 73.5,187.9 54.9,177.9C36.4,167.9 21,136.2 16.9,112.5C12.8,88.7 15.6,50 30.4,35.3C45.2,20.6 82,21.7 105.7,24.2C129.5,26.7 159.1,33.3 172.7,50.5C186.4,67.6 195.3,106.8 187.9,127.2Z"/></svg><figcaption class="caption"><code class="sg-code">blob-1</code></figcaption></figure>
+			<figure class="card"><svg viewBox="0 0 200 200" style="color:var(--c-latte)" aria-hidden="true" focusable="false"><path fill="currentColor" d="M139.9,178.4C121.4,188.9 88.3,197 70.9,189.4C53.6,181.8 45.2,152.2 35.8,132.7C26.4,113.1 9.8,89.5 14.4,72.2C19.1,54.8 44.5,39.3 63.7,28.7C82.9,18.1 113.3,2.1 129.7,8.7C146.2,15.3 153.7,48.6 162.4,68.2C171.1,87.9 185.5,108.2 181.8,126.6C178,145 158.4,168 139.9,178.4Z"/></svg><figcaption class="caption"><code class="sg-code">blob-2</code></figcaption></figure>
+			<figure class="card"><svg viewBox="0 0 320 180" style="color:var(--c-sand)" aria-hidden="true" focusable="false"><path fill="currentColor" d="M294.8,130.5C277.5,148.2 208.3,159.5 163,160.4C117.8,161.3 44,153.6 23.4,135.8C2.7,118 17.1,75.7 39.2,53.7C61.4,31.7 118.4,3.7 156.3,3.8C194.2,3.9 243.5,33.2 266.6,54.3C289.7,75.4 312.1,112.8 294.8,130.5Z"/></svg><figcaption class="caption"><code class="sg-code">blob-3</code></figcaption></figure>
+			<figure class="card"><svg viewBox="0 0 260 120" style="color:var(--c-coffee)" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 8" d="M4,112 C40,108 72,90 100,72 C128,54 160,58 160,78 C160,96 132,96 132,76 C132,50 172,28 206,22 C226,18 242,16 256,8"/></svg><figcaption class="caption"><code class="sg-code">dots-path</code></figcaption></figure>
+			<figure class="card"><svg class="sg-decor__wide" viewBox="0 0 1440 64" preserveAspectRatio="none" style="color:var(--c-sand)" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0,36 C160,10 360,2 560,22 C760,42 900,58 1100,42 C1260,29 1360,18 1440,22 V64 H0 Z"/></svg><figcaption class="caption"><code class="sg-code">wave</code> · розділювач</figcaption></figure>
+		</div>
+
+		<h3 class="sg-group-title sg-sub">Іконки · <span class="sg-code">icons.svg#…</span></h3>
+		<ul class="sg-icons" role="list">
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-sensory"/></svg><span>i-sensory<br>сенсорика</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-theme-week"/></svg><span>i-theme-week<br>тема тижня</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-reggio"/></svg><span>i-reggio<br>Reggio Emilia</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-bilingual"/></svg><span>i-bilingual<br>білінгвальність</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-camera"/></svg><span>i-camera<br>фотозвіт</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-safety"/></svg><span>i-safety<br>безпека</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-badge"/></svg><span>i-badge<br>бейдж</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-shelter"/></svg><span>i-shelter<br>укриття</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-clock"/></svg><span>i-clock<br>час</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-location"/></svg><span>i-location<br>адреса</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg><span>i-phone<br>телефон</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-telegram"/></svg><span>i-telegram<br>Telegram</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-instagram"/></svg><span>i-instagram<br>Instagram</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-food"/></svg><span>i-food<br>харчування</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-backpack"/></svg><span>i-backpack<br>що&nbsp;взяти</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-gift"/></svg><span>i-gift<br>подарунок</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-heart"/></svg><span>i-heart<br>серце</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-star"/></svg><span>i-star<br>зірка</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-check"/></svg><span>i-check<br>галочка</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-arrow-right"/></svg><span>i-arrow-right<br>далі</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-arrow-left"/></svg><span>i-arrow-left<br>назад</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-chevron-down"/></svg><span>i-chevron-down<br>шеврон</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-plus"/></svg><span>i-plus<br>розгорнути</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-minus"/></svg><span>i-minus<br>згорнути</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-menu"/></svg><span>i-menu<br>меню</span></li>
+			<li><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-close"/></svg><span>i-close<br>закрити</span></li>
+		</ul>
+	</div>
+</section>
+
+<!-- ================================================================ 10. Approval -->
+<section class="section section--wave-top section--wave-alt" id="approve" aria-labelledby="approve-title">
+	<div class="container">
+		<div class="section-head">
+			<p class="eyebrow">09 · На&nbsp;утвердження</p>
+			<h2 id="approve-title">Що&nbsp;потрібно <span class="hand hand--brick">вирішити</span></h2>
+			<p class="section-head__lead">Перемикачі змінюють CSS-змінні на&nbsp;всій сторінці&nbsp;- прокрутіть угору й&nbsp;порівняйте. Вибір запам’ятовується в&nbsp;цьому браузері; ним можна поділитися посиланням, наприклад <code class="sg-code">?accent=deep&amp;ink=graphite&amp;weight=600</code>.</p>
+		</div>
+
+		<div class="sg-approve">
+			<div class="card sg-toggle" role="group" aria-labelledby="t-accent">
+				<h3 class="h4" id="t-accent">Акцент <code class="sg-code">--c-brick</code></h3>
+				<p class="small">Кружок над&nbsp;«О», сердечка, рукописні слова-акценти. Теплий&nbsp;- м’якший у&nbsp;бежевій палітрі; рідний&nbsp;- як&nbsp;на&nbsp;вивісці, контрастніший (9.38&nbsp;на&nbsp;кремі), але темніший і&nbsp;менш помітний як&nbsp;«іскра».</p>
+				<div class="sg-toggle__opts">
+					<button class="chip" type="button" data-sg-group="accent" data-sg-value="warm" aria-pressed="true"><span class="sg-dot" style="background:#a8473a"></span>Теплий #A8473A</button>
+					<button class="chip" type="button" data-sg-group="accent" data-sg-value="deep" aria-pressed="false"><span class="sg-dot" style="background:#6e2b1e"></span>Рідний #6E2B1E</button>
+				</div>
+			</div>
+			<div class="card sg-toggle" role="group" aria-labelledby="t-ink">
+				<h3 class="h4" id="t-ink">Колір літер логотипа</h3>
+				<p class="small">Бриф&nbsp;- шоколад (у&nbsp;тон заголовкам). На&nbsp;аватарі Instagram і&nbsp;вивісці&nbsp;- графіт: холодніший, «дорослий», контраст 8.01&nbsp;на&nbsp;кремі.</p>
+				<div class="sg-toggle__opts">
+					<button class="chip" type="button" data-sg-group="ink" data-sg-value="chocolate" aria-pressed="true"><span class="sg-dot" style="background:#3b2a22"></span>Шоколад #3B2A22</button>
+					<button class="chip" type="button" data-sg-group="ink" data-sg-value="graphite" aria-pressed="false"><span class="sg-dot" style="background:#4a4a4c"></span>Графіт #4A4A4C</button>
+				</div>
+			</div>
+			<div class="card sg-toggle" role="group" aria-labelledby="t-weight">
+				<h3 class="h4" id="t-weight">Вага заголовків <code class="sg-code">--fw-heading</code></h3>
+				<p class="small">700&nbsp;- впевнено, як&nbsp;«ПРАЙС» у&nbsp;сторіс. 600&nbsp;- легше й&nbsp;більш «скандинавськи», але дрібні h4&nbsp;стають тихішими.</p>
+				<div class="sg-toggle__opts">
+					<button class="chip" type="button" data-sg-group="weight" data-sg-value="700" aria-pressed="true">Жирний 700</button>
+					<button class="chip" type="button" data-sg-group="weight" data-sg-value="600" aria-pressed="false">Напівжирний 600</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="card card--sand sg-preview">
+			<div class="sg-logo sg-preview__logo">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1354 455" class="tuto-logo" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0,100 H255 V160 H157 V404 H98 V160 H0 Z M318.5,100 L383.5,100 L457,261.9 L530.5,100 L595.5,100 L457.5,404 L392.5,404 L424.5,333.5 Z M658.5,100 H914 V160 H815.8 V404 H756.8 V160 H658.5 Z"/><circle cx="1166.5" cy="268" r="121" fill="none" stroke="currentColor" stroke-width="27"/><g class="tuto-logo__accent" style="color:var(--logo-accent,var(--c-brick,#6E2B1E))"><circle cx="1166.5" cy="268" r="174.4" fill="none" stroke="currentColor" stroke-width="25"/><path fill="currentColor" d="M1225,0 H1268 L1232,61 H1189 Z"/></g></svg>
+			</div>
+			<div>
+				<p class="eyebrow">Живий попередній перегляд</p>
+				<p class="h2">Мінісадочок&nbsp;- денний простір <span class="hand hand--brick">активного</span> розвитку</p>
+				<p class="small">Логотип, акцентне слово й&nbsp;заголовок реагують на&nbsp;перемикачі разом зі&nbsp;всією сторінкою: шапка, hero, сердечка, підвал.</p>
+			</div>
+		</div>
+
+		<div class="section-head sg-sub">
+			<p class="eyebrow eyebrow--plain">Рішення в&nbsp;системі</p>
+			<h3 class="h2">Затвердити або змінити</h3>
+		</div>
+		<ol class="rules sg-decisions" role="list">
+			<li class="rules__item"><h4 class="rules__title">Посилання&nbsp;- coffee-ink</h4><p>Фірмова кава #8B6B57&nbsp;дає лише 4.38&nbsp;на&nbsp;кремі&nbsp;- замало для&nbsp;дрібного тексту. Посилання, eyebrow і&nbsp;дрібний кольоровий текст&nbsp;- темніша <a href="#palette">кава-чорнило #6F5141</a> (6.49). Кава лишається для&nbsp;іконок і&nbsp;великого тексту.</p></li>
+			<li class="rules__item"><h4 class="rules__title">Рукописний акцент Caveat</h4><p>Одне-два слова в&nbsp;заголовку, колір кава, нахил −2°, як&nbsp;«<span class="hand" style="font-size:1.6em">народження</span>» на&nbsp;листівці. Не&nbsp;в&nbsp;кнопках і&nbsp;не&nbsp;в&nbsp;основному тексті.</p></li>
+			<li class="rules__item"><h4 class="rules__title">Арки й&nbsp;плями для&nbsp;фото</h4><p>Арка з&nbsp;тонким контуром зі&nbsp;зсувом&nbsp;- головна рамка (листівка + Montessori). Органічна пляма з&nbsp;підкладкою&nbsp;- для&nbsp;другорядних фото. Легкий нахил&nbsp;- лише в&nbsp;колажах.</p></li>
+			<li class="rules__item"><h4 class="rules__title">Ведмедик додуманий</h4><p>На&nbsp;листівці є лише голова. Тулуб, лапки й&nbsp;чотири пози домальовані в&nbsp;тій самій лінії: сидить, вітається, визирає, шукає дорогу (404).</p></li>
+			<li class="rules__item"><h4 class="rules__title">Favicon&nbsp;- знак «О́»</h4><div class="sg-decision-visual"><img class="sg-favicon" src="/tuto-preview/wp-content/themes/tuto/assets/svg/favicon.svg" width="40" height="40" alt="Favicon ТУТО: два кільця й акут на кремовому квадраті"><img class="sg-favicon sg-favicon--sm" src="/tuto-preview/wp-content/themes/tuto/assets/svg/favicon.svg" width="16" height="16" alt=""><p class="small">Два кільця й&nbsp;акут на&nbsp;кремовому квадраті, кільця потовщені для&nbsp;16–&#8288;32px. Кольори вшиті (рідний акцент #6E2B1E).</p></div></li>
+			<li class="rules__item"><h4 class="rules__title">«Найвигідніше», а&nbsp;не&nbsp;«Найпопулярніший»</h4><p>Даних про&nbsp;популярність немає, а&nbsp;місячний абонемент справді найдешевший за&nbsp;день: 430&nbsp;грн проти 450&nbsp;і&nbsp;500. Тому бейдж «Найвигідніше» + рюкзачок у&nbsp;подарунок. Порядок карток&nbsp;- за&nbsp;зростанням ціни, виділена&nbsp;- остання.</p></li>
+			<li class="rules__item rules__item--dark"><h4 class="rules__title">Акцент логотипа на&nbsp;темному</h4><p>На&nbsp;шоколаді обидва варіанти цеглястого зникають (2.36&nbsp;і&nbsp;1.32), тому там акцент світліший&nbsp;- #D9A08A (6.07). Дивіться підвал сторінки.</p></li>
+		</ol>
+		<p style="margin-block-start:var(--space-5)"><button class="btn btn--ghost btn--no-arrow" type="button" data-sg-reset>Скинути перемикачі до&nbsp;поточних значень</button></p>
+	</div>
+</section>
+</main>
+
+<!-- ================================================================ Footer -->
+<footer class="section section--chocolate section--tight section--wave-top sg-site-footer" aria-label="Підвал">
+	<div class="container sg-footer">
+		<div>
+			<div class="sg-logo sg-logo--dark sg-footer__logo">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1354 455" class="tuto-logo" role="img" aria-labelledby="logo-foot"><title id="logo-foot">ТУТО - навчальний простір розвитку</title><path fill="currentColor" d="M0,100 H255 V160 H157 V404 H98 V160 H0 Z M318.5,100 L383.5,100 L457,261.9 L530.5,100 L595.5,100 L457.5,404 L392.5,404 L424.5,333.5 Z M658.5,100 H914 V160 H815.8 V404 H756.8 V160 H658.5 Z"/><circle cx="1166.5" cy="268" r="121" fill="none" stroke="currentColor" stroke-width="27"/><g class="tuto-logo__accent" style="color:var(--logo-accent,var(--c-brick,#6E2B1E))"><circle cx="1166.5" cy="268" r="174.4" fill="none" stroke="currentColor" stroke-width="25"/><path fill="currentColor" d="M1225,0 H1268 L1232,61 H1189 Z"/></g></svg>
+			</div>
+			<p class="h3" style="margin-block-start:var(--space-4)"><span class="hand">місце щасливого дитинства</span></p>
+		</div>
+		<ul class="sg-footer__links" role="list">
+			<li><a href="tel:+380969404901"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg>096&nbsp;940&nbsp;49&nbsp;01</a></li>
+			<li><a href="https://www.instagram.com/tuto.center/" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-instagram"/></svg>@tuto.center</a></li>
+			<li><a href="https://www.instagram.com/tuto.hraiko/" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-gift"/></svg>Магазин іграшок «Грайко»</a></li>
+		</ul>
+	</div>
+</footer>
+
+<!-- Sticky CTA (mobile only, < 768px) -->
+<div class="sticky-cta">
+	<a class="btn btn--primary" href="#cards">Записатися на&nbsp;пробне</a>
+	<a class="btn btn--icon" href="tel:+380969404901" aria-label="Подзвонити: 096 940 49 01"><svg class="btn__icon" aria-hidden="true" focusable="false"><use href="/tuto-preview/wp-content/themes/tuto/assets/svg/icons.svg#i-phone"/></svg></a>
+</div>
+
+<!-- Floating approval dock (service) -->
+<details class="sg-dock">
+	<summary class="btn btn--soft btn--sm">На&nbsp;утвердження</summary>
+	<div class="card sg-dock__panel">
+		<div class="sg-toggle" role="group" aria-labelledby="d-accent">
+			<p class="label" id="d-accent">Акцент --c-brick</p>
+			<div class="sg-toggle__opts">
+				<button class="chip" type="button" data-sg-group="accent" data-sg-value="warm" aria-pressed="true"><span class="sg-dot" style="background:#a8473a"></span>Теплий</button>
+				<button class="chip" type="button" data-sg-group="accent" data-sg-value="deep" aria-pressed="false"><span class="sg-dot" style="background:#6e2b1e"></span>Рідний</button>
+			</div>
+		</div>
+		<div class="sg-toggle" role="group" aria-labelledby="d-ink">
+			<p class="label" id="d-ink">Літери логотипа</p>
+			<div class="sg-toggle__opts">
+				<button class="chip" type="button" data-sg-group="ink" data-sg-value="chocolate" aria-pressed="true"><span class="sg-dot" style="background:#3b2a22"></span>Шоколад</button>
+				<button class="chip" type="button" data-sg-group="ink" data-sg-value="graphite" aria-pressed="false"><span class="sg-dot" style="background:#4a4a4c"></span>Графіт</button>
+			</div>
+		</div>
+		<div class="sg-toggle" role="group" aria-labelledby="d-weight">
+			<p class="label" id="d-weight">Вага заголовків</p>
+			<div class="sg-toggle__opts">
+				<button class="chip" type="button" data-sg-group="weight" data-sg-value="700" aria-pressed="true">700</button>
+				<button class="chip" type="button" data-sg-group="weight" data-sg-value="600" aria-pressed="false">600</button>
+			</div>
+		</div>
+		<a class="btn btn--ghost btn--sm" href="#approve">Усі рішення</a>
+	</div>
+</details>
+
+<script type="module">
+// Service script for the styleguide only: approval toggles and the age-chip demo.
+const root = document.documentElement;
+const KEY = 'tuto-styleguide-approve';
+const GROUPS = {
+	accent: { warm: { '--c-brick': '#a8473a', '--logo-accent': '#a8473a' }, deep: { '--c-brick': '#6e2b1e', '--logo-accent': '#6e2b1e' } },
+	ink: { chocolate: { '--sg-logo-ink': 'var(--c-chocolate)' }, graphite: { '--sg-logo-ink': '#4a4a4c' } },
+	weight: { 700: { '--fw-heading': '700' }, 600: { '--fw-heading': '600' } },
+};
+const SHOW = { accent: { warm: '#A8473A', deep: '#6E2B1E' } };
+const DEFAULTS = { accent: 'warm', ink: 'chocolate', weight: '700' };
+let state = { ...DEFAULTS };
+
+try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch { /* storage unavailable */ }
+const params = new URLSearchParams(location.search);
+for (const g of Object.keys(GROUPS)) if (params.has(g)) state[g] = params.get(g);
+
+function apply() {
+	for (const g of Object.keys(GROUPS)) {
+		if (!Object.hasOwn(GROUPS[g], state[g])) state[g] = DEFAULTS[g];
+		for (const [prop, val] of Object.entries(GROUPS[g][state[g]])) root.style.setProperty(prop, val);
+		document.querySelectorAll(`[data-sg-group="${g}"]`).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.sgValue === state[g])));
+		if (SHOW[g]) document.querySelectorAll(`[data-sg-show="${g}"]`).forEach((el) => { el.textContent = SHOW[g][state[g]]; });
+	}
+	try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* ignore */ }
+}
+
+const AGES = {
+	'0–1': 'Для 0–1 року: <b>малюТО</b> - сенсорні заняття для малюків 0–13 міс. разом із мамою.',
+	'1–2': 'Для 1–2 років: <b>Розвивайко «Мама і я»</b> - заняття разом з мамою, від 1 року.',
+	'2–4': 'Для 2–4 років: <b>англіТО</b> - англійська через рух, гру й пісні.',
+	'4–6': 'Для 4–6 років: <b>школяТО</b> - підготовка до школи. [УТОЧНИТИ: вік]',
+};
+
+document.addEventListener('click', (e) => {
+	const opt = e.target.closest('[data-sg-group]');
+	if (opt) { state[opt.dataset.sgGroup] = opt.dataset.sgValue; apply(); return; }
+	if (e.target.closest('[data-sg-reset]')) { state = { ...DEFAULTS }; apply(); return; }
+	const age = e.target.closest('[data-sg-age]');
+	if (age) {
+		document.querySelectorAll('[data-sg-age]').forEach((b) => b.setAttribute('aria-pressed', String(b === age)));
+		const out = document.querySelector('[data-sg-age-out]');
+		if (out) out.innerHTML = AGES[age.dataset.sgAge];
+	}
+});
+
+apply();
+</script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+/*
+ * Block tuto/age-picker — «Вибір за віком»: age tabs → programme cards with price.
+ * Without JS: the tabs are anchor links, all panels are listed one after another.
+ * With JS (script.js → assets/js/modules/tabs.js): .is-enhanced, one panel at a time.
+ */
+.tuto-age-picker__branch {
+	display: none;
+	inset-block-start: var(--space-8);
+	inset-inline-end: -1.5rem;
+	inline-size: 5.5rem;
+	color: var(--c-coffee);
+	opacity: 0.5;
+	rotate: -14deg;
+}
+
+/* ---------- Tabs: segmented pill ---------- */
+.tuto-age-picker__tabs {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: var(--space-1);
+	max-inline-size: 36rem;
+	margin: 0 auto var(--space-6);
+	padding: var(--space-1);
+	border-radius: var(--radius-pill);
+	background-color: var(--c-white);
+	box-shadow: var(--shadow-s);
+}
+
+.tuto-age-picker__tab.chip {
+	--chip-bg: transparent;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0;
+	min-height: 3.25rem;
+	padding: var(--space-1) var(--space-2);
+	font-size: var(--fs-lead);
+	font-weight: var(--fw-heavy);
+	line-height: 1.05;
+	text-align: center;
+	font-variant-numeric: lining-nums;
+}
+
+.tuto-age-picker__tab span {
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+/* ---------- Panels ---------- */
+.tuto-age-picker__panel {
+	display: grid;
+	gap: var(--space-6);
+	align-items: start;
+	border-radius: var(--radius-l);
+}
+
+/* only without JS, when all panels are listed; with tabs the hidden previous panel
+   still matches «+» and gave panels 2–4 an extra gap under the tabs (Evgeny, 2026-11-15) */
+.tuto-age-picker:not(.is-enhanced) .tuto-age-picker__panel + .tuto-age-picker__panel {
+	margin-block-start: var(--space-8);
+}
+
+.tuto-age-picker__panel:focus-visible {
+	outline-offset: var(--space-3);
+}
+
+.tuto-age-picker__media {
+	display: none;
+	max-inline-size: 18rem;
+	--frame-fill: var(--c-latte);
+}
+
+.tuto-age-picker__media img {
+	--frame-ratio: 4 / 5;
+}
+
+.tuto-age-picker__head {
+	margin-block-end: var(--space-5);
+}
+
+.tuto-age-picker__age {
+	margin: 0;
+	font-size: var(--fs-h3);
+}
+
+.tuto-age-picker__intro {
+	margin-block-start: var(--space-2);
+	color: var(--c-muted);
+}
+
+.tuto-age-picker__cards {
+	display: grid;
+	gap: var(--space-4);
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+}
+
+/* ---------- Programme card ---------- */
+.tuto-age-picker__card {
+	block-size: 100%;
+	gap: var(--space-3);
+}
+
+.tuto-age-picker__card .card__title {
+	font-size: var(--fs-h4);
+}
+
+.tuto-age-picker__card .chip {
+	min-height: 1.625rem;
+	font-size: var(--fs-caption);
+}
+
+.tuto-age-picker__meta {
+	display: grid;
+	gap: var(--space-1);
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+}
+
+.tuto-age-picker__meta li {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-2);
+}
+
+.tuto-age-picker__meta .icon {
+	inline-size: 1.15rem;
+	block-size: 1.15rem;
+	margin-block-start: 0.15em;
+}
+
+.tuto-age-picker__todo {
+	justify-self: start;
+	padding: 0 var(--space-2);
+	border: 1px dashed var(--c-coffee);
+	border-radius: var(--radius-xs);
+	color: var(--c-coffee-ink);
+	font-size: var(--fs-caption);
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-age-picker__card .card__footer {
+	padding-block-start: var(--space-3);
+	border-block-start: 1px solid var(--c-line);
+}
+
+.tuto-age-picker__card .price__note {
+	margin-block-start: var(--space-1);
+}
+
+/* «Пробне - 350 грн»: trial = one-time price (BRIEF §4.4, review №1). Inside .price (flex-wrap) */
+.tuto-age-picker__trial {
+	flex-basis: 100%;
+	margin-block-start: var(--space-2);
+	color: var(--c-chocolate);
+	font-size: var(--fs-body-s);
+	font-weight: var(--fw-bold);
+	line-height: var(--lh-snug);
+}
+
+.tuto-age-picker__trial .tuto-age-picker__todo {
+	display: inline-block;
+	font-weight: var(--fw-semibold);
+}
+
+.tuto-age-picker__card--next {
+	justify-content: center;
+	border-style: dashed;
+	border-color: var(--c-coffee);
+}
+
+/* ---------- Below the panels ---------- */
+.tuto-age-picker__also {
+	margin-block-start: var(--space-6);
+	color: var(--c-muted);
+	font-size: var(--fs-body-s);
+	text-align: center;
+}
+
+.tuto-age-picker__also strong {
+	color: var(--c-chocolate);
+}
+
+/* One short parent quote right under the picker (review №16).
+   A light card with a dashed border so it does not blend into the cards above (Evgeny, 2026-11-15). */
+.tuto-age-picker__quote {
+	position: relative;
+	display: grid;
+	justify-items: center;
+	gap: var(--space-2);
+	max-inline-size: 34rem;
+	margin: var(--space-8) auto 0;
+	padding: var(--space-6) var(--space-5) var(--space-5);
+	border: 2px dashed var(--c-latte);
+	border-radius: var(--radius-l);
+	background-color: var(--c-cream);
+	text-align: center;
+}
+
+/* quote mark sitting on the dashed border. An SVG, not the “ glyph: the Caveat glyph sits
+   off-centre in the circle (Evgeny, 2026-11-15). Fill = --c-cream (#F8F3EC). */
+.tuto-age-picker__quote::before {
+	content: "";
+	position: absolute;
+	inset-block-start: 0;
+	inset-inline-start: 50%;
+	inline-size: 2.75rem;
+	block-size: 2.75rem;
+	border-radius: 50%;
+	background: var(--c-chocolate) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='1.5 4.5 18 15'%3E%3Cpath fill='%23F8F3EC' d='M3 17v-5.5C3 8.5 5 6.5 8 6v2.2c-1.6.4-2.5 1.6-2.6 3.3H9V17zm9 0v-5.5c0-3 2-5 5-5.5v2.2c-1.6.4-2.5 1.6-2.6 3.3H18V17z'/%3E%3C/svg%3E") center / 1.25rem no-repeat;
+	translate: -50% -50%;
+}
+
+.tuto-age-picker__quote blockquote {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	color: var(--c-heading);
+	font-size: var(--fs-h4);
+	font-weight: var(--fw-bold);
+	line-height: var(--lh-snug);
+}
+
+.tuto-age-picker__quote figcaption {
+	color: var(--c-chocolate);
+	font-size: var(--fs-small);
+	font-weight: var(--fw-bold);
+}
+
+.tuto-age-picker__quote figcaption span {
+	color: var(--c-muted);
+	font-weight: var(--fw-regular);
+}
+
+.tuto-age-picker__footer {
+	display: grid;
+	justify-items: center;
+	gap: var(--space-3);
+	margin-block-start: var(--space-6);
+	text-align: center;
+}
+
+.tuto-age-picker__footer .caption {
+	margin: 0;
+}
+
+@media (min-width: 48em) {
+	/* the wave above already adds air: a full --section-pad here looked too loose (Evgeny, 2026-11-14) */
+	.tuto-age-picker {
+		padding-block-start: var(--section-pad-s);
+	}
+
+	.tuto-age-picker__tab.chip {
+		flex-direction: row;
+		gap: var(--space-1);
+		min-height: 3rem;
+		font-size: var(--fs-body);
+		font-weight: var(--fw-bold);
+	}
+
+	.tuto-age-picker__tab span {
+		font-size: inherit;
+		font-weight: inherit;
+	}
+
+	.tuto-age-picker__panel {
+		grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+		gap: var(--space-7);
+	}
+
+	.tuto-age-picker__media {
+		display: block;
+	}
+}
+
+@media (min-width: 64em) {
+	.tuto-age-picker__branch {
+		display: block;
+	}
+
+	.tuto-age-picker__panel {
+		grid-template-columns: minmax(0, 17rem) minmax(0, 1fr);
+		gap: var(--space-8);
+	}
+
+	.tuto-age-picker__media {
+		position: sticky;
+		inset-block-start: var(--space-10);
+	}
+
+	.tuto-age-picker__cards {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
